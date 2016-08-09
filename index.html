@@ -1,232 +1,1212 @@
-<!DOCTYPE html>
-
-
-  <html class="light page-home">
-
-
+<!DOCTYPE HTML>
+<html>
 <head>
   <meta charset="utf-8">
   
   <title>richard&#39;s blog</title>
-
+  <meta name="author" content="richard">
+  
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="richard,三水,设计,iOS,前端开发,iOS,音乐,吉他,谱子,六线谱。" />
-  
-
-  <meta property="og:type" content="website">
-<meta property="og:title" content="richard's blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="richard's blog">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="richard's blog">
+  <meta property="og:site_name" content="richard&#39;s blog"/>
 
   
-
-  
-    <link rel="icon" href="/favicon.ico">
+    <meta property="og:image" content="undefined"/>
   
 
-  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
-
-
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="richard&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
-    <link rel="stylesheet" href="/css/personal-style.css">
-  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-368771XX-X']);
+  _gaq.push(['_trackPageview']);
 
-  
-
-  
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
 </head>
 
 <body>
-
-
-  
-
-  
-  <div class="content-home text-center">
-  <a class="avatar" href="/">
-    <img src="/images/avatar.jpg" alt="" />
-  </a>
-  <h1 class="name" style="font-family: calligraffittiregular">
-    richard&#39;s blog
-  </h1>
-  <div class="slogan">
-    爱生活，爱唱歌，爱旅游的iOS开发者。
-  </div>
-
-  <hr>
-
-  <ul class="text-center nav">
+  <header id="header" class='normal_mode'>
+    <nav id="main-nav">
+  <ul class='container'>
     
-      <li class="item">
-        
-          <a href="/archives">Blog</a>
-        
-        <span>|</span>
-      </li>
+      <li><a href="/">Home</a></li>
     
-      <li class="item">
-        
-          <a href="/project/" target="_blank">Project</a>
-        
-        <span>|</span>
-      </li>
-    
-      <li class="item">
-        
-          <a href="https://github.com/forsigner" target="_blank">Github</a>
-        
-        <span>|</span>
-      </li>
-    
-      <li class="item">
-        
-          <a href="https://twitter.com/forsigner" target="_blank">Twitter</a>
-        
-        <span>|</span>
-      </li>
+      <li><a href="/archives">Archives</a></li>
     
   </ul>
+  <div class="clearfix"></div>
+</nav>
+  </header>
+  <div id="content" class="container">
+    <div id="cover">
+	<div id="profile" alt="http://ww1.sinaimg.cn/large/6cea169fjw1edgyzma1xcj21kw16ohba.jpg">
+		<a href="/">
+			<div class="logo">
+				<img src="/logo.png" alt="Profile Picture">
+			</div>
+			<div id="title">richard's blog</div>
+		</a>
 
+		
+		 <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/your_id" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="http://weibo.com/your_id" class="weibo" target="_blank">
+  		<i class="fa fa-weibo"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+	</div>
 </div>
 
 
-
-
-
-  <div class="modal" id="modal">
-  <span id="cover" class="cover hide"></span>
-  <div id="modal-dialog" class="modal-dialog hide-dialog">
-    <div class="modal-header">
-      <span id="close" class="btn-close">关闭</span>
-    </div>
-    <hr>
-    <div class="modal-body">
-      <ul class="list-toolbox">
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              target="_self"
-              >
-              博客
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/category/"
-              target="_self"
-              >
-              分类
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              target="_self"
-              >
-              标签
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              target="_self"
-              >
-              友链
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              target="_self"
-              >
-              关于
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              target="_blank"
-              >
-              RSS
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              target="_self"
-              >
-              搜索
-            </a>
-          </li>
-        
-      </ul>
-
-    </div>
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
   </div>
 </div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2016-02-15T03:22:29.000Z"><a href="/2016/02/15/Swift中 core Foundation的运用/">Mon, Feb 15 2016, 11:22:29 am</a></time>
+
+  
+    <h1 class="title"><a href="/2016/02/15/Swift中 core Foundation的运用/">Swift中 core Foundation的运用</a></h1>
+  
 
 
 
   
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/博客，iOS，开发，swift/">博客，iOS，开发，swift</a>
+  </div>
 
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>##Core Foundation</p>
+<p>#####Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Foundation 类型时，你也可以桥接一些 toll-free bridged Core Foundation 类型到 Swift 标准库类型。</p>
+<p>1.重定义类型</p>
+<p>当 Swift 导入 Core Foundation 类型时，编译器会重映射导入的类型名字。编译器会从每个类型名字的末端移除Ref，这是因为所有的 Swift 类都属于引用类型，因此后缀是多余的。</p>
+<p>Core Foundation 中的CFTypeRef类型会对Anyobject类型重映射。所以你以前使用的CFTypeRef，现在该换成AnyObject了。</p>
+<p>2.内存管理对象</p>
+<p>在 Swift 中，从 annotated APIs 返回的 Core Foundation 对象能够自动进行内存管理–你不再需要调用自身的CFRetain，CFRelease，或者CFAutorelease函数。如果你从自身的C函数和 Objective-C 方法中返回一个 Core Foundation 对象，你需要用CF_RETURNS_RETAINED或者CF_RETURNS_NOT_RETAINED注释这个对象。当 Swift 代码中包含这些 APIs 时，编译器会在编译时自动调用内存管理。如果你只调用那些不会间接返回 Core Foundation 对象的 annotated APIs，那么现在你可以跳过本节的剩余部分了。否则，下面我们继续学习非托管的 Core Foundation 对象。</p>
+<p>3.非托管对象</p>
+<p>当 Swift 导入 unannotated 的APIs时，编译器将不会自动地对返回的 Core Foundation 对象进行内存管理托管。Swift 将这些返回的 Core Foundation 对象封闭在一个Unmanaged<t>结构中。那些间接返回 Core Foundation 的对象也是非托管的。举个例子，这里有一个 unannotated 的 C 函数:</t></p>
+<p>这里说明了Swift是怎么导入的:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-529b451c7d6528cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unmanaged 为未被管理的类型"></p>
+<p>假设您从 unannotated APIs 接收了非托管的对象，在使用它之前，你必须将它转换为能够内存管理的对象。在这方面，Swift 可以帮你进行内存管理而不用自己动手。同时，Unmanaged<t>结构也提供了两个方法来把一个非托管对象转换为一个可内存管理的对象–takeUnretainedValue()方法和takeRetainedValue()方法。这两个方法会返回原始的，非封闭的对象类型。您可以根据您实际调用的APIs返回的unretained或retained的对象，来选择哪一方法更合适。</t></p>
+<p>比如，假设这里有一个 C 函数，这个函数在返回值前不会释放CFString对象。在使用这个对象前，您使用takeUnretainedValue()函数，以将它转换为一个能够内存管理托管的对象。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-40bf81a6ea664a9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unmanaged 未被管理"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> let firstName =  ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue()</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-32bc743c44817cb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-6bb676ba42cc7dc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>这样的话 你就可以把这个属性转换成任意类型了。</p>
+<p>下边说一下ios9 新出的  ContactsUI 来代替  AddressBookUI<br>太简单了。这个就是面对对象来操作的。</p>
+<p>首先设置属性以及代理。以及遵守协议。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">viewController: UIViewController,CNContactPickerDelegate &#123;</div><div class="line"></div><div class="line">    override func viewDidLoad() &#123;</div><div class="line">        super.viewDidLoad()</div><div class="line"></div><div class="line">        let vc = CNContactPickerViewController()</div><div class="line">        vc.delegate = self</div><div class="line">        self.presentViewController(vc, animated: true, completion: nil)</div></pre></td></tr></table></figure></p>
+<p>然后实现代理方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact) &#123;</div><div class="line">        </div><div class="line">        let name = contact.familyName</div><div class="line">        print(name)</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>contact 装的都是对象属性。<br>哪里不会点哪里</p>
+<pre><code>public var identifier: String { get }
+
+ public var contactType: CNContactType { get }
+
+ public var namePrefix: String { get }
+ public var givenName: String { get }
+ public var middleName: String { get }
+ public var familyName: String { get }
+ public var previousFamilyName: String { get }
+ public var nameSuffix: String { get }
+ public var nickname: String { get }
+
+ public var phoneticGivenName: String { get }
+ public var phoneticMiddleName: String { get }
+ public var phoneticFamilyName: String { get }
+
+ public var organizationName: String { get }
+ public var departmentName: String { get }
+ public var jobTitle: String { get }
+
+ public var note: String { get }
+
+ @NSCopying public var imageData: NSData? { get }
+ @NSCopying public var thumbnailImageData: NSData? { get }
+ @available(iOS 9.0, *)
+ public var imageDataAvailable: Bool { get }
+
+ public var phoneNumbers: [CNLabeledValue] { get }
+ public var emailAddresses: [CNLabeledValue] { get }
+ public var postalAddresses: [CNLabeledValue] { get }
+ public var urlAddresses: [CNLabeledValue] { get }
+ public var contactRelations: [CNLabeledValue] { get }
+ public var socialProfiles: [CNLabeledValue] { get }
+ public var instantMessageAddresses: [CNLabeledValue] { get }
+
+ /*! The Gregorian birthday. */
+ @NSCopying public var birthday: NSDateComponents? { get }
+
+ /*! The alternate birthday (Lunisolar). */
+ @NSCopying public var nonGregorianBirthday: NSDateComponents? { get }
+</code></pre><p>是不是比core foundation爽多了？？？</p>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2016/02/15/Swift中 core Foundation的运用/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://yoursite.com/2016/02/15/Swift中 core Foundation的运用/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2016/02/15/Swift中 core Foundation的运用/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2016-02-15T03:22:29.000Z"><a href="/2016/02/15/覆盖(重写)，重构，重载的区别/">Mon, Feb 15 2016, 11:22:29 am</a></time>
+
+  
+    <h1 class="title"><a href="/2016/02/15/覆盖(重写)，重构，重载的区别/">Swift中 覆盖(重写)，重构，重载的区别</a></h1>
+  
+
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/博客，iOS，开发，swift/">博客，iOS，开发，swift</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <ul>
+<li>重构, 是对软计设计方法的描述, 这个层面是架构和设计方法。</li>
+<li>重构是一个软件维护的通用技巧, 重构的具体做法, 可以通过重写或者重载等, 但不限于此, 更改注释, 更改函数名类名等,都可以称之为重构。<blockquote>
+<p>你今天写了一个应用, 读txt文档并显示, 几天后,用户的新需求来了, 告诉你, 我要读一个XML文本并显示, 这个时候, 你从前的代码需要做变更, 这个变更的动作, 就叫做重构。<br>你维护的模块有个类叫做Class_B, 别人不爽, 觉得名字不好理解, 要你更改成TXTReader, 并附上注释。</p>
+</blockquote>
+</li>
+<li>覆盖(重写), 即override(Overwrite), 表达的都是一个含义。<blockquote>
+<p>父类的protect或者public方法无条件的成为子类的方法，但子类不爽， 想要将继承过来的方法改造一下。 这就是重写。<br>参数值，都是一模一样的。但内容体(方法中的代码)已经不同了。</p>
+</blockquote>
+</li>
+<li>重载(Overload)就是通过方法的参数识别不同的函数。<blockquote>
+<p>比如你有一个AMethod()不带参数, 然后你用了一个另外相同名称的方法,带一个参数AMethod(String para)。<br>这个过程就叫做重载。</p>
+</blockquote>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2016/02/15/覆盖(重写)，重构，重载的区别/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://yoursite.com/2016/02/15/覆盖(重写)，重构，重载的区别/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2016/02/15/覆盖(重写)，重构，重载的区别/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2015-08-13T08:23:29.000Z"><a href="/2015/08/13/cocoaPod的安装，删除以及基本使用/">Thu, Aug 13 2015, 4:23:29 pm</a></time>
+
+  
+    <h1 class="title"><a href="/2015/08/13/cocoaPod的安装，删除以及基本使用/">cocoaPod的安装，删除以及基本使用</a></h1>
+  
+
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/博客，iOS，开发/">博客，iOS，开发</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>如何安装?</p>
+<p>1.安装ruby环境,添加淘宝ruby镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ gem sources --remove https://rubygems.org/</div><div class="line">//等有反应之后再敲入以下命令</div><div class="line">$ gem sources -a http://ruby.taobao.org/</div></pre></td></tr></table></figure></p>
+<p>2.查看是否设置成功:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gem sources -l</div></pre></td></tr></table></figure></p>
+<p>3.然后安装cocoapods:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo gem install cocoapods</div></pre></td></tr></table></figure></p>
+<p>4.查看cocoapods是否支持某个类库</p>
+<p>$ pod search 类库名,支持模糊查询(如:AFNetworking)</p>
+<p>如何使用?</p>
+<ul>
+<li>在项目根目录下新建一个“Podfile”的文件(记住一定得叫这个名儿,而且木有后缀)</li>
+</ul>
+<p>注:Podfile也可以放在任何位置,但是需要在Podfile顶部使用”xcodeproj”关键字指定工程的路径,如下:</p>
+<p>Podfile指明xcodeproj</p>
+<p>但是执行pod install命令后,生成的文件放在了Podfile所在的目录.</p>
+<ul>
+<li>编辑Podfile文件输入以下信息</li>
+</ul>
+<p>platform :iOS, ‘7.0’\所有库支持的IOS最低版本<br>pod ‘AFNetworking’, ‘~&gt; 2.0’\版本号</p>
+<p>注:有些第三方库需要指明:platform 支持的IOS最低版本,否则在pod install时会报错,如下图,提示AFNetworking最低支持IOS6.0和OS X 10.8</p>
+<p>cocoapods指明ios版本</p>
+<ul>
+<li>然后在项目podfile所在目录下运行:(会在你当前项目中导入podfile所配置的库,所以要在项目目录下运行)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod install</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意上述命令运行完毕后终端输出的最后一段话,意思就是以后打开项目就用CocoaPodsDemo.xcworkspace 打开，而不是之前的.xcodeproj文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[!] From now on use `CocoaPodsDemo.xcworkspace`.</div></pre></td></tr></table></figure></p>
+<p>经过以上步骤后,我们现在可以打开CocoaPodsDemo.xcworkspace启动我们的新工程了.新工程中已经通过cocoapods引入并配置好了我们刚在podfile写的需要依赖的第三方库了.</p>
+<p>引入第三方库后找不到头文件?<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">在项目的Targe-Build Settings-Search Paths-User Header Searcj Paths中添加</div><div class="line"></div><div class="line">$&#123;SRCROOT&#125; 值为 recursive</div></pre></td></tr></table></figure></p>
+<p>![Uploading Paste_Image_242830.png . . .]<br>如下图:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-e42b4ca1f003f6ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>cocoapods<br>配置头文件</p>
+<p>如何编译从github上checkout下来的一个已包含CocoPods类库的项目?</p>
+<p>打开终端进入你所下载项目的根目录,执行以下命令,后会得到上面的那句话:</p>
+<p>$ pod update</p>
+<p>等待命令运行完毕后,同样最后会输出</p>
+<p>[!] From now on use <code>xxxxx.xcworkspace</code>.</p>
+<p>如何删除cocopods?</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-0f6de27d590f271f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<ul>
+<li>删除工程文件夹下的Podfile、Podfile.lock及Pods文件夹</li>
+<li>删除xcworkspace文件</li>
+<li>使用xcodeproj文件打开工程，删除Frameworks组下的Pods.xcconfig及libPods.a引用</li>
+<li>在工程设置中的Build Phases下删除Check Pods Manifest.lock及Copy Pods Resources</li>
+</ul>
+<p>删除cocoapods</p>
+<p>CocoaPods常用命令</p>
+<p>1、pod install</p>
+<p>根据Podfile文件指定的内容，安装依赖库，如果有Podfile.lock文件而且对应的Podfile文件未被修改，则会根据Podfile.lock文件指定的版本安装。</p>
+<p>每次更新了Podfile文件时，都需要重新执行该命令，以便重新安装Pods依赖库。</p>
+<p>2、pod update</p>
+<p>若果Podfile中指定的依赖库版本不是写死的，当对应的依赖库有了更新，无论有没有Podfile.lock文件都会去获取Podfile文件描述的允许获取到的最新依赖库版本。</p>
+<p>3、pod search</p>
+<p>命令格式为：</p>
+<p>![Upload Paste_Image.png failed. Please try again.]<br>$ pod search 类库名,支持模糊查询(如:AFNetworking)</p>
+<p>pod search功能</p>
+<p>红框中的信息为AFNetworking 最新版本,Version中显示了历史版本,根据这些信息来编写我们的Podfile文件如:</p>
+<p>pod ‘AFNetWorking’, ‘~&gt; 2.2.4′</p>
+<p>这句话具体含义是什么呢?<br>当我们通过cocopods引入依赖库时，需要显示或隐式注明引用的依赖库版本，具体写法和表示含义如下</p>
+<p>pod ‘AFNetworking’      //不显式指定依赖库版本，表示每次都获取最新版本<br>pod ‘AFNetworking’, ‘2.0’     //只使用2.0版本<br>pod ‘AFNetworking’, ‘&gt; 2.0′     //使用高于2.0的版本<br>pod ‘AFNetworking’, ‘&gt;= 2.0′     //使用大于或等于2.0的版本<br>pod ‘AFNetworking’, ‘&lt; 2.0′     //使用小于2.0的版本<br>pod ‘AFNetworking’, ‘&lt;= 2.0′     //使用小于或等于2.0的版本<br>pod ‘AFNetworking’, ‘~&gt; 0.1.2′     //使用大于等于0.1.2但小于0.2的版本<br>pod ‘AFNetworking’, ‘~&gt;0.1′     //使用大于等于0.1但小于1.0的版本<br>pod ‘AFNetworking’, ‘~&gt;0′     //高于0的版本，写这个限制和什么都不写是一个效果，都表示使用最新版本</p>
+<p>4、pod setup</p>
+<p>用于跟新本地电脑上的保存的Pods依赖库tree。由于每天有很多人会创建或者更新Pods依赖库，这条命令执行的时候会相当慢，还请耐心等待。我们需要经常执行这条命令，否则有新的Pods依赖库的时候执行pod search命令是搜不出来的。</p>
+<p>①多个target中使用相同的Pods依赖库</p>
+<p>比如，名称为CocoaPodsTest的target和Second的target都需要使用Reachability、SBJson、AFNetworking三个Pods依赖库，可以使用link_with关键字来实现，将Podfile写成如下方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">link_with ‘CocoaPodsTest’, ‘Second’</div><div class="line">platform :ios</div><div class="line">pod ‘Reachability’,  ‘~&gt; 3.0.0′</div><div class="line">pod ‘SBJson’, ‘~&gt; 4.0.0′</div><div class="line"></div><div class="line">platform :ios, ‘7.0’</div><div class="line">pod ‘AFNetworking’, ‘~&gt; 2.0′</div></pre></td></tr></table></figure></p>
+<p>这种写法就实现了CocoaPodsTest和Second两个target共用相同的Pods依赖库。</p>
+<p>②不同的target使用完全不同的Pods依赖库</p>
+<p>CocoaPodsTest这个target使用的是Reachability、SBJson、AFNetworking三个依赖库，但Second这个target只需要使用OpenUDID这一个依赖库，这时可以使用target关键字，Podfile的描述方式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">target :’CocoaPodsTest’ do</div><div class="line">platform :ios</div><div class="line">pod ‘Reachability’,  ‘~&gt; 3.0.0′</div><div class="line">pod ‘SBJson’, ‘~&gt; 4.0.0′</div><div class="line"></div><div class="line">platform :ios, ‘7.0’</div><div class="line">pod ‘AFNetworking’, ‘~&gt; 2.0′</div><div class="line">end</div><div class="line"></div><div class="line">target :’Second’ do</div><div class="line">pod ‘OpenUDID’, ‘~&gt; 1.0.0′</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>其中，do/end作为开始和结束标识符。</p>
+<p>Podfile.lock文件</p>
+<p>在使用CocoaPods，执行完pod install之后，会生成一个Podfile.lock文件。这个文件看起来跟我们关系不大，实际上绝对不应该忽略它。<br>该文件用于保存已经安装的Pods依赖库的版本，通过CocoaPods安装了SBJson、AFNetworking、Reachability三个POds依赖库以后对应的Podfile.lock文件内容为：</p>
+<p>PODS:<br>– AFNetworking (2.1.0):<br>– AFNetworking/NSURLConnection<br>– AFNetworking/NSURLSession<br>– AFNetworking/Reachability<br>– AFNetworking/Security<br>– AFNetworking/Serialization<br>– AFNetworking/UIKit<br>– AFNetworking/NSURLConnection (2.1.0):<br>– AFNetworking/Reachability<br>– AFNetworking/Security<br>– AFNetworking/Serialization<br>– AFNetworking/NSURLSession (2.1.0):<br>– AFNetworking/NSURLConnection<br>– AFNetworking/Reachability (2.1.0)<br>– AFNetworking/Security (2.1.0)<br>– AFNetworking/Serialization (2.1.0)<br>– AFNetworking/UIKit (2.1.0):<br>– AFNetworking/NSURLConnection<br>– Reachability (3.0.0)<br>– SBJson (4.0.0)</p>
+<p>DEPENDENCIES:<br>– AFNetworking (~&gt; 2.0)<br>– Reachability (~&gt; 3.0.0)<br>– SBJson (~&gt; 4.0.0)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SPEC CHECKSUMS:</div><div class="line">AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd</div><div class="line">Reachability: 500bd76bf6cd8ff2c6fb715fc5f44ef6e4c024f2</div><div class="line">SBJson: f3c686806e8e36ab89e020189ac582ba26ec4220</div><div class="line"></div><div class="line">COCOAPODS: 0.29.0</div></pre></td></tr></table></figure></p>
+<p>Podfile.lock文件最大得用处在于多人开发。当团队中的某个人执行完pod install命令后，生成的Podfile.lock文件就记录下了当时最新Pods依赖库的版本，这时团队中的其它人check下来这份包含Podfile.lock文件的工程以后，再去执行pod install命令时，获取下来的Pods依赖库的版本就和最开始用户获取到的版本一致。如果没有Podfile.lock文件，后续所有用户执行pod install命令都会获取最新版本的SBJson，这就有可能造成同一个团队使用的依赖库版本不一致，这对团队协作来说绝对是个灾难！<br>在这种情况下，如果团队想使用当前最新版本的SBJson依赖库，有两种方案：</p>
+<ul>
+<li>更改Podfile，使其指向最新版本的SBJson依赖库；</li>
+<li>执行pod update命令；</li>
+</ul>
+<p>鉴于Podfile.lock文件对团队协作如此重要，我们需要将它添加到版本管理中。</p>
+<p>如何制作自己的Cocopods库</p>
+<p>![Upload Paste_Image.png failed. Please try again.]<br>1.在github上新建一个工程</p>
+<p>github上新建pod工程</p>
+<p>license类型</p>
+<p>正规的仓库都应该有一个license文件，Pods依赖库对这个文件的要求更严，是必须要有的。因此最好在这里让github创建一个，也可以自己后续再创建。我使用的license类型是MIT。</p>
+<p>把项目clone到本地然后在根目录下新建MyPodDemo.podspec</p>
+<p>或使用命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ pod spec create MyPodDemo</div></pre></td></tr></table></figure></p>
+<p>Spec文件编写:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new do |s|</div><div class="line">s.name = &quot;MyPodDemo&quot;</div><div class="line">s.version = &quot;0.0.1&quot;</div><div class="line">s.summary = &quot;A short description of MyPodDemo.&quot;</div><div class="line">s.description = &lt;&lt;-DESC</div><div class="line">A longer description of MyPodDemo in Markdown format.</div><div class="line">* Think: Why did you write this? What is the focus? What does it do?</div><div class="line">* CocoaPods will be using this to generate tags, and improve search results.</div><div class="line">* Try to keep it short, snappy and to the point.</div><div class="line">* Finally, don&apos;t worry about the indent, CocoaPods strips it!</div><div class="line">DESC</div><div class="line">s.homepage = &quot;https://github.com/goingta/MyPodDemo&quot;</div><div class="line">s.license = &quot;MIT&quot;</div><div class="line">s.author = &#123; &quot;goingta&quot; =&gt; &quot;tangle1128@gmail.com&quot; &#125;</div><div class="line">s.source = &#123; :git =&gt; &quot;https://github.com/goingta/MyPodDemo.git&quot;, :tag =&gt; &quot;0.0.1&quot; &#125;</div><div class="line">s.source_files = &quot;MyPodDemo/Src&quot;, &quot;MyPodDemo/Src/**/*.&#123;h,m&#125;&quot;</div><div class="line">s.requires_arc = true</div><div class="line"># s.framework = &quot;SomeFramework&quot;</div><div class="line"># s.frameworks = &quot;SomeFramework&quot;, &quot;AnotherFramework&quot;</div><div class="line"># s.library = &quot;iconv&quot;</div><div class="line"># s.libraries = &quot;iconv&quot;, &quot;xml2&quot;</div><div class="line"># s.dependency &quot;JSONKit&quot;, &quot;~&gt; 1.4&quot;</div><div class="line"># s.dependency &quot;AFNetworking&quot;, &quot;~&gt; 2.2.4&quot;</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>自解析:</p>
+<p>name: 导入pod后的目录名<br>version: 当前版本号<br>deployment_target: 配置的target<br>prefix_header_file: 预编译头文件路径，将该文件的内容插入到Pod的pch文件内<br>source: 来源的具体路径，是http链接还是本地路径<br>requires_arc: 是否需要arc<br>source_files: 指定该目录下包含哪些文件<br>其他可选参数还包括：<br>dependency: 指定依赖，如果依赖的库不存在或者依赖库的版本不符合要求将会报错<br>libraries: 指定导入的库，比如sqlite3<br>frameworks: 指定导入的framework<br>weak_frameworks: 弱链接，比如说一个项目同时兼容iOS6和iOS7，但某一个framework只在iOS7上有，这时候如果用强链接，那么在iOS7上运行就会crash，使用weak_frameworks可以避免这种情况。</p>
+<p>整个podspec语法是一个嵌套结构从Pod::Spec.new do |s|到最后一个end是最大的循环，表示整个podspec导入的文件。中间每一个subspec到end结束是一个子目录，Pods会为每个subspec创建一个逻辑目录，相当于Xcode的group概念。|**|中间是subspec的名字，可以随便命名，但后面使用的名称必须一致。</p>
+<p>通配符说明</p>
+<p>a{bb,bc}def.{h,m}表示四个文件abbdef.h abbdef.m abcdef.h abcdef.m</p>
+<p><em>.{h,m,mm}表示所有的.h .m .mm文件<br>Class/**/</em>.{h,m}表示Class目录下的所有.h .m文件</p>
+<p>写完podspec文件后使用pod spec lint验证spec是否合格,有error则需要修改</p>
+<p>spec文件验证</p>
+<p>上传代码至github</p>
+<p>上传podspec文件到CocoaPods仓库(fork一下,修改完成后在push上去等待审核)</p>
+<p>将我们刚刚生成的MyPodDemo.spec 文件上传到Cocoapods官方specs仓库中 :<br>链接为：<a href="https://github.com/CocoaPods/Specs" target="_blank" rel="external">https://github.com/CocoaPods/Specs</a></p>
+<p>私有库实现,编写podfile</p>
+<p>如果由于某些原因我们编写的库不能公开,但是又想使用pods来进行管理,要怎么办呢?</p>
+<p>首先我们要将我们刚刚在github上建的仓库改为Private(不然还用Public搞毛啊)</p>
+<p>然后修改我们项目的podfile,与已加入Cocopods仓库的公有库相比我们只需要指明私有库低git地址,如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">platform :ios, &apos;6.0&apos;</div><div class="line">pod &apos;MyPodDemo&apos;, :git =&gt; &apos;https://github.com/goingta/MyPodDemo.git&apos; //私有库</div><div class="line">pod &apos;CocoaLumberjack&apos;//公有库</div></pre></td></tr></table></figure>
+<p>版本控制和冲突(引用自<a href="http://objccn.io/issue-6-4/" target="_blank" rel="external">http://objccn.io/issue-6-4/</a>)</p>
+<p>CocoaPods 使用语义版本控制 – Semantic Versioning 命名约定来解决对版本的依赖。由于冲突解决系统建立在非重大变更的补丁版本之间，这使得解决依赖关系变得容易很多。例如，两个不同的 pods 依赖于 CocoaLumberjack 的两个版本，假设一个依赖于2.3.1，另一个依赖于 2.3.3，此时冲突解决系统可以使用最新的版本 2.3.3，因为这个可以向后与 2.3.1 兼容。</p>
+<p>但这并不总是有效。有许多第三方库并不使用这样的约定，这让解决方案变得非常复杂。</p>
+<p>当然，总会有一些冲突需要手动解决。如果一个库依赖于 CocoaLumberjack 的 1.2.5，另外一个库则依赖于 2.3.1，那么只有最终用户通过明确指定使用某个版本来解决冲突。</p>
+<p>配置非ARC文件(8.5号补充)</p>
+<p>前几天项目中由于历史原因,导致有一个私有的pods库中某几个文件是在非ARC时代写的,如果要进行修改工程量浩大,于是乎要对这几个文件单独处理,这几个文件不使用arc其他文件使用arc,网上查了一些资料,只需要对source_file进行修改并排除那几个不使用ARC的文件就可以了,大致修改如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new do |s|</div><div class="line">s.name = &quot;MyPodDemo&quot;</div><div class="line">s.version = &quot;0.0.1&quot;</div><div class="line">s.summary = &quot;A short description of MyPodDemo.</div><div class="line">s.homepage = &quot;https://github.com/goingta/MyPodDemo&quot;</div><div class="line">s.license = &quot;MIT&quot;</div><div class="line">s.author = &#123; &quot;goingta&quot; =&gt; &quot;tangle1128@gmail.com&quot; &#125;</div><div class="line">s.source = &#123; :git =&gt; &quot;https://github.com/goingta/MyPodDemo.git&quot;, :tag =&gt; &quot;0.0.1&quot; &#125;</div><div class="line">s.source_files = &quot;MyPodDemo&quot;</div><div class="line">non_arc_files = &apos;MyPodDemo/NoArcFile1.&#123;h,m&#125;&apos;,&apos;MyPodDemo/NoArcFile2.&#123;h,m&#125;&apos;</div><div class="line">s.requires_arc = true</div><div class="line"></div><div class="line">s.exclude_files = non_arc_files</div><div class="line">s.subspec &apos;no-arc&apos; do |sna|</div><div class="line">sna.requires_arc = false</div><div class="line">sna.source_files = non_arc_files</div><div class="line">end</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>回退Cocoapods历史版本(2015.3.17号补充)</p>
+<p>先删除已经装过的版本(可能有几个,卸载的时候会让你输入1,2..n选择卸载那个版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem uninstall cocoapods</div></pre></td></tr></table></figure>
+<p>安装某一个版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install cocoapods -v 0.35.0</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2015/08/13/cocoaPod的安装，删除以及基本使用/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://yoursite.com/2015/08/13/cocoaPod的安装，删除以及基本使用/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2015/08/13/cocoaPod的安装，删除以及基本使用/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2015-07-18T06:13:29.000Z"><a href="/2015/07/18/NSDictionary字典的使用以及注意/">Sat, Jul 18 2015, 2:13:29 pm</a></time>
+
+  
+    <h1 class="title"><a href="/2015/07/18/NSDictionary字典的使用以及注意/">NSDictionary字典的使用以及注意</a></h1>
+  
+
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/博客，iOS，开发/">博客，iOS，开发</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>字典：NSDictionary<br>字典就是关键字及其定义（描述）的集合。</p>
+<ul>
+<li>Cocoa中的实现字典的集合NSDictionary在给定的关键字（key）下存储一个数值（value）。然后你就可以用这个关键字来查找相应的数值。</li>
+<li>字典（也被称为散列表或关联数组）使用的是键查询的优化存储方式。它可以立即找出要查询的数据，而不需要遍历整个数组进行查找。</li>
+<li>!注意字典是无序的。数组是有序的。<blockquote>
+<p>!!!!（因为做项目基本数据都会从数据库获取，所以会存在字典为空 或者有字典 但是value 为nil的情况。所以想要获取字典中的值中，就要首先判断。否则会崩溃）<br>!!!!不要判断字典是否存在。<br>!!!!当向nil发送消息时，返回NO，不会有异常，程序将继续执行下去；<br>而向NSNull的对象发送消息时会收到异常。<br>因为在NSArray和NSDictionary中nil中有特殊的含义（表示列表结束），所以不能在集合中放入nil值。如要确实需要存储一个表示“什么都没有”的值，可以使用NSNull类。<br>exam:<br><img src="http://upload-images.jianshu.io/upload_images/1954780-493c5733fb8b812b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>最后我是这样判断的。<br>//前边判断 是否有字典。 后边判断字典里是否有值。<br><img src="http://upload-images.jianshu.io/upload_images/1954780-5bd2b7be372c51ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+</blockquote>
+</li>
+</ul>
+<p>使用 setObject:forkey: 方法添加字典元素，如果关键字已存在，则用新植替换旧值。<br>NSMutableDictionary类允许随意添加或删除字典元素。</p>
+<ul>
+<li>添加元素：setObject:forkey:</li>
+<li>删除元素：removeObjectForKey:</li>
+</ul>
+<p>####这是我刚做一个项目得出的结论。如有不对 请大家指出。</p>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2015/07/18/NSDictionary字典的使用以及注意/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://yoursite.com/2015/07/18/NSDictionary字典的使用以及注意/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2015/07/18/NSDictionary字典的使用以及注意/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2015-07-05T06:13:29.000Z"><a href="/2015/07/05/关于日期格式设置及转换/">Sun, Jul 5 2015, 2:13:29 pm</a></time>
+
+  
+    <h1 class="title"><a href="/2015/07/05/关于日期格式设置及转换/">关于日期格式设置及转换</a></h1>
+  
+
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/博客，iOS，开发/">博客，iOS，开发</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>总结一下关于日期格式的问题汇总。</p>
+<p>####1.把字符串转化为任意日期时间格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//将要转换的字符串</div><div class="line"> NSString* string = @&quot;20160512134106&quot;;</div><div class="line">    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init] ;</div><div class="line">//将要显示日期的时区。</div><div class="line">    [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@&quot;en_US&quot;] ];</div><div class="line">//显示日期的格式。</div><div class="line">    [inputFormatter setDateFormat:@&quot;yyyyMMddHHmmss&quot;];</div><div class="line">    NSDate* inputDate = [inputFormatter dateFromString:string];</div><div class="line">    NSLog(@&quot;date = %@&quot;, inputDate);</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-3517069646bac263.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>####连接到上面的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];</div><div class="line">//当前的时区</div><div class="line">    [outputFormatter setLocale:[NSLocale currentLocale]];</div><div class="line">//设置格式</div><div class="line">    [outputFormatter setDateFormat:@&quot;yyyy年MM月dd日 HH时mm分ss秒&quot;];</div><div class="line">    NSString *str = [outputFormatter stringFromDate:inputDate];</div><div class="line">    NSLog(@&quot;testDate:%@&quot;, str);</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-d61668c0a2f686c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>####2.关于NSDateFormatter的格式<br>    G: 公元时代，例如AD公元<br>    yy: 年的后2位<br>    yyyy: 完整年<br>    MM: 月，显示为1-12<br>    MMM: 月，显示为英文月份简写,如 Jan<br>    MMMM: 月，显示为英文月份全称，如 Janualy<br>    dd: 日，2位数表示，如02<br>    d: 日，1-2位显示，如 2<br>    EEE: 简写星期几，如Sun<br>    EEEE: 全写星期几，如Sunday<br>    aa: 上下午，AM/PM<br>    H: 时，24小时制，0-23<br>    K：时，12小时制，0-11<br>    m: 分，1-2位<br>    mm: 分，2位<br>    s: 秒，1-2位<br>    ss: 秒，2位<br>    S: 毫秒</p>
+<p>常用日期结构：<br>yyyy-MM-dd HH:mm:ss.SSS<br>yyyy-MM-dd HH:mm:ss<br>yyyy-MM-dd<br>MM dd yyyy</p>
+<p>####3.设置时间延长。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//设置延时的时间</div><div class="line">meInterval secondsPerDay = 24 * 60 * 60;</div><div class="line"></div><div class="line">//设置以时间去创建</div><div class="line">  NSDate * data = [[NSDate alloc]initWithTimeIntervalSinceNow:-secondsPerDay];</div><div class="line">    </div><div class="line">    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];</div><div class="line">        [outputFormatter setLocale:[NSLocale currentLocale]];</div><div class="line">        [outputFormatter setDateFormat:@&quot;yyyy年MM月dd日 HH时mm分ss秒&quot;];</div><div class="line"> NSString *str = [outputFormatter stringFromDate:data];</div><div class="line">    NSLog(@&quot;%@&quot;,str);</div></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-3224874d3d22b18b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="现在的时间"><br><img src="http://upload-images.jianshu.io/upload_images/1954780-74e4c0865185e6af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=" 显示的时间"></p>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2015/07/05/关于日期格式设置及转换/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://yoursite.com/2015/07/05/关于日期格式设置及转换/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2015/07/05/关于日期格式设置及转换/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2015-05-16T02:13:29.000Z"><a href="/2015/05/16/OC多线程GCD以及NSoperation/">Sat, May 16 2015, 10:13:29 am</a></time>
+
+  
+    <h1 class="title"><a href="/2015/05/16/OC多线程GCD以及NSoperation/">OC多线程GCD以及NSoperation</a></h1>
+  
+
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/博客，iOS，开发/">博客，iOS，开发</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>首先讲一下关于线程的基础知识。</p>
+<p>###1.什么是进程？<br>进程是指在系统中正在运行的一个应用程序<br>每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。</p>
+<p>###2.什么是线程？<br>1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。</p>
+<p>###4.多线程的原理。<br>同一时间，CPU只能处理1条线程，只有1条线程在工作（执行）多线程并发（同时）执行，其实是CPU快速地在多条线程之间调度（切换）如果CPU调度线程的时间足够快，就造成了多线程并发执行的假象思考：如果线程非常非常多，会发生什么情况？CPU会在N多线程之间调度，CPU会累死，消耗大量的CPU资源每条线程被调度执行的频次会降低（线程的执行效率降低）</p>
+<p>###4.多线程的优缺点。<br>多线程的优点<br>能适当提高程序的执行效率<br>能适当提高资源利用率（CPU、内存利用率）</p>
+<p>多线程的缺点<br>开启线程需要占用一定的内存空间（默认情况下，主线程占用1M，子线程占用512KB），如果开启大量的线程，会占用大量的内存空间，降低程序的性能<br>线程越多，CPU在调度线程上的开销就越大<br>程序设计更加复杂：比如线程之间的通信、多线程的数据共享</p>
+<p>###6.线程中的属性。<br>线程中有4个最主要的名词。</p>
+<ul>
+<li>同步任务：同步：在当前线程中执行任务，不具备开启新线程的能力。</li>
+<li>异步任务：在新的线程中执行任务，具备开启新线程的能力。<br>并发和串行决定了任务的执行方式</li>
+<li>并发队列：多个任务并发（同时）执行。</li>
+<li>串行队列：一个任务执行完毕后，再执行下一个任务。<br>而主队列是特殊的串行队列。<br>全局队列是特殊的并发队列。<br>###7.GCD的基础使用。<br>1.串行队列。</li>
+<li><p>使用dispatch_queue_create函数创建串行队列</p>
+<blockquote>
+<p> // 队列名称， 队列属性，一般用NULL即可<br>dispatch_queue_t  dispatch_queue_create(const char *label,  dispatch_queue_attr_t attr);</p>
+</blockquote>
+</li>
+<li><p>使用 使用主队列（跟主线程相关联的队列）</p>
+<blockquote>
+<p>主队列是GCD自带的一种特殊的串行队列,放在主队列中的任务，都会放到主线程中执行<br>使用dispatch_get_main_queue()获得主队列</p>
+</blockquote>
+</li>
+</ul>
+<p>2.并发队列。<br> GCD默认已经提供了全局的并发队列，供整个应用使用，不需要手动创建</p>
+<p>使用dispatch_get_global_queue函数获得全局的并发队列<br>// 此参数暂时无用，用0即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dispatch_queue_t dispatch_get_global_queue(dispatch_queue_priority_t priority,unsigned long flags);</div></pre></td></tr></table></figure></p>
+<p>GCD 小结： </p>
+<blockquote>
+<p>其实多线程就是在多个线程之间快速做“切换”的操作（在线程调度池里执行任务）。<br>线程里有个属性是优先级。这个属性决定的是线程有更多的机会去调用。并不是决定任务的先后顺序。<br>而且注意！！！！开发中 一定不要取修改优先级。否则会出现很多你想不到的错误。<br>不能把同步任务加入到主队列中。否则会出现同步锁现象。</p>
+</blockquote>
+<p> ###8.NSoperation的基础使用。</p>
+<ul>
+<li>并发数<br>（1）并发数:同时执⾏行的任务数.比如,同时开3个线程执行3个任务,并发数就是3<br>（2）最大并发数：同一时间最多只能执行的任务的个数。<br>（3）最⼤大并发数的相关⽅方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSInteger)maxConcurrentOperationCount;- (void)setMaxConcurrentOperationCount:(NSInteger)cnt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>说明：如果没有设置最大并发数，那么并发的个数是由系统内存和CPU决定的，可能内存多久开多一点，内存少就开少一点。<br>注意：num的值并不代表线程的个数，仅仅代表线程的ID。<br>提示：最大并发数不要乱写（5以内），不要开太多，一般以2~3为宜，因为虽然任务是在子线程进行处理的，但是cpu处理这些过多的子线程可能会影响UI，让UI变卡。</p>
+<ul>
+<li>队列的取消，暂停和恢复<br>1）取消队列的所有操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> - (void)cancelAllOperations;</div><div class="line">提⽰:也可以调用NSOperation的- (void)cancel⽅法取消单个操作</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>（2）暂停和恢复队列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(void)setSuspended:(BOOL)b; // YES代表暂停队列,NO代表恢复队列</div><div class="line">-(BOOL)isSuspended; //当前状态</div></pre></td></tr></table></figure></p>
+<p>（3）暂停和恢复的适用场合：在tableview界面，开线程下载远程的网络界面，对UI会有影响，使用户体验变差。那么这种情况，就可以设置在用户操作UI（如滚动屏幕）的时候，暂停队列（不是取消队列），停止滚动的时候，恢复队列。</p>
+<p>NSOperation 小结：</p>
+<blockquote>
+<p>GCD和NSOperation 都各有各的好处。<br>GCD能够开多个线程 但是并不能管理。<br>但是NSOperation 可以管理线程。还可以设置最大操作并发数。<br>而GCD可以使用延时方法 after 和sleep 还有一次性once方法 创建单例对象。<br>根据你所需要的去选择恰当的方法。</p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2015/05/16/OC多线程GCD以及NSoperation/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://yoursite.com/2015/05/16/OC多线程GCD以及NSoperation/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2015/05/16/OC多线程GCD以及NSoperation/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2015-04-24T07:28:29.000Z"><a href="/2015/04/24/关于文件下载/">Fri, Apr 24 2015, 3:28:29 pm</a></time>
+
+  
+    <h1 class="title"><a href="/2015/04/24/关于文件下载/">关于文件下载</a></h1>
+  
+
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/博客，iOS，开发，下载/">博客，iOS，开发，下载</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>使用xcode自带的代理方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">代理方法：</div><div class="line">//这个是开始下载时 调用的方法。</div><div class="line">- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response</div><div class="line">//这个也是每次都在调用的方法。</div><div class="line">data(代表每次下载的数据大小)</div><div class="line">- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data</div><div class="line"></div><div class="line">//这个方法是在下载时一直会调用的。这里有三个参数。</div><div class="line">bytesWritten（代表本次下载下载了多少）</div><div class="line">totalBytesWritten（代表已经下载了多少）</div><div class="line">totalBytesExpectedToWrite（代表文件总大小是多少）</div><div class="line">- (void)connection:(NSURLConnection *)connection   didSendBodyData:(NSInteger)bytesWritten</div><div class="line">                                                 totalBytesWritten:</div><div class="line">(NSInteger)totalBytesWritten</div><div class="line">                                         totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;</div><div class="line"></div><div class="line">//这个方法在下载完成后 会自动调用。</div><div class="line">connection（这个参数是下完完成后 文件的路径）</div><div class="line">- (void)connectionDidFinishLoading:(NSURLConnection *)connection;</div></pre></td></tr></table></figure>
+<p>###1.使用NSUrlContionDownloadDelegate.</p>
+<p> 1）内存不会暴涨 但是找不到下载完毕之后的文件。<br> 2）可以直接显示下载进度。</p>
+<p>###2.使用NSUrlconnectionDataDelegate.<br>  直接设置NSMutableData属性来接受下载完毕的数据 .<br>  1）内存依然“暴涨”：相当于还是先将整个文件下载到内存中 然后在写入沙盒中<br>  2) 无法直接显示下载进度。需要手动计算。</p>
+<p>###3.利用NSfileHanddle  </p>
+<ul>
+<li>NSFileHandle :文件操作句柄，用来拼接文件。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//用已下载的本地路径去创建handle</div><div class="line"> NSFileHandle * handle = [NSFileHandle fileHandleForWritingAtPath:@&quot;/Users/ym/Desktop/haha.zip&quot;];</div><div class="line">    //如果handle创建成功 代表本地路径有文件。</div><div class="line">    if (handle) &#123;</div><div class="line">        操作句柄到最后</div><div class="line">        [handle seekToEndOfFile];</div><div class="line">        </div><div class="line">        // 拼接文件/写入文件</div><div class="line">        [handle writeData:data];</div><div class="line">        </div><div class="line">        // 关闭句柄</div><div class="line">        [handle closeFile];</div><div class="line">       </div><div class="line">    &#125;else&#123;</div><div class="line">    //本地路径没有文件。</div><div class="line">就重新创建一个本地文件路径</div><div class="line">        [data writeToFile:@&quot;/Users/ym/Desktop/haha.zip&quot; atomically:YES];</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>问题:多次下载，会直接在之前的文件后拼接文件—&gt;得不到正确的文件数据。</p>
+<p>###4. NSOutputStream</p>
+<p>//首先要根据文件路径来创建stream 。如果你的这个路径没有文件。他会自动给你创建一个文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">   NSOutputStream * stream = [NSOutputStream outputStreamToFileAtPath:@&quot; /Users/ym/Desktop/haha.zip&quot; append:YES];</div><div class="line">//创建一个属性。来存储文件和关闭stream</div><div class="line">    self.stream = stream;</div><div class="line">//开启任务。</div><div class="line">    [self.stream open];</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//在方法里 来拼接data内容。</div><div class="line">- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data&#123;</div><div class="line">    [self.stream write:data.bytes maxLength:data.length];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (void)connectionDidFinishLoading:(NSURLConnection *)connection&#123;</div><div class="line">//在下载结束任务后，关闭stream任务。</div><div class="line">    [self.stream close];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样的下载任务。还是会有和handle一样的问题。多次下载和暂停下载之后继续下载。拼接的文件都是错误的。</p>
+<p>所以这里就引入了断点续传功能。</p>
+<p>###用HEAD请求来获取下载文件的总大小</p>
+<ul>
+<li>HTTP协议方法: HEAD 请求</li>
+<li>HEAD 请求: 只获取服务器的响应头信息,不获取文件内容(实体内容).</li>
+<li>一般在文件下载的时候,提前获取文件信息.</li>
+<li>HEAD请求: 和 GET 请求是一样的.只是不获取文件内容(实体内容).<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//文件路径</div><div class="line">NSString *urlString = @&quot;http://127.0.0.1/music.zip&quot;;</div><div class="line">    </div><div class="line">    NSURL *url = [NSURL URLWithString:urlString];</div><div class="line">    //创建请求</div><div class="line">    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];</div><div class="line">    </div><div class="line">    // 设置请求方法:</div><div class="line">    request.HTTPMethod = @&quot;HEAD&quot;;</div><div class="line">    </div><div class="line">    //  发送 HEAD 请求.</div><div class="line">    // HEAD 请求使用什么方法发送? ---- 一般使用同步方式发送HEAD请求.</div><div class="line">    </div><div class="line"> NSURLResponse *response = nil;</div><div class="line">[NSURLConnection sendSynchronousRequest:request returningResponse:&amp;response error:NULL];</div><div class="line">    //打印出来的就是你的所需要的文件总大小。</div><div class="line">    NSLog(@&quot;response:%zd&quot;,response.expectedContentLength);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="获取本地路径中-文件的大小。"><a href="#获取本地路径中-文件的大小。" class="headerlink" title="获取本地路径中 文件的大小。"></a>获取本地路径中 文件的大小。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//这里返回值是一个字典。</div><div class="line"> [[NSFileManager defaultManager] attributesOfItemAtPath:self.filePath error:NULL];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//这个就是打印字典的信息。</div><div class="line">我们所需要的就是NSFileSize</div><div class="line">**  NSFileCreationDate = &quot;2016-05-05 12:59:14 +0000&quot;;</div><div class="line">**    NSFileExtensionHidden = 0;</div><div class="line">**    NSFileGroupOwnerAccountID = 20;</div><div class="line">**    NSFileGroupOwnerAccountName = staff;</div><div class="line">**    NSFileModificationDate = &quot;2016-05-05 12:59:17 +0000&quot;;</div><div class="line">**    NSFileOwnerAccountID = 501;</div><div class="line">**    NSFilePosixPermissions = 420;</div><div class="line">**    NSFileReferenceCount = 1;</div><div class="line">**    NSFileSize = 573278888;</div><div class="line">**    NSFileSystemFileNumber = 19578034;</div><div class="line">**    NSFileSystemNumber = 16777217;</div><div class="line">**    NSFileType = NSFileTypeRegular;</div></pre></td></tr></table></figure>
+<p>所以要接收这个字典 同时返回NSFileSize.获取本地文件已经下载的大小。</p>
+<p>####知道了已经下载的大小，还有总大小。我们就可以根据这两个数值来进行断点续传了。</p>
+<p>###断点续传需要的请求—Range请求。<br>设置请求头信息。</p>
+<p><1>格式：<br>Range格式：<br>bytes = x-y 从x位置开始下载，下载y个字节。<br>bytes = x- 从x开始  下载到完毕。<br>bytes = -x 从开始下载x个字节。</1></p>
+<p><2>特点：<br>一旦Range 属性设置成功，相应的状态码就是206<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//startSize 就是上文提到的dict中的NSFileSize。要把这个oc属性转化为字符串。</div><div class="line">//bytes=zd - 就是从你断点的位置下载到文件结束</div><div class="line"></div><div class="line">  NSString *range = [NSString stringWithFormat:@&quot;bytes=%zd-&quot;,startSize];</div><div class="line">   [request setValue:range forHTTPHeaderField:@&quot;Range&quot;];</div></pre></td></tr></table></figure></2></p>
+<hr>
+<p>###下面讲一种NSURLSession的下载</p>
+<ul>
+<li>利用代理NSURLSessionDownloadDelegate<br>1.主要利用的代理方法。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//这个是每次下载都调用的方法。和上边的一样。</div><div class="line">-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask</div><div class="line">      didWriteData:(int64_t)bytesWritten</div><div class="line"> totalBytesWritten:(int64_t)totalBytesWritten</div><div class="line">totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//下载完成之后调用的方法。</div><div class="line">-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask</div><div class="line">didFinishDownloadingToURL:(NSURL *)location</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//取消任务。</div><div class="line">-(NSURLSessionDownloadTask *)downloadTaskWithResumeData:(NSData *)resumeData</div></pre></td></tr></table></figure>
+<ul>
+<li><p>断点续传请求。调用上面的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">    NSString * urlString = @&quot;http://127.0.0.1/music.zip&quot;;</div><div class="line">    NSURL * url  = [NSURL URLWithString:urlString];</div><div class="line">    //创建可变请求。添加代理。</div><div class="line">    NSURLSession * session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];</div><div class="line">//创建下载任务。</div><div class="line">    NSURLSessionDownloadTask * task = [session downloadTaskWithURL:url];</div><div class="line">    self.oldSession = session;</div><div class="line">    self.task = task;</div><div class="line">    [task resume];</div></pre></td></tr></table></figure>
+</li>
+<li><p>暂停下载</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[self.task cancelByProducingResumeData:^(NSData * _Nullable resumeData) &#123;</div><div class="line">    self.resumeData = resumeData;</div><div class="line">    </div><div class="line">&#125;];</div><div class="line">  self.task = nil;</div></pre></td></tr></table></figure>
+<ul>
+<li>继续下载<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (self.resumeData) &#123;</div><div class="line">        self.task = [self.oldSession downloadTaskWithResumeData:self.resumeData];</div><div class="line">        [self.task resume];</div><div class="line">    &#125;</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2015/04/24/关于文件下载/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://yoursite.com/2015/04/24/关于文件下载/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2015/04/24/关于文件下载/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2015-04-06T05:25:29.000Z"><a href="/2015/04/06/关于http请求/">Mon, Apr 6 2015, 1:25:29 pm</a></time>
+
+  
+    <h1 class="title"><a href="/2015/04/06/关于http请求/">关于http请求</a></h1>
+  
+
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/博客，iOS，开发，请求/">博客，iOS，开发，请求</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>####网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80%，默认的http请求就是get请求。</p>
+<p>###1.HTTP请求。</p>
+<ul>
+<li>一般请求采用restful 设计风格：采用相同url 不同的http 实现不同的功能。</li>
+<li>利用不同请求，实现了 增/删/改/查的功能。</li>
+<li>PUT       增    在服务器新增123的信息</li>
+<li>DELETE 删</li>
+<li>POST     改</li>
+<li>GET       查</li>
+<li>HEAD 获取文件的大小。</li>
+<li>Range 这个可以解决断点续传。<br>####！一般开发中，后台将post方法 替代Put和delete.</li>
+<li><p>http内部走的是socket/ (tcp/ip)。 默认情况下，tcp / ip 是一个‘长连接’。</p>
+</li>
+<li><p>长连接：与服务器建立连接之后，就不会自动断开。聊天/推送 心跳包。是保证持续连接的持续。</p>
+</li>
+<li><p>短连接：一次连接，服务器只处理一个请求。然后自动断开连接。</p>
+</li>
+<li>http 是一个特殊处理的tcp/ip 协议。是一个短连接。<br>###2.Get请求的特点：</li>
+<li>Get请求的参数都拼接在url后面。并且url长度是有限制的。Get请求发送参数的长度有限。不能无限延长。</li>
+<li>多谢4L-（lvjsky）的提醒。（get 有字数限制 post没有。字数限制是浏览器限制，和get请求方式无关。HTTP协议规范并没有规定明确get请求的字数限制）<blockquote>
+<p>各浏览器HTTP Get请求URL最大长度并不相同，几类常用浏览器最大长度及超过最大长度后提交情况如下：<br>IE6.0                :url最大长度2083个字符，超过最大长度后无法提交。<br>IE7.0                :url最大长度2083个字符，超过最大长度后仍然能提交，但是只能传过去2083个字符。<br>firefox 3.0.3     :url最大长度7764个字符，超过最大长度后无法提交。<br>Opera 9.52       :url最大长度7648个字符，超过最大长度后无法提交。<br>Google Chrome 2.0.168   :url最大长度7713个字符，超过最大长度后无法提交。</p>
+</blockquote>
+</li>
+<li>Get请求是不安全的.参数内容暴漏在url中，对于安全性比较高的请求不能使用Get请求。</li>
+<li>请求默认会在本地做数据缓存。</li>
+</ul>
+<p>###3.get请求的格式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//拼接网络请求的字符串。？后面的就是你的Get请求的内容</div><div class="line">    NSString * string = [NSString stringWithFormat:@&quot;http://127.0.0.1/login/login.php?%@&quot;,urlstring];</div><div class="line">  </div><div class="line">    NSURL * url = [NSURL URLWithString:string];</div><div class="line">     // 创建网络请求</div><div class="line">    NSURLRequest * request = [NSURLRequest requestWithURL:url];</div><div class="line">    //发送请求</div><div class="line">    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData*  _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) &#123;</div><div class="line">        </div><div class="line">        请求回调成功 data数据就是你要的内容。</div><div class="line">        if (data &amp;&amp; !error) &#123;</div><div class="line">            </div><div class="line"> </div><div class="line">    &#125;] resume];</div></pre></td></tr></table></figure>
+<p>###4.Post请求。</p>
+<ul>
+<li>post 请求的网络请求需要是一个可变请求。</li>
+<li>post 请求需要设置 请求头和请求体。</li>
+</ul>
+<p>###5.Post请求的格式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">//  创建网络请求</div><div class="line">    NSURL *url = [NSURL URLWithString:@&quot;http://127.0.0.1/login/login.php&quot;];</div><div class="line">    </div><div class="line">    // 可变请求</div><div class="line">    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:0 timeoutInterval:15];</div><div class="line">    </div><div class="line">    //  设置请求方法 这里的POST可以大写也可以小写。</div><div class="line">    request.HTTPMethod = @&quot;POST&quot;;</div><div class="line">   // 这里设置请求体。请求体的格式要求是NSdata格式</div><div class="line">    request.HTTPBody = [&quot;这里返回的是请求体。需要是NSdata格式&quot;]；</div><div class="line">    // 发送请求</div><div class="line">    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) &#123;</div><div class="line">        </div><div class="line">        // 成功</div><div class="line">        if (data &amp;&amp; !error) &#123;</div><div class="line">            </div><div class="line">           </div><div class="line">    &#125;] resume];</div></pre></td></tr></table></figure></p>
+<p>###6.Get请求和Post请求的区别。</p>
+<ul>
+<li>get  不安全 post安全</li>
+<li>get 有字数限制 post没有</li>
+<li>get 有缓存 post没有缓存</li>
+<li>get 请求不需要设置请求头和请求体</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2015/04/06/关于http请求/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://yoursite.com/2015/04/06/关于http请求/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2015/04/06/关于http请求/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2015-03-08T08:44:29.000Z"><a href="/2015/03/08/数据传递的三种方法：通知，代理，blcok/">Sun, Mar 8 2015, 4:44:29 pm</a></time>
+
+  
+    <h1 class="title"><a href="/2015/03/08/数据传递的三种方法：通知，代理，blcok/">数据传递的三种方法：通知，代理，blcok</a></h1>
+  
+
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/博客，iOS，开发/">博客，iOS，开发</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。</p>
+<p>block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。</p>
+<p>数据传递有三种方法:通知，代理，block.</p>
+<p>而对于通知代理block的选择<br>1）如果数据传递两个对象没有联系。选择通知。</p>
+<p>2）如果两个对象有联系的话，三个都可以。</p>
+<p>3）能用代理的地方 一定也可以用block去代替。</p>
+<p>首先说一下通知。</p>
+<p>通知 有三个属性。一个是通知的名称name。 通知的发布者object.一个是通知要传递的数据useInfo(可以为nil)。</p>
+<p>发布通知的方法：<br>一般用 [NSNotificationCenter defaultCenter] 方法来创建通知中心通知中心(NSNotificationCenter)提供了相应的方法来帮助发布通知<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)postNotification:(NSNotification*)notification;</div></pre></td></tr></table></figure></p>
+<p>发布一个notification通知，可在notification对象中设置通知的名称、通知发布者、额外信息等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)postNotificationName:(NSString*)aName object:(id)anObject;</div></pre></td></tr></table></figure></p>
+<p>发布一个名称为aName的通知，anObject为这个通知的发布者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)postNotificationName:(NSString*)aName object:(id)anObject userInfo:(NSDictionary*)aUserInfo;</div></pre></td></tr></table></figure></p>
+<p>发布一个名称为aName的通知，anObject为这个通知的发布者，aUserInfo为额外信息</p>
+<p>通知中心(NSNotificationCenter)提供了方法来注册一个监听通知的监听器(Observer)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)addObserver:(id)observer selector:(SEL)aSelector name (NSString*)aName object:(id)anObject;</div></pre></td></tr></table></figure></p>
+<p>observer：监听器，即谁要接收这个通知</p>
+<p>Selector：收到通知后，回调监听器的这个方法，并且把通知对象当做参数传入Name：通知的名称。如果为nil，那么无论通知的名称是什么，监听器都能收到这个通知</p>
+<p>Object：通知发布者。如果为anObject和aName都为nil，监听器都收到所有的通知</p>
+<p>第二种注册监听器的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (id)addObserverForName:(NSString*)name object:(id)obj queue:(NSOperationQueue*)queue usingBlock:(void (^)(NSNotification*note))block;</div></pre></td></tr></table></figure></p>
+<p>name：通知的名称</p>
+<p>obj：通知发布者</p>
+<p>block：收到对应的通知时，会回调这个block</p>
+<p>queue：决定了block在哪个操作队列中执行，如果传nil，默认在当前操作队列中同步执行</p>
+<p>取消注册通知监听器<br>通知中心不会保留(retain)监听器对象，在通知中心注册过的对象，必须在该对象释放前取消注册。否则，当相应的通知再次出现时，通知中心仍然会向该监听器发送消息。因为相应的监听器对象已经被释放了，所以可能会导致应用崩溃</p>
+<p>通知中心提供了相应的方法来取消注册监听器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-(void)removeObserver:(id)observer;</div><div class="line"></div><div class="line">-(void)removeObserver:(id)observer name:(NSString*)aName object:(id)anObject;</div></pre></td></tr></table></figure></p>
+<p>然后说一下代理。也是个人最喜欢用的。要分清被代理者和代理者。</p>
+<p>被代理者 有四部分</p>
+<p>1）首先定义代理（协议名称的命名规范:控件类名+Delegate）</p>
+<p>2）定义代理方法。（需要传递的属性，还有把自己本身传过去）这里要注意。代理</p>
+<p>3）设置属性。这里要注意代理的属性要使用weak。</p>
+<p>4）在需要传递值的地方去调用代理的方法。（要判断代理方法是否可以调用）</p>
+<p>在代理者需要三步。</p>
+<p>1）遵守代理协议。</p>
+<p>2）设置代理。</p>
+<p>3实现代理方法</p>
+<p>个人觉得代理比较简单。而且比较好理解。非常的规整。</p>
+<p>下面说一下第三种Block</p>
+<p>1）首先要在需要传递数据的类中定义一个block 属性为要传递数据的类型</p>
+<p>block的属性要和NSString 一样 为copy.</p>
+<p>2）在需要传递数据的地方 实现Blcok方法。首先要判断block是否可用。</p>
+<p>然后把数据回调。</p>
+<p>3）在需要数据的类中定义一个block 把数据接过去。</p>
+<p>个人理解 block比代理要简单。</p>
+<p>但是代理会看着比较清晰。让人理解。</p>
+<p>所执行的步骤也都差不多。</p>
+<p>只是把被代理者中的设置代理 转变成设置block接过去。然后设置一个Block去接一下回调的值。</p>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2015/03/08/数据传递的三种方法：通知，代理，blcok/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://yoursite.com/2015/03/08/数据传递的三种方法：通知，代理，blcok/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2015/03/08/数据传递的三种方法：通知，代理，blcok/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2015-03-06T03:34:29.000Z"><a href="/2015/03/06/Apachi在本地配置服务器 MAC专用/">Fri, Mar 6 2015, 11:34:29 am</a></time>
+
+  
+    <h1 class="title"><a href="/2015/03/06/Apachi在本地配置服务器 MAC专用/">Apachi在本地配置服务器 MAC专用</a></h1>
+  
+
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/博客，iOS，开发/">博客，iOS，开发</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>###首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites<br><img src="http://upload-images.jianshu.io/upload_images/1954780-21734f5fd3a5fbea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<h3 id="切换工作目录"><a href="#切换工作目录" class="headerlink" title="切换工作目录"></a>切换工作目录</h3><p>$cd /etc/apache2</p>
+<p>###用Vim编辑 httped.conf<br>sudo vim httpd.conf<br><img src="http://upload-images.jianshu.io/upload_images/1954780-fbf414b2bf1e7e16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>###然后进入这个页面<br><img src="http://upload-images.jianshu.io/upload_images/1954780-62bdf1d3a2fb1e8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>###回车。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-6b13086a05da1ba4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>###回车默认选0。</p>
+<p>###查找DocumentRoot  一定要注意大小写<br>/DocumentRoot</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-dc93acc9a8a0eb03.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>把默认的文件夹用#注释起来。然后把你的文件夹改成默认的。<br>这里有个小技巧 用shift +v是选中这一行。 y赋值选中这一行。P是粘贴选中这一行</p>
+<p>###修改options</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-074d311f01dbf481.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>###修改PHP</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-08955bb311c420b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>改好之后先按下esc键退出编辑模式，再输入:wq 保存并退出 如果打错了不想保存就是 :q! （如果wq不退出就wq!强制退出）</p>
+<p>###服务器开关<br>服务器开关的命令就是 </p>
+<p>sudo apachectl -k start 开启</p>
+<p>sudo apachectl -k stop 关闭</p>
+<p>sudo apachectl -k restart 重新启动</p>
+<p>###另外添加一些vim命令。。</p>
+<p>//进入编辑模式<em> i               //在行首输入#可以起到注释效果</em> #<br>//进入命令模式<em> ESC          //选中整行</em> V<br>//复制整行<em> y                    //在光标下方粘贴</em> p<br>//将光标移动到下一行<em> i     //保存并退出</em> :wq<br>//不保存退出!!!!!!!!!* :q!<br><img src="http://upload-images.jianshu.io/upload_images/1954780-ad096b4d1a4941c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>成果图。~~</p>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2015/03/06/Apachi在本地配置服务器 MAC专用/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+          <div class="alignright"> 
+            <a href="http://yoursite.com/2015/03/06/Apachi在本地配置服务器 MAC专用/#comment" class="comment-link">
+              <i class="fa fa-comments"></i><span class="ds-thread-count" data-thread-key="/2015/03/06/Apachi在本地配置服务器 MAC专用/">&nbsp;
+              </span>
+            </a>
+          </div>
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+<nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav>
+
+<script src="/js/jquery.anystretch.min.js"></script>
+<script src="/js/cover.js"></script>
+
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div>
+  
+  &copy; 2016 richard
+  
+</div>
+Powered by <a href="http://zespia.tw/hexo/" title="Hexo" target="_blank" rel="external">Hexo</a> and <a href="http://pages.github.com/" title="GitHub Pages" target="_blank" rel="external">GitHub Pages</a>
+
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+
+
+
+    <script type="text/javascript">
+        (function(){
+
+            $(window).scroll(function(){
+
+                var scrollTop = $(window).scrollTop();
+                if ( scrollTop >200 ){
+                    $("#main-nav").removeClass('normal_mode').addClass('top_mode');
+                } else{
+                    $("#main-nav").removeClass('top_mode').addClass('normal_mode');
+                }
+
+            });
+
+        })();
+    </script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
   <script type="text/javascript">
-  function loadScript(url, callback) {
-    var script = document.createElement('script')
-    script.type = 'text/javascript';
-
-    if (script.readyState) { //IE
-      script.onreadystatechange = function() {
-        if (script.readyState == 'loaded' ||
-          script.readyState == 'complete') {
-          script.onreadystatechange = null;
-          callback();
-        }
-      };
-    } else { //Others
-      script.onload = function() {
-        callback();
-      };
-    }
-
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-  }
-
-  window.onload = function() {
-    loadScript('/js/bundle.js?235683', function() {
-      // load success
+  (function($){
+    $('.fancybox').fancybox({
+      'titlePosition': 'inside'
     });
-  }
+  })(jQuery);
+  </script>
+
+
+
+    
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"your_id"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = 'http://static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+
+
+<script type="text/javascript">
+  
+  $(function(){
+
+    $('.title').hover(
+      function() {      
+        $(this).stop().animate(
+          {'marginLeft': '10px'}, 200
+        );   
+      }, 
+      function() {       
+        $(this).stop().animate({'marginLeft': '0px'}, 200);      
+      
+    });   
+
+  });
+
 </script>
+
 
 </body>
 </html>

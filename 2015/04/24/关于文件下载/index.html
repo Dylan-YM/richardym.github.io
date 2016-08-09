@@ -1,198 +1,97 @@
-<!DOCTYPE html>
-
-
-  <html class="light page-post">
-
-
+<!DOCTYPE HTML>
+<html>
 <head>
   <meta charset="utf-8">
   
   <title>关于文件下载 | richard&#39;s blog</title>
-
+  <meta name="author" content="richard">
+  
+  <meta name="description" content="使用xcode自带的代理方法。
+12345678910111213141516171819代理方法：//这个是开始下载时 调用的方法。- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse ">
+  
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-    <meta name="keywords" content="博客，iOS，开发，下载," />
-  
-
-  <meta name="description" content="使用xcode自带的代理方法。
-12345678910111213141516171819代理方法：//这个是开始下载时 调用的方法。- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response//这个也是每次都在调用的方法。data(代表每次下载的数据大小)- (void">
-<meta property="og:type" content="article">
-<meta property="og:title" content="关于文件下载">
-<meta property="og:url" content="http://yoursite.com/2015/04/24/关于文件下载/index.html">
-<meta property="og:site_name" content="richard's blog">
-<meta property="og:description" content="使用xcode自带的代理方法。
-12345678910111213141516171819代理方法：//这个是开始下载时 调用的方法。- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response//这个也是每次都在调用的方法。data(代表每次下载的数据大小)- (void">
-<meta property="og:updated_time" content="2016-08-09T04:28:25.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于文件下载">
-<meta name="twitter:description" content="使用xcode自带的代理方法。
-12345678910111213141516171819代理方法：//这个是开始下载时 调用的方法。- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response//这个也是每次都在调用的方法。data(代表每次下载的数据大小)- (void">
+  <meta property="og:title" content="关于文件下载"/>
+  <meta property="og:site_name" content="richard&#39;s blog"/>
 
   
-
-  
-    <link rel="icon" href="/favicon.ico">
+    <meta property="og:image" content="undefined"/>
   
 
-  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
-
-
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="richard&#39;s blog" type="application/atom+xml">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
-    <link rel="stylesheet" href="/css/personal-style.css">
-  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-368771XX-X']);
+  _gaq.push(['_trackPageview']);
 
-  
-
-  
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
 </head>
 
 <body>
-
-
-  
-    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
-  
-
-  <div class="post-header CENTER">
-   
-  <div class="toolbox">
-    <a class="toolbox-entry" href="/">
-      <span class="toolbox-entry-text">盒子</span>
-      <i class="icon-angle-down"></i>
-      <i class="icon-home"></i>
-    </a>
-    <ul class="list-toolbox">
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            target="_self"
-            >
-            博客
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/category/"
-            target="_self"
-            >
-            分类
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            target="_self"
-            >
-            标签
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            target="_self"
-            >
-            友链
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            target="_self"
-            >
-            关于
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/atom.xml"
-            target="_blank"
-            >
-            RSS
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            target="_self"
-            >
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  </div>
-
-
-</div>
-
-
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取本地路径中-文件的大小。"><span class="toc-text">获取本地路径中 文件的大小。</span></a></li></ol>
-  </div>
-
-
-
-<div class="content content-post CENTER">
-   <article id="post-关于文件下载" class="article article-type-post" itemprop="blogPost">
-  <header class="article-header">
-    <h1 class="post-title">关于文件下载</h1>
-
-    <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2015.04.24</span>
-      </span>
-
-      
-        <span class="article-author">
-          <i class="icon-user"></i>
-          <span>richard</span>
-        </span>
-      
-
-      
-
-
-      
-        <span>
-          <i class="icon-comment"></i>
-          <a href="https://richardym.github.io//2015/04/24/关于文件下载/#disqus_thread"></a>
-        </span>
-      
-
-    </div>
-  </header>
-
-  <div class="article-content">
+  <header id="header" class='normal_mode'>
+    <nav id="main-nav">
+  <ul class='container'>
     
-      <p>使用xcode自带的代理方法。</p>
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+  </header>
+  <div id="content" class="container">
+    <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2015-04-24T07:28:29.000Z"><a href="/2015/04/24/关于文件下载/">Fri, Apr 24 2015, 3:28:29 pm</a></time>
+
+  
+    <h1 class="title">关于文件下载</h1>
+  
+
+
+
+  
+  <div class="tags">
+  	<i class="fa fa-tag"></i>
+    <a href="/tags/博客，iOS，开发，下载/">博客，iOS，开发，下载</a>
+  </div>
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <p>使用xcode自带的代理方法。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">代理方法：</div><div class="line">//这个是开始下载时 调用的方法。</div><div class="line">- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response</div><div class="line">//这个也是每次都在调用的方法。</div><div class="line">data(代表每次下载的数据大小)</div><div class="line">- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data</div><div class="line"></div><div class="line">//这个方法是在下载时一直会调用的。这里有三个参数。</div><div class="line">bytesWritten（代表本次下载下载了多少）</div><div class="line">totalBytesWritten（代表已经下载了多少）</div><div class="line">totalBytesExpectedToWrite（代表文件总大小是多少）</div><div class="line">- (void)connection:(NSURLConnection *)connection   didSendBodyData:(NSInteger)bytesWritten</div><div class="line">                                                 totalBytesWritten:</div><div class="line">(NSInteger)totalBytesWritten</div><div class="line">                                         totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;</div><div class="line"></div><div class="line">//这个方法在下载完成后 会自动调用。</div><div class="line">connection（这个参数是下完完成后 文件的路径）</div><div class="line">- (void)connectionDidFinishLoading:(NSURLConnection *)connection;</div></pre></td></tr></table></figure>
 <p>###1.使用NSUrlContionDownloadDelegate.</p>
 <p> 1）内存不会暴涨 但是找不到下载完毕之后的文件。<br> 2）可以直接显示下载进度。</p>
@@ -244,196 +143,138 @@
 <li>继续下载<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (self.resumeData) &#123;</div><div class="line">        self.task = [self.oldSession downloadTaskWithResumeData:self.resumeData];</div><div class="line">        [self.task resume];</div><div class="line">    &#125;</div></pre></td></tr></table></figure></li>
 </ul>
 
-    
+      
+    </div>
+    <footer>
+      
+          
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <span class="jiathis_txt">分享到：</span>
+  <a class="jiathis_button_weixin">微信</a>
+  <a class="jiathis_button_tsina">新浪微博</a>
+  <a class="jiathis_button_renren">人人网</a>
+  <a class="jiathis_button_qzone">QQ空间</a>
+  <a class="jiathis_button_douban">豆瓣</a>
+  <a class="jiathis_button_pocket">Pocket</a>
+  <a href="http://www.jiathis.com/share?uid=901656" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=901656" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+          <div class="clearfix"></div>
+          <nav id="pagination">
+  
+    <a href="/2015/05/16/OC多线程GCD以及NSoperation/" class="alignleft prev"><i class="fa fa-long-arrow-left"></i>Next</a>
+  
+  
+    <a href="/2015/04/06/关于http请求/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
+  
+  <div class="clearfix"></div>
+</nav>
+      
+      <div class="clearfix"></div>
+    </footer>
   </div>
 </article>
 
-</div>
 
-
-  <div class="text-center donation">
-    <div class="inner-donation">
-      <span class="btn-donation">支持一下</span>
-      <div class="donation-body">
-        <div class="tip text-center">扫一扫，支持forsigner</div>
-        <ul class="theme.donation.items.length">
-        
-          <li class="item">
-            <img src="/images/qr-wechat.png" alt="">
-          </li>
-        
-          <li class="item">
-            <img src="/images/qr-alipay.png" alt="">
-          </li>
-        
-        </ul>
-      </div>
-    </div>
-  </div>
-
-
-
-
-  <a id="backTop" class="back-top">
-    <i class="icon-angle-up"></i>
-  </a>
-
-
-
-
-  <div class="modal" id="modal">
-  <span id="cover" class="cover hide"></span>
-  <div id="modal-dialog" class="modal-dialog hide-dialog">
-    <div class="modal-header">
-      <span id="close" class="btn-close">关闭</span>
-    </div>
-    <hr>
-    <div class="modal-body">
-      <ul class="list-toolbox">
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              target="_self"
-              >
-              博客
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/category/"
-              target="_self"
-              >
-              分类
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              target="_self"
-              >
-              标签
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              target="_self"
-              >
-              友链
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              target="_self"
-              >
-              关于
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/atom.xml"
-              target="_blank"
-              >
-              RSS
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              target="_self"
-              >
-              搜索
-            </a>
-          </li>
-        
-      </ul>
-
-    </div>
-  </div>
-</div>
-
-
+<section id="comment">
+  <h1 class="title">Kommentare</h1>
 
   
-      <div class="fexo-comments comments-post">
-    
-  <section class="disqus-comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section>
+      <!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-thread-key="/2015/04/24/关于文件下载/"></div>
+<!-- Duoshuo Comment END -->
+  
+</section>
 
-  <script>
-    var disqus_shortname = 'forsigner';
+
+
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div>
+  
+  &copy; 2016 richard
+  
+</div>
+Powered by <a href="http://zespia.tw/hexo/" title="Hexo" target="_blank" rel="external">Hexo</a> and <a href="http://pages.github.com/" title="GitHub Pages" target="_blank" rel="external">GitHub Pages</a>
+
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+
+
+
+    <script type="text/javascript">
+        (function(){
+
+            $(window).scroll(function(){
+
+                var scrollTop = $(window).scrollTop();
+                if ( scrollTop >200 ){
+                    $("#main-nav").removeClass('normal_mode').addClass('top_mode');
+                } else{
+                    $("#main-nav").removeClass('top_mode').addClass('normal_mode');
+                }
+
+            });
+
+        })();
+    </script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox({
+      'titlePosition': 'inside'
+    });
+  })(jQuery);
+  </script>
+
+
+
     
-    var disqus_url = 'http://yoursite.com/2015/04/24/关于文件下载/';
-    
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"your_id"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = 'http://static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
     })();
   </script>
 
-  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
 
 
-
-    
-
-
-
-
-  </div>
-
+<script type="text/javascript">
   
+  $(function(){
 
-  <script type="text/javascript">
-  function loadScript(url, callback) {
-    var script = document.createElement('script')
-    script.type = 'text/javascript';
+    $('.title').hover(
+      function() {      
+        $(this).stop().animate(
+          {'marginLeft': '10px'}, 200
+        );   
+      }, 
+      function() {       
+        $(this).stop().animate({'marginLeft': '0px'}, 200);      
+      
+    });   
 
-    if (script.readyState) { //IE
-      script.onreadystatechange = function() {
-        if (script.readyState == 'loaded' ||
-          script.readyState == 'complete') {
-          script.onreadystatechange = null;
-          callback();
-        }
-      };
-    } else { //Others
-      script.onload = function() {
-        callback();
-      };
-    }
+  });
 
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-  }
-
-  window.onload = function() {
-    loadScript('/js/bundle.js?235683', function() {
-      // load success
-    });
-  }
 </script>
+
 
 </body>
 </html>
