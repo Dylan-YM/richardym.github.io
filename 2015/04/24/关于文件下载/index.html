@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于文件下载 | richard&#39;s blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="博客，iOS，开发，下载," />
+  
+
+  <meta name="description" content="使用xcode自带的代理方法。
+12345678910111213141516171819代理方法：//这个是开始下载时 调用的方法。- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response//这个也是每次都在调用的方法。data(代表每次下载的数据大小)- (void">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于文件下载">
+<meta property="og:url" content="http://yoursite.com/2015/04/24/关于文件下载/index.html">
+<meta property="og:site_name" content="richard's blog">
+<meta property="og:description" content="使用xcode自带的代理方法。
+12345678910111213141516171819代理方法：//这个是开始下载时 调用的方法。- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response//这个也是每次都在调用的方法。data(代表每次下载的数据大小)- (void">
+<meta property="og:updated_time" content="2016-08-09T04:28:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于文件下载">
+<meta name="twitter:description" content="使用xcode自带的代理方法。
+12345678910111213141516171819代理方法：//这个是开始下载时 调用的方法。- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response//这个也是每次都在调用的方法。data(代表每次下载的数据大小)- (void">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#获取本地路径中-文件的大小。"><span class="toc-text">获取本地路径中 文件的大小。</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-关于文件下载" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">关于文件下载</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2015.04.24</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>richard</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://richardym.github.io//2015/04/24/关于文件下载/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>使用xcode自带的代理方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">代理方法：</div><div class="line">//这个是开始下载时 调用的方法。</div><div class="line">- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response</div><div class="line">//这个也是每次都在调用的方法。</div><div class="line">data(代表每次下载的数据大小)</div><div class="line">- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data</div><div class="line"></div><div class="line">//这个方法是在下载时一直会调用的。这里有三个参数。</div><div class="line">bytesWritten（代表本次下载下载了多少）</div><div class="line">totalBytesWritten（代表已经下载了多少）</div><div class="line">totalBytesExpectedToWrite（代表文件总大小是多少）</div><div class="line">- (void)connection:(NSURLConnection *)connection   didSendBodyData:(NSInteger)bytesWritten</div><div class="line">                                                 totalBytesWritten:</div><div class="line">(NSInteger)totalBytesWritten</div><div class="line">                                         totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;</div><div class="line"></div><div class="line">//这个方法在下载完成后 会自动调用。</div><div class="line">connection（这个参数是下完完成后 文件的路径）</div><div class="line">- (void)connectionDidFinishLoading:(NSURLConnection *)connection;</div></pre></td></tr></table></figure>
+<p>###1.使用NSUrlContionDownloadDelegate.</p>
+<p> 1）内存不会暴涨 但是找不到下载完毕之后的文件。<br> 2）可以直接显示下载进度。</p>
+<p>###2.使用NSUrlconnectionDataDelegate.<br>  直接设置NSMutableData属性来接受下载完毕的数据 .<br>  1）内存依然“暴涨”：相当于还是先将整个文件下载到内存中 然后在写入沙盒中<br>  2) 无法直接显示下载进度。需要手动计算。</p>
+<p>###3.利用NSfileHanddle  </p>
+<ul>
+<li>NSFileHandle :文件操作句柄，用来拼接文件。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//用已下载的本地路径去创建handle</div><div class="line"> NSFileHandle * handle = [NSFileHandle fileHandleForWritingAtPath:@&quot;/Users/ym/Desktop/haha.zip&quot;];</div><div class="line">    //如果handle创建成功 代表本地路径有文件。</div><div class="line">    if (handle) &#123;</div><div class="line">        操作句柄到最后</div><div class="line">        [handle seekToEndOfFile];</div><div class="line">        </div><div class="line">        // 拼接文件/写入文件</div><div class="line">        [handle writeData:data];</div><div class="line">        </div><div class="line">        // 关闭句柄</div><div class="line">        [handle closeFile];</div><div class="line">       </div><div class="line">    &#125;else&#123;</div><div class="line">    //本地路径没有文件。</div><div class="line">就重新创建一个本地文件路径</div><div class="line">        [data writeToFile:@&quot;/Users/ym/Desktop/haha.zip&quot; atomically:YES];</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>问题:多次下载，会直接在之前的文件后拼接文件—&gt;得不到正确的文件数据。</p>
+<p>###4. NSOutputStream</p>
+<p>//首先要根据文件路径来创建stream 。如果你的这个路径没有文件。他会自动给你创建一个文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">   NSOutputStream * stream = [NSOutputStream outputStreamToFileAtPath:@&quot; /Users/ym/Desktop/haha.zip&quot; append:YES];</div><div class="line">//创建一个属性。来存储文件和关闭stream</div><div class="line">    self.stream = stream;</div><div class="line">//开启任务。</div><div class="line">    [self.stream open];</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//在方法里 来拼接data内容。</div><div class="line">- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data&#123;</div><div class="line">    [self.stream write:data.bytes maxLength:data.length];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (void)connectionDidFinishLoading:(NSURLConnection *)connection&#123;</div><div class="line">//在下载结束任务后，关闭stream任务。</div><div class="line">    [self.stream close];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样的下载任务。还是会有和handle一样的问题。多次下载和暂停下载之后继续下载。拼接的文件都是错误的。</p>
+<p>所以这里就引入了断点续传功能。</p>
+<p>###用HEAD请求来获取下载文件的总大小</p>
+<ul>
+<li>HTTP协议方法: HEAD 请求</li>
+<li>HEAD 请求: 只获取服务器的响应头信息,不获取文件内容(实体内容).</li>
+<li>一般在文件下载的时候,提前获取文件信息.</li>
+<li>HEAD请求: 和 GET 请求是一样的.只是不获取文件内容(实体内容).<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//文件路径</div><div class="line">NSString *urlString = @&quot;http://127.0.0.1/music.zip&quot;;</div><div class="line">    </div><div class="line">    NSURL *url = [NSURL URLWithString:urlString];</div><div class="line">    //创建请求</div><div class="line">    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];</div><div class="line">    </div><div class="line">    // 设置请求方法:</div><div class="line">    request.HTTPMethod = @&quot;HEAD&quot;;</div><div class="line">    </div><div class="line">    //  发送 HEAD 请求.</div><div class="line">    // HEAD 请求使用什么方法发送? ---- 一般使用同步方式发送HEAD请求.</div><div class="line">    </div><div class="line"> NSURLResponse *response = nil;</div><div class="line">[NSURLConnection sendSynchronousRequest:request returningResponse:&amp;response error:NULL];</div><div class="line">    //打印出来的就是你的所需要的文件总大小。</div><div class="line">    NSLog(@&quot;response:%zd&quot;,response.expectedContentLength);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="获取本地路径中-文件的大小。"><a href="#获取本地路径中-文件的大小。" class="headerlink" title="获取本地路径中 文件的大小。"></a>获取本地路径中 文件的大小。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//这里返回值是一个字典。</div><div class="line"> [[NSFileManager defaultManager] attributesOfItemAtPath:self.filePath error:NULL];</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//这个就是打印字典的信息。</div><div class="line">我们所需要的就是NSFileSize</div><div class="line">**  NSFileCreationDate = &quot;2016-05-05 12:59:14 +0000&quot;;</div><div class="line">**    NSFileExtensionHidden = 0;</div><div class="line">**    NSFileGroupOwnerAccountID = 20;</div><div class="line">**    NSFileGroupOwnerAccountName = staff;</div><div class="line">**    NSFileModificationDate = &quot;2016-05-05 12:59:17 +0000&quot;;</div><div class="line">**    NSFileOwnerAccountID = 501;</div><div class="line">**    NSFilePosixPermissions = 420;</div><div class="line">**    NSFileReferenceCount = 1;</div><div class="line">**    NSFileSize = 573278888;</div><div class="line">**    NSFileSystemFileNumber = 19578034;</div><div class="line">**    NSFileSystemNumber = 16777217;</div><div class="line">**    NSFileType = NSFileTypeRegular;</div></pre></td></tr></table></figure>
+<p>所以要接收这个字典 同时返回NSFileSize.获取本地文件已经下载的大小。</p>
+<p>####知道了已经下载的大小，还有总大小。我们就可以根据这两个数值来进行断点续传了。</p>
+<p>###断点续传需要的请求—Range请求。<br>设置请求头信息。</p>
+<p><1>格式：<br>Range格式：<br>bytes = x-y 从x位置开始下载，下载y个字节。<br>bytes = x- 从x开始  下载到完毕。<br>bytes = -x 从开始下载x个字节。</1></p>
+<p><2>特点：<br>一旦Range 属性设置成功，相应的状态码就是206<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//startSize 就是上文提到的dict中的NSFileSize。要把这个oc属性转化为字符串。</div><div class="line">//bytes=zd - 就是从你断点的位置下载到文件结束</div><div class="line"></div><div class="line">  NSString *range = [NSString stringWithFormat:@&quot;bytes=%zd-&quot;,startSize];</div><div class="line">   [request setValue:range forHTTPHeaderField:@&quot;Range&quot;];</div></pre></td></tr></table></figure></2></p>
+<hr>
+<p>###下面讲一种NSURLSession的下载</p>
+<ul>
+<li>利用代理NSURLSessionDownloadDelegate<br>1.主要利用的代理方法。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//这个是每次下载都调用的方法。和上边的一样。</div><div class="line">-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask</div><div class="line">      didWriteData:(int64_t)bytesWritten</div><div class="line"> totalBytesWritten:(int64_t)totalBytesWritten</div><div class="line">totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//下载完成之后调用的方法。</div><div class="line">-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask</div><div class="line">didFinishDownloadingToURL:(NSURL *)location</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//取消任务。</div><div class="line">-(NSURLSessionDownloadTask *)downloadTaskWithResumeData:(NSData *)resumeData</div></pre></td></tr></table></figure>
+<ul>
+<li><p>断点续传请求。调用上面的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">    NSString * urlString = @&quot;http://127.0.0.1/music.zip&quot;;</div><div class="line">    NSURL * url  = [NSURL URLWithString:urlString];</div><div class="line">    //创建可变请求。添加代理。</div><div class="line">    NSURLSession * session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];</div><div class="line">//创建下载任务。</div><div class="line">    NSURLSessionDownloadTask * task = [session downloadTaskWithURL:url];</div><div class="line">    self.oldSession = session;</div><div class="line">    self.task = task;</div><div class="line">    [task resume];</div></pre></td></tr></table></figure>
+</li>
+<li><p>暂停下载</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[self.task cancelByProducingResumeData:^(NSData * _Nullable resumeData) &#123;</div><div class="line">    self.resumeData = resumeData;</div><div class="line">    </div><div class="line">&#125;];</div><div class="line">  self.task = nil;</div></pre></td></tr></table></figure>
+<ul>
+<li>继续下载<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (self.resumeData) &#123;</div><div class="line">        self.task = [self.oldSession downloadTaskWithResumeData:self.resumeData];</div><div class="line">        [self.task resume];</div><div class="line">    &#125;</div></pre></td></tr></table></figure></li>
+</ul>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2015/04/24/关于文件下载/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

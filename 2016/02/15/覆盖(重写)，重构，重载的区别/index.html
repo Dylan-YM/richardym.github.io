@@ -7,57 +7,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Apachi在本地配置服务器 MAC专用 | richard&#39;s blog</title>
+  <title>Swift中 覆盖(重写)，重构，重载的区别 | richard&#39;s blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="博客，iOS，开发," />
+    <meta name="keywords" content="博客，iOS，开发，swift," />
   
 
-  <meta name="description" content="###首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites
-切换工作目录$cd /etc/apache2
-###用Vim编辑 httped.confsudo vim httpd.conf
-###然后进入这个页面
-###回车。
-
-###回车默认选0。
-###查找DocumentRoot  一定要注意大小写/DocumentRoot
-把默认的文件夹用#注释起来。然后把你的文件夹改成默认的。这">
+  <meta name="description" content="重构, 是对软计设计方法的描述, 这个层面是架构和设计方法。
+重构是一个软件维护的通用技巧, 重构的具体做法, 可以通过重写或者重载等, 但不限于此, 更改注释, 更改函数名类名等,都可以称之为重构。
+你今天写了一个应用, 读txt文档并显示, 几天后,用户的新需求来了, 告诉你, 我要读一个XML文本并显示, 这个时候, 你从前的代码需要做变更, 这个变更的动作, 就叫做重构。你维护的模块有个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Apachi在本地配置服务器 MAC专用">
-<meta property="og:url" content="http://yoursite.com/2015/03/06/Apachi在本地配置服务器 MAC专用/index.html">
+<meta property="og:title" content="Swift中 覆盖(重写)，重构，重载的区别">
+<meta property="og:url" content="http://yoursite.com/2016/02/15/覆盖(重写)，重构，重载的区别/index.html">
 <meta property="og:site_name" content="richard's blog">
-<meta property="og:description" content="###首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites
-切换工作目录$cd /etc/apache2
-###用Vim编辑 httped.confsudo vim httpd.conf
-###然后进入这个页面
-###回车。
-
-###回车默认选0。
-###查找DocumentRoot  一定要注意大小写/DocumentRoot
-把默认的文件夹用#注释起来。然后把你的文件夹改成默认的。这">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-21734f5fd3a5fbea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-fbf414b2bf1e7e16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-62bdf1d3a2fb1e8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-6b13086a05da1ba4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-dc93acc9a8a0eb03.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-074d311f01dbf481.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-08955bb311c420b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-ad096b4d1a4941c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-08-09T03:43:25.000Z">
+<meta property="og:description" content="重构, 是对软计设计方法的描述, 这个层面是架构和设计方法。
+重构是一个软件维护的通用技巧, 重构的具体做法, 可以通过重写或者重载等, 但不限于此, 更改注释, 更改函数名类名等,都可以称之为重构。
+你今天写了一个应用, 读txt文档并显示, 几天后,用户的新需求来了, 告诉你, 我要读一个XML文本并显示, 这个时候, 你从前的代码需要做变更, 这个变更的动作, 就叫做重构。你维护的模块有个">
+<meta property="og:updated_time" content="2016-08-09T04:42:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Apachi在本地配置服务器 MAC专用">
-<meta name="twitter:description" content="###首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites
-切换工作目录$cd /etc/apache2
-###用Vim编辑 httped.confsudo vim httpd.conf
-###然后进入这个页面
-###回车。
-
-###回车默认选0。
-###查找DocumentRoot  一定要注意大小写/DocumentRoot
-把默认的文件夹用#注释起来。然后把你的文件夹改成默认的。这">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1954780-21734f5fd3a5fbea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="Swift中 覆盖(重写)，重构，重载的区别">
+<meta name="twitter:description" content="重构, 是对软计设计方法的描述, 这个层面是架构和设计方法。
+重构是一个软件维护的通用技巧, 重构的具体做法, 可以通过重写或者重载等, 但不限于此, 更改注释, 更改函数名类名等,都可以称之为重构。
+你今天写了一个应用, 读txt文档并显示, 几天后,用户的新需求来了, 告诉你, 我要读一个XML文本并显示, 这个时候, 你从前的代码需要做变更, 这个变更的动作, 就叫做重构。你维护的模块有个">
 
   
 
@@ -182,22 +155,17 @@
 </div>
 
 
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#切换工作目录"><span class="toc-text">切换工作目录</span></a></li></ol>
-  </div>
-
 
 
 <div class="content content-post CENTER">
-   <article id="post-Apachi在本地配置服务器 MAC专用" class="article article-type-post" itemprop="blogPost">
+   <article id="post-覆盖(重写)，重构，重载的区别" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">Apachi在本地配置服务器 MAC专用</h1>
+    <h1 class="post-title">Swift中 覆盖(重写)，重构，重载的区别</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2015.03.06</span>
+        <span>2016.02.15</span>
       </span>
 
       
@@ -213,7 +181,7 @@
       
         <span>
           <i class="icon-comment"></i>
-          <a href="https://richardym.github.io//2015/03/06/Apachi在本地配置服务器 MAC专用/#disqus_thread"></a>
+          <a href="https://richardym.github.io//2016/02/15/覆盖(重写)，重构，重载的区别/#disqus_thread"></a>
         </span>
       
 
@@ -222,26 +190,21 @@
 
   <div class="article-content">
     
-      <p>###首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites<br><img src="http://upload-images.jianshu.io/upload_images/1954780-21734f5fd3a5fbea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<h3 id="切换工作目录"><a href="#切换工作目录" class="headerlink" title="切换工作目录"></a>切换工作目录</h3><p>$cd /etc/apache2</p>
-<p>###用Vim编辑 httped.conf<br>sudo vim httpd.conf<br><img src="http://upload-images.jianshu.io/upload_images/1954780-fbf414b2bf1e7e16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>###然后进入这个页面<br><img src="http://upload-images.jianshu.io/upload_images/1954780-62bdf1d3a2fb1e8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>###回车。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-6b13086a05da1ba4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>###回车默认选0。</p>
-<p>###查找DocumentRoot  一定要注意大小写<br>/DocumentRoot</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-dc93acc9a8a0eb03.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>把默认的文件夹用#注释起来。然后把你的文件夹改成默认的。<br>这里有个小技巧 用shift +v是选中这一行。 y赋值选中这一行。P是粘贴选中这一行</p>
-<p>###修改options</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-074d311f01dbf481.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>###修改PHP</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-08955bb311c420b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>改好之后先按下esc键退出编辑模式，再输入:wq 保存并退出 如果打错了不想保存就是 :q! （如果wq不退出就wq!强制退出）</p>
-<p>###服务器开关<br>服务器开关的命令就是 </p>
-<p>sudo apachectl -k start 开启</p>
-<p>sudo apachectl -k stop 关闭</p>
-<p>sudo apachectl -k restart 重新启动</p>
-<p>###另外添加一些vim命令。。</p>
-<p>//进入编辑模式<em> i               //在行首输入#可以起到注释效果</em> #<br>//进入命令模式<em> ESC          //选中整行</em> V<br>//复制整行<em> y                    //在光标下方粘贴</em> p<br>//将光标移动到下一行<em> i     //保存并退出</em> :wq<br>//不保存退出!!!!!!!!!* :q!<br><img src="http://upload-images.jianshu.io/upload_images/1954780-ad096b4d1a4941c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>成果图。~~</p>
+      <ul>
+<li>重构, 是对软计设计方法的描述, 这个层面是架构和设计方法。</li>
+<li>重构是一个软件维护的通用技巧, 重构的具体做法, 可以通过重写或者重载等, 但不限于此, 更改注释, 更改函数名类名等,都可以称之为重构。<blockquote>
+<p>你今天写了一个应用, 读txt文档并显示, 几天后,用户的新需求来了, 告诉你, 我要读一个XML文本并显示, 这个时候, 你从前的代码需要做变更, 这个变更的动作, 就叫做重构。<br>你维护的模块有个类叫做Class_B, 别人不爽, 觉得名字不好理解, 要你更改成TXTReader, 并附上注释。</p>
+</blockquote>
+</li>
+<li>覆盖(重写), 即override(Overwrite), 表达的都是一个含义。<blockquote>
+<p>父类的protect或者public方法无条件的成为子类的方法，但子类不爽， 想要将继承过来的方法改造一下。 这就是重写。<br>参数值，都是一模一样的。但内容体(方法中的代码)已经不同了。</p>
+</blockquote>
+</li>
+<li>重载(Overload)就是通过方法的参数识别不同的函数。<blockquote>
+<p>比如你有一个AMethod()不带参数, 然后你用了一个另外相同名称的方法,带一个参数AMethod(String para)。<br>这个过程就叫做重载。</p>
+</blockquote>
+</li>
+</ul>
 
     
   </div>
@@ -380,7 +343,7 @@
   <script>
     var disqus_shortname = 'forsigner';
     
-    var disqus_url = 'http://yoursite.com/2015/03/06/Apachi在本地配置服务器 MAC专用/';
+    var disqus_url = 'http://yoursite.com/2016/02/15/覆盖(重写)，重构，重载的区别/';
     
     (function(){
       var dsq = document.createElement('script');

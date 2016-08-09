@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>数据传递的三种方法：通知，代理，blcok | richard&#39;s blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="博客，iOS，开发," />
+  
+
+  <meta name="description" content="Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。
+block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。
+数据传递有三种方法:通知，代理，block.
+而对于通知代理block的选择1）如果数据传递两个对象没有联系。选择通知。
+2）如果两个对象有联系的话，三个都可以。
+3）能用代理的地">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据传递的三种方法：通知，代理，blcok">
+<meta property="og:url" content="http://yoursite.com/2015/03/08/数据传递的三种方法：通知，代理，blcok/index.html">
+<meta property="og:site_name" content="richard's blog">
+<meta property="og:description" content="Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。
+block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。
+数据传递有三种方法:通知，代理，block.
+而对于通知代理block的选择1）如果数据传递两个对象没有联系。选择通知。
+2）如果两个对象有联系的话，三个都可以。
+3）能用代理的地">
+<meta property="og:updated_time" content="2016-08-09T03:50:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据传递的三种方法：通知，代理，blcok">
+<meta name="twitter:description" content="Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。
+block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。
+数据传递有三种方法:通知，代理，block.
+而对于通知代理block的选择1）如果数据传递两个对象没有联系。选择通知。
+2）如果两个对象有联系的话，三个都可以。
+3）能用代理的地">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-数据传递的三种方法：通知，代理，blcok" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">数据传递的三种方法：通知，代理，blcok</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2015.03.08</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>richard</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://richardym.github.io//2015/03/08/数据传递的三种方法：通知，代理，blcok/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。</p>
+<p>block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。</p>
+<p>数据传递有三种方法:通知，代理，block.</p>
+<p>而对于通知代理block的选择<br>1）如果数据传递两个对象没有联系。选择通知。</p>
+<p>2）如果两个对象有联系的话，三个都可以。</p>
+<p>3）能用代理的地方 一定也可以用block去代替。</p>
+<p>首先说一下通知。</p>
+<p>通知 有三个属性。一个是通知的名称name。 通知的发布者object.一个是通知要传递的数据useInfo(可以为nil)。</p>
+<p>发布通知的方法：<br>一般用 [NSNotificationCenter defaultCenter] 方法来创建通知中心通知中心(NSNotificationCenter)提供了相应的方法来帮助发布通知<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)postNotification:(NSNotification*)notification;</div></pre></td></tr></table></figure></p>
+<p>发布一个notification通知，可在notification对象中设置通知的名称、通知发布者、额外信息等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)postNotificationName:(NSString*)aName object:(id)anObject;</div></pre></td></tr></table></figure></p>
+<p>发布一个名称为aName的通知，anObject为这个通知的发布者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)postNotificationName:(NSString*)aName object:(id)anObject userInfo:(NSDictionary*)aUserInfo;</div></pre></td></tr></table></figure></p>
+<p>发布一个名称为aName的通知，anObject为这个通知的发布者，aUserInfo为额外信息</p>
+<p>通知中心(NSNotificationCenter)提供了方法来注册一个监听通知的监听器(Observer)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)addObserver:(id)observer selector:(SEL)aSelector name (NSString*)aName object:(id)anObject;</div></pre></td></tr></table></figure></p>
+<p>observer：监听器，即谁要接收这个通知</p>
+<p>Selector：收到通知后，回调监听器的这个方法，并且把通知对象当做参数传入Name：通知的名称。如果为nil，那么无论通知的名称是什么，监听器都能收到这个通知</p>
+<p>Object：通知发布者。如果为anObject和aName都为nil，监听器都收到所有的通知</p>
+<p>第二种注册监听器的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (id)addObserverForName:(NSString*)name object:(id)obj queue:(NSOperationQueue*)queue usingBlock:(void (^)(NSNotification*note))block;</div></pre></td></tr></table></figure></p>
+<p>name：通知的名称</p>
+<p>obj：通知发布者</p>
+<p>block：收到对应的通知时，会回调这个block</p>
+<p>queue：决定了block在哪个操作队列中执行，如果传nil，默认在当前操作队列中同步执行</p>
+<p>取消注册通知监听器<br>通知中心不会保留(retain)监听器对象，在通知中心注册过的对象，必须在该对象释放前取消注册。否则，当相应的通知再次出现时，通知中心仍然会向该监听器发送消息。因为相应的监听器对象已经被释放了，所以可能会导致应用崩溃</p>
+<p>通知中心提供了相应的方法来取消注册监听器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-(void)removeObserver:(id)observer;</div><div class="line"></div><div class="line">-(void)removeObserver:(id)observer name:(NSString*)aName object:(id)anObject;</div></pre></td></tr></table></figure></p>
+<p>然后说一下代理。也是个人最喜欢用的。要分清被代理者和代理者。</p>
+<p>被代理者 有四部分</p>
+<p>1）首先定义代理（协议名称的命名规范:控件类名+Delegate）</p>
+<p>2）定义代理方法。（需要传递的属性，还有把自己本身传过去）这里要注意。代理</p>
+<p>3）设置属性。这里要注意代理的属性要使用weak。</p>
+<p>4）在需要传递值的地方去调用代理的方法。（要判断代理方法是否可以调用）</p>
+<p>在代理者需要三步。</p>
+<p>1）遵守代理协议。</p>
+<p>2）设置代理。</p>
+<p>3实现代理方法</p>
+<p>个人觉得代理比较简单。而且比较好理解。非常的规整。</p>
+<p>下面说一下第三种Block</p>
+<p>1）首先要在需要传递数据的类中定义一个block 属性为要传递数据的类型</p>
+<p>block的属性要和NSString 一样 为copy.</p>
+<p>2）在需要传递数据的地方 实现Blcok方法。首先要判断block是否可用。</p>
+<p>然后把数据回调。</p>
+<p>3）在需要数据的类中定义一个block 把数据接过去。</p>
+<p>个人理解 block比代理要简单。</p>
+<p>但是代理会看着比较清晰。让人理解。</p>
+<p>所执行的步骤也都差不多。</p>
+<p>只是把被代理者中的设置代理 转变成设置block接过去。然后设置一个Block去接一下回调的值。</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2015/03/08/数据传递的三种方法：通知，代理，blcok/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

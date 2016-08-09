@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>OC多线程GCD以及NSoperation | richard&#39;s blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="博客，iOS，开发," />
+  
+
+  <meta name="description" content="首先讲一下关于线程的基础知识。
+###1.什么是进程？进程是指在系统中正在运行的一个应用程序每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。
+###2.什么是线程？1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。
+###4.多线程的原理。同一时间，CPU只能处理1条线程，只有1条线程在工作（执行）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OC多线程GCD以及NSoperation">
+<meta property="og:url" content="http://yoursite.com/2015/05/16/OC多线程GCD以及NSoperation/index.html">
+<meta property="og:site_name" content="richard's blog">
+<meta property="og:description" content="首先讲一下关于线程的基础知识。
+###1.什么是进程？进程是指在系统中正在运行的一个应用程序每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。
+###2.什么是线程？1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。
+###4.多线程的原理。同一时间，CPU只能处理1条线程，只有1条线程在工作（执行）">
+<meta property="og:updated_time" content="2016-08-09T04:29:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OC多线程GCD以及NSoperation">
+<meta name="twitter:description" content="首先讲一下关于线程的基础知识。
+###1.什么是进程？进程是指在系统中正在运行的一个应用程序每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。
+###2.什么是线程？1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。
+###4.多线程的原理。同一时间，CPU只能处理1条线程，只有1条线程在工作（执行）">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-OC多线程GCD以及NSoperation" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">OC多线程GCD以及NSoperation</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2015.05.16</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>richard</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://richardym.github.io//2015/05/16/OC多线程GCD以及NSoperation/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>首先讲一下关于线程的基础知识。</p>
+<p>###1.什么是进程？<br>进程是指在系统中正在运行的一个应用程序<br>每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。</p>
+<p>###2.什么是线程？<br>1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。</p>
+<p>###4.多线程的原理。<br>同一时间，CPU只能处理1条线程，只有1条线程在工作（执行）多线程并发（同时）执行，其实是CPU快速地在多条线程之间调度（切换）如果CPU调度线程的时间足够快，就造成了多线程并发执行的假象思考：如果线程非常非常多，会发生什么情况？CPU会在N多线程之间调度，CPU会累死，消耗大量的CPU资源每条线程被调度执行的频次会降低（线程的执行效率降低）</p>
+<p>###4.多线程的优缺点。<br>多线程的优点<br>能适当提高程序的执行效率<br>能适当提高资源利用率（CPU、内存利用率）</p>
+<p>多线程的缺点<br>开启线程需要占用一定的内存空间（默认情况下，主线程占用1M，子线程占用512KB），如果开启大量的线程，会占用大量的内存空间，降低程序的性能<br>线程越多，CPU在调度线程上的开销就越大<br>程序设计更加复杂：比如线程之间的通信、多线程的数据共享</p>
+<p>###6.线程中的属性。<br>线程中有4个最主要的名词。</p>
+<ul>
+<li>同步任务：同步：在当前线程中执行任务，不具备开启新线程的能力。</li>
+<li>异步任务：在新的线程中执行任务，具备开启新线程的能力。<br>并发和串行决定了任务的执行方式</li>
+<li>并发队列：多个任务并发（同时）执行。</li>
+<li>串行队列：一个任务执行完毕后，再执行下一个任务。<br>而主队列是特殊的串行队列。<br>全局队列是特殊的并发队列。<br>###7.GCD的基础使用。<br>1.串行队列。</li>
+<li><p>使用dispatch_queue_create函数创建串行队列</p>
+<blockquote>
+<p> // 队列名称， 队列属性，一般用NULL即可<br>dispatch_queue_t  dispatch_queue_create(const char *label,  dispatch_queue_attr_t attr);</p>
+</blockquote>
+</li>
+<li><p>使用 使用主队列（跟主线程相关联的队列）</p>
+<blockquote>
+<p>主队列是GCD自带的一种特殊的串行队列,放在主队列中的任务，都会放到主线程中执行<br>使用dispatch_get_main_queue()获得主队列</p>
+</blockquote>
+</li>
+</ul>
+<p>2.并发队列。<br> GCD默认已经提供了全局的并发队列，供整个应用使用，不需要手动创建</p>
+<p>使用dispatch_get_global_queue函数获得全局的并发队列<br>// 此参数暂时无用，用0即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dispatch_queue_t dispatch_get_global_queue(dispatch_queue_priority_t priority,unsigned long flags);</div></pre></td></tr></table></figure></p>
+<p>GCD 小结： </p>
+<blockquote>
+<p>其实多线程就是在多个线程之间快速做“切换”的操作（在线程调度池里执行任务）。<br>线程里有个属性是优先级。这个属性决定的是线程有更多的机会去调用。并不是决定任务的先后顺序。<br>而且注意！！！！开发中 一定不要取修改优先级。否则会出现很多你想不到的错误。<br>不能把同步任务加入到主队列中。否则会出现同步锁现象。</p>
+</blockquote>
+<p> ###8.NSoperation的基础使用。</p>
+<ul>
+<li>并发数<br>（1）并发数:同时执⾏行的任务数.比如,同时开3个线程执行3个任务,并发数就是3<br>（2）最大并发数：同一时间最多只能执行的任务的个数。<br>（3）最⼤大并发数的相关⽅方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSInteger)maxConcurrentOperationCount;- (void)setMaxConcurrentOperationCount:(NSInteger)cnt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>说明：如果没有设置最大并发数，那么并发的个数是由系统内存和CPU决定的，可能内存多久开多一点，内存少就开少一点。<br>注意：num的值并不代表线程的个数，仅仅代表线程的ID。<br>提示：最大并发数不要乱写（5以内），不要开太多，一般以2~3为宜，因为虽然任务是在子线程进行处理的，但是cpu处理这些过多的子线程可能会影响UI，让UI变卡。</p>
+<ul>
+<li>队列的取消，暂停和恢复<br>1）取消队列的所有操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> - (void)cancelAllOperations;</div><div class="line">提⽰:也可以调用NSOperation的- (void)cancel⽅法取消单个操作</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>（2）暂停和恢复队列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(void)setSuspended:(BOOL)b; // YES代表暂停队列,NO代表恢复队列</div><div class="line">-(BOOL)isSuspended; //当前状态</div></pre></td></tr></table></figure></p>
+<p>（3）暂停和恢复的适用场合：在tableview界面，开线程下载远程的网络界面，对UI会有影响，使用户体验变差。那么这种情况，就可以设置在用户操作UI（如滚动屏幕）的时候，暂停队列（不是取消队列），停止滚动的时候，恢复队列。</p>
+<p>NSOperation 小结：</p>
+<blockquote>
+<p>GCD和NSOperation 都各有各的好处。<br>GCD能够开多个线程 但是并不能管理。<br>但是NSOperation 可以管理线程。还可以设置最大操作并发数。<br>而GCD可以使用延时方法 after 和sleep 还有一次性once方法 创建单例对象。<br>根据你所需要的去选择恰当的方法。</p>
+</blockquote>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2015/05/16/OC多线程GCD以及NSoperation/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

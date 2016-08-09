@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Swift中 core Foundation的运用 | richard&#39;s blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="博客，iOS，开发，swift," />
+  
+
+  <meta name="description" content="##Core Foundation
+#####Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Founda">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift中 core Foundation的运用">
+<meta property="og:url" content="http://yoursite.com/2016/02/15/Swift中 core Foundation的运用/index.html">
+<meta property="og:site_name" content="richard's blog">
+<meta property="og:description" content="##Core Foundation
+#####Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Founda">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-529b451c7d6528cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-40bf81a6ea664a9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-32bc743c44817cb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-6bb676ba42cc7dc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-08-09T04:41:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift中 core Foundation的运用">
+<meta name="twitter:description" content="##Core Foundation
+#####Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Founda">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1954780-529b451c7d6528cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Swift中 core Foundation的运用" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Swift中 core Foundation的运用</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.02.15</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>richard</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://richardym.github.io//2016/02/15/Swift中 core Foundation的运用/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>##Core Foundation</p>
+<p>#####Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Foundation 类型时，你也可以桥接一些 toll-free bridged Core Foundation 类型到 Swift 标准库类型。</p>
+<p>1.重定义类型</p>
+<p>当 Swift 导入 Core Foundation 类型时，编译器会重映射导入的类型名字。编译器会从每个类型名字的末端移除Ref，这是因为所有的 Swift 类都属于引用类型，因此后缀是多余的。</p>
+<p>Core Foundation 中的CFTypeRef类型会对Anyobject类型重映射。所以你以前使用的CFTypeRef，现在该换成AnyObject了。</p>
+<p>2.内存管理对象</p>
+<p>在 Swift 中，从 annotated APIs 返回的 Core Foundation 对象能够自动进行内存管理–你不再需要调用自身的CFRetain，CFRelease，或者CFAutorelease函数。如果你从自身的C函数和 Objective-C 方法中返回一个 Core Foundation 对象，你需要用CF_RETURNS_RETAINED或者CF_RETURNS_NOT_RETAINED注释这个对象。当 Swift 代码中包含这些 APIs 时，编译器会在编译时自动调用内存管理。如果你只调用那些不会间接返回 Core Foundation 对象的 annotated APIs，那么现在你可以跳过本节的剩余部分了。否则，下面我们继续学习非托管的 Core Foundation 对象。</p>
+<p>3.非托管对象</p>
+<p>当 Swift 导入 unannotated 的APIs时，编译器将不会自动地对返回的 Core Foundation 对象进行内存管理托管。Swift 将这些返回的 Core Foundation 对象封闭在一个Unmanaged<t>结构中。那些间接返回 Core Foundation 的对象也是非托管的。举个例子，这里有一个 unannotated 的 C 函数:</t></p>
+<p>这里说明了Swift是怎么导入的:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-529b451c7d6528cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unmanaged 为未被管理的类型"></p>
+<p>假设您从 unannotated APIs 接收了非托管的对象，在使用它之前，你必须将它转换为能够内存管理的对象。在这方面，Swift 可以帮你进行内存管理而不用自己动手。同时，Unmanaged<t>结构也提供了两个方法来把一个非托管对象转换为一个可内存管理的对象–takeUnretainedValue()方法和takeRetainedValue()方法。这两个方法会返回原始的，非封闭的对象类型。您可以根据您实际调用的APIs返回的unretained或retained的对象，来选择哪一方法更合适。</t></p>
+<p>比如，假设这里有一个 C 函数，这个函数在返回值前不会释放CFString对象。在使用这个对象前，您使用takeUnretainedValue()函数，以将它转换为一个能够内存管理托管的对象。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-40bf81a6ea664a9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unmanaged 未被管理"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> let firstName =  ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue()</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-32bc743c44817cb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-6bb676ba42cc7dc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>这样的话 你就可以把这个属性转换成任意类型了。</p>
+<p>下边说一下ios9 新出的  ContactsUI 来代替  AddressBookUI<br>太简单了。这个就是面对对象来操作的。</p>
+<p>首先设置属性以及代理。以及遵守协议。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">viewController: UIViewController,CNContactPickerDelegate &#123;</div><div class="line"></div><div class="line">    override func viewDidLoad() &#123;</div><div class="line">        super.viewDidLoad()</div><div class="line"></div><div class="line">        let vc = CNContactPickerViewController()</div><div class="line">        vc.delegate = self</div><div class="line">        self.presentViewController(vc, animated: true, completion: nil)</div></pre></td></tr></table></figure></p>
+<p>然后实现代理方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact) &#123;</div><div class="line">        </div><div class="line">        let name = contact.familyName</div><div class="line">        print(name)</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>contact 装的都是对象属性。<br>哪里不会点哪里</p>
+<pre><code>public var identifier: String { get }
+
+ public var contactType: CNContactType { get }
+
+ public var namePrefix: String { get }
+ public var givenName: String { get }
+ public var middleName: String { get }
+ public var familyName: String { get }
+ public var previousFamilyName: String { get }
+ public var nameSuffix: String { get }
+ public var nickname: String { get }
+
+ public var phoneticGivenName: String { get }
+ public var phoneticMiddleName: String { get }
+ public var phoneticFamilyName: String { get }
+
+ public var organizationName: String { get }
+ public var departmentName: String { get }
+ public var jobTitle: String { get }
+
+ public var note: String { get }
+
+ @NSCopying public var imageData: NSData? { get }
+ @NSCopying public var thumbnailImageData: NSData? { get }
+ @available(iOS 9.0, *)
+ public var imageDataAvailable: Bool { get }
+
+ public var phoneNumbers: [CNLabeledValue] { get }
+ public var emailAddresses: [CNLabeledValue] { get }
+ public var postalAddresses: [CNLabeledValue] { get }
+ public var urlAddresses: [CNLabeledValue] { get }
+ public var contactRelations: [CNLabeledValue] { get }
+ public var socialProfiles: [CNLabeledValue] { get }
+ public var instantMessageAddresses: [CNLabeledValue] { get }
+
+ /*! The Gregorian birthday. */
+ @NSCopying public var birthday: NSDateComponents? { get }
+
+ /*! The alternate birthday (Lunisolar). */
+ @NSCopying public var nonGregorianBirthday: NSDateComponents? { get }
+</code></pre><p>是不是比core foundation爽多了？？？</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2016/02/15/Swift中 core Foundation的运用/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
