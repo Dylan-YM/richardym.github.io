@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="richard,三水,设计,iOS,前端开发,iOS,音乐,吉他,谱子,六线谱。" />
+  
+
+  <meta name="description" content="###首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites
+切换工作目录$cd /etc/apache2
+###用Vim编辑 httped.confsudo vim httpd.conf
+###然后进入这个页面
+###回车。
+
+###回车默认选0。
+###查找DocumentRoot  一定要注意大小写/DocumentRoot
+把默认的文件夹用#注释起来。然后把你的文件夹改成默认的。这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2016/08/09/Apachi在本地配置服务器 MAC专用/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="###首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites
+切换工作目录$cd /etc/apache2
+###用Vim编辑 httped.confsudo vim httpd.conf
+###然后进入这个页面
+###回车。
+
+###回车默认选0。
+###查找DocumentRoot  一定要注意大小写/DocumentRoot
+把默认的文件夹用#注释起来。然后把你的文件夹改成默认的。这">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-21734f5fd3a5fbea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-fbf414b2bf1e7e16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-62bdf1d3a2fb1e8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-6b13086a05da1ba4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-dc93acc9a8a0eb03.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-074d311f01dbf481.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-08955bb311c420b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-ad096b4d1a4941c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-08-09T03:18:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="###首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites
+切换工作目录$cd /etc/apache2
+###用Vim编辑 httped.confsudo vim httpd.conf
+###然后进入这个页面
+###回车。
+
+###回车默认选0。
+###查找DocumentRoot  一定要注意大小写/DocumentRoot
+把默认的文件夹用#注释起来。然后把你的文件夹改成默认的。这">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1954780-21734f5fd3a5fbea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#切换工作目录"><span class="toc-text">切换工作目录</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Apachi在本地配置服务器 MAC专用" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">(no title)</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.08.09</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>John Doe</span>
+        </span>
+      
+
+      
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://www.forsigner.com/2016/08/09/Apachi在本地配置服务器 MAC专用/#disqus_thread"></a>
+        </span>
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>###首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites<br><img src="http://upload-images.jianshu.io/upload_images/1954780-21734f5fd3a5fbea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<h3 id="切换工作目录"><a href="#切换工作目录" class="headerlink" title="切换工作目录"></a>切换工作目录</h3><p>$cd /etc/apache2</p>
+<p>###用Vim编辑 httped.conf<br>sudo vim httpd.conf<br><img src="http://upload-images.jianshu.io/upload_images/1954780-fbf414b2bf1e7e16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>###然后进入这个页面<br><img src="http://upload-images.jianshu.io/upload_images/1954780-62bdf1d3a2fb1e8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>###回车。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-6b13086a05da1ba4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>###回车默认选0。</p>
+<p>###查找DocumentRoot  一定要注意大小写<br>/DocumentRoot</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-dc93acc9a8a0eb03.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>把默认的文件夹用#注释起来。然后把你的文件夹改成默认的。<br>这里有个小技巧 用shift +v是选中这一行。 y赋值选中这一行。P是粘贴选中这一行</p>
+<p>###修改options</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-074d311f01dbf481.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>###修改PHP</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-08955bb311c420b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<p>改好之后先按下esc键退出编辑模式，再输入:wq 保存并退出 如果打错了不想保存就是 :q! （如果wq不退出就wq!强制退出）</p>
+<p>###服务器开关<br>服务器开关的命令就是 </p>
+<p>sudo apachectl -k start 开启</p>
+<p>sudo apachectl -k stop 关闭</p>
+<p>sudo apachectl -k restart 重新启动</p>
+<p>###另外添加一些vim命令。。</p>
+<p>//进入编辑模式<em> i               //在行首输入#可以起到注释效果</em> #<br>//进入命令模式<em> ESC          //选中整行</em> V<br>//复制整行<em> y                    //在光标下方粘贴</em> p<br>//将光标移动到下一行<em> i     //保存并退出</em> :wq<br>//不保存退出!!!!!!!!!* :q!<br><img src="http://upload-images.jianshu.io/upload_images/1954780-ad096b4d1a4941c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>成果图。~~</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2016/08/09/Apachi在本地配置服务器 MAC专用/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
