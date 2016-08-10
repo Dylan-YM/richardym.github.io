@@ -1,106 +1,322 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html >
 <head>
-  <meta charset="utf-8">
-  
-  <title>关于http请求 | richard&#39;s blog</title>
-  <meta name="author" content="richard">
-  
-  <meta name="description" content="####网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80%，默认的http请求就是get请求。
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="richard" />
+
+
+
+<meta name="description" content="####网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80%，默认的http请求就是get请求。
 ###1.HTTP请求。
 
 一般请求采用restful 设计风格：采用相同url 不同的http 实现不同的功能。
 利用不同请求，实现了 增/删/改/查的功能。
 PUT       增    在服务器新增123的信息
 DELETE 删
-POST     改
-GET       查
-HEAD 获取文件的大小。
-Range 这个可以解决断点续传。####！一般开发中，后台将post方法 替代Put和delete.
-http内部走的是socket/ (tcp/ip)。 默认情况下，tcp / ip 是一个‘长连接’。">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+POST">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于http请求">
+<meta property="og:url" content="http://yoursite.com/2015/04/06/关于http请求/index.html">
+<meta property="og:site_name" content="richard's blog">
+<meta property="og:description" content="####网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80%，默认的http请求就是get请求。
+###1.HTTP请求。
 
-  <meta property="og:title" content="关于http请求"/>
-  <meta property="og:site_name" content="richard&#39;s blog"/>
+一般请求采用restful 设计风格：采用相同url 不同的http 实现不同的功能。
+利用不同请求，实现了 增/删/改/查的功能。
+PUT       增    在服务器新增123的信息
+DELETE 删
+POST">
+<meta property="og:updated_time" content="2016-08-10T07:02:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于http请求">
+<meta name="twitter:description" content="####网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80%，默认的http请求就是get请求。
+###1.HTTP请求。
 
-  
-    <meta property="og:image" content="undefined"/>
-  
+一般请求采用restful 设计风格：采用相同url 不同的http 实现不同的功能。
+利用不同请求，实现了 增/删/改/查的功能。
+PUT       增    在服务器新增123的信息
+DELETE 删
+POST">
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="richard&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="richard&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
 <link rel="stylesheet" href="/css/style.css">
-  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-368771XX-X']);
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>关于http请求 | richard&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
 </script>
 
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
 </head>
-
 <body>
-  <header id="header" class='normal_mode'>
-    <nav id="main-nav">
-  <ul class='container'>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">目录</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-  </header>
-  <div id="content" class="container">
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">richard</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS，开发/">iOS，开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS，开发，swift/">iOS，开发，swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS，开发，下载/">iOS，开发，下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS，开发，请求/">iOS，开发，请求</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
 </div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">richard</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">richard</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-关于http请求" class="article article-type-post" itemscope itemprop="blogPost">
   
-  <div class="post-content">
-    <header>
+    <div class="article-meta">
+      <a href="/2015/04/06/关于http请求/" class="article-date">
+      <time datetime="2015-04-06T05:25:29.000Z" itemprop="datePublished">2015-04-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于http请求
+    </h1>
+  
+
+      </header>
       
-      <time datetime="2015-04-06T05:25:29.000Z"><a href="/2015/04/06/关于http请求/">Mon, Apr 6 2015, 1:25:29 pm</a></time>
+      <div class="article-info article-info-post">
+        
 
-  
-    <h1 class="title">关于http请求</h1>
-  
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS，开发，请求/">iOS，开发，请求</a></li></ul>
+    </div>
 
-
-
-  
-  <div class="tags">
-  	<i class="fa fa-tag"></i>
-    <a href="/tags/iOS，开发，请求/">iOS，开发，请求</a>
-  </div>
-
-<div class="clear"></div>
+        <div class="clearfix"></div>
+      </div>
       
-    </header>
-    <div class="entry">
+    
+    <div class="article-entry" itemprop="articleBody">
       
+          
         <p>####网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80%，默认的http请求就是get请求。</p>
 <p>###1.HTTP请求。</p>
 <ul>
@@ -144,136 +360,199 @@ http内部走的是socket/ (tcp/ip)。 默认情况下，tcp / ip 是一个‘�
 
       
     </div>
-    <footer>
-      
-          
-<!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <span class="jiathis_txt">分享到：</span>
-  <a class="jiathis_button_weixin">微信</a>
-  <a class="jiathis_button_tsina">新浪微博</a>
-  <a class="jiathis_button_renren">人人网</a>
-  <a class="jiathis_button_qzone">QQ空间</a>
-  <a class="jiathis_button_douban">豆瓣</a>
-  <a class="jiathis_button_pocket">Pocket</a>
-  <a href="http://www.jiathis.com/share?uid=901656" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=901656" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-          <div class="clearfix"></div>
-          <nav id="pagination">
-  
-    <a href="/2015/04/24/关于文件下载/" class="alignleft prev"><i class="fa fa-long-arrow-left"></i>Next</a>
-  
-  
-    <a href="/2015/03/08/数据传递的三种方法：通知，代理，blcok/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
-  
-  <div class="clearfix"></div>
-</nav>
-      
-      <div class="clearfix"></div>
-    </footer>
+    
   </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2015/04/24/关于文件下载/">
+                    关于文件下载
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2015/03/08/数据传递的三种方法：通知，代理，blcok/">
+                    数据传递的三种方法：通知，代理，blcok
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
 
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
 
-<section id="comment">
-  <h1 class="title">留言</h1>
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
-  
-      <!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread" data-thread-key="/2015/04/06/关于http请求/"></div>
-<!-- Duoshuo Comment END -->
-  
-</section>
-
-
-
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div>
-  
-  &copy; 2016 richard
-  
-</div>
-Powered by <a href="http://zespia.tw/hexo/" title="Hexo" target="_blank" rel="external">Hexo</a> and <a href="http://pages.github.com/" title="GitHub Pages" target="_blank" rel="external">GitHub Pages</a>
-
-<div class="clearfix"></div></footer>
-  
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
-
-
-
-    <script type="text/javascript">
-        (function(){
-
-            $(window).scroll(function(){
-
-                var scrollTop = $(window).scrollTop();
-                if ( scrollTop >200 ){
-                    $("#main-nav").removeClass('normal_mode').addClass('top_mode');
-                } else{
-                    $("#main-nav").removeClass('top_mode').addClass('normal_mode');
-                }
-
-            });
-
-        })();
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-  (function($){
-    $('.fancybox').fancybox({
-      'titlePosition': 'inside'
-    });
-  })(jQuery);
-  </script>
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"关于http请求　| richard's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
 
 
 
     
-    <script type="text/javascript">
-      var duoshuoQuery = {short_name:"your_id"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = 'http://static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0] 
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
 
 
 
-<script type="text/javascript">
-  
-  $(function(){
 
-    $('.title').hover(
-      function() {      
-        $(this).stop().animate(
-          {'marginLeft': '10px'}, 200
-        );   
-      }, 
-      function() {       
-        $(this).stop().animate({'marginLeft': '0px'}, 200);      
-      
-    });   
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/04/24/关于文件下载/" title="上一篇: 关于文件下载">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
 
-  });
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
+        
+            <a href="/2015/03/08/数据传递的三种方法：通知，代理，blcok/" title="下一篇: 数据传递的三种方法：通知，代理，blcok">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/02/15/Swift中 core Foundation的运用/">Swift中 core Foundation的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/02/15/覆盖(重写)，重构，重载的区别/">Swift中 覆盖(重写)，重构，重载的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/18/NSDictionary字典的使用以及注意/">NSDictionary字典的使用以及注意</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/07/05/关于日期格式设置及转换/">关于日期格式设置及转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/16/OC多线程GCD以及NSoperation/">OC多线程GCD以及NSoperation</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/04/24/关于文件下载/">关于文件下载</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/04/06/关于http请求/">关于http请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/08/数据传递的三种方法：通知，代理，blcok/">数据传递的三种方法：通知，代理，blcok</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/03/06/Apachi在本地配置服务器 MAC专用/">Apachi在本地配置服务器 MAC专用</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 richard
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
 </script>
 
-
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
 </body>
 </html>
