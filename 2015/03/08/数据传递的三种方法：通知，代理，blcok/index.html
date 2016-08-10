@@ -1,276 +1,40 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>数据传递的三种方法：通知，代理，blcok | richard&#39;s blog</title>
-  <meta name="author" content="richard">
-  
-  <meta name="description" content="Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。
-block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。
-数据传递有三种方法:通知，代理，block.
-而对于通知代理block的选择1）如果数据传递两个对象没有联系。选择通知。
-2）如果两个对象有联系的话，三个都可以。
-3）能用代理的地方 一定也可以用block去代替。">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+extends base
 
-  <meta property="og:title" content="数据传递的三种方法：通知，代理，blcok"/>
-  <meta property="og:site_name" content="richard&#39;s blog"/>
+block title
+  title= page.title + " | " + config.title
 
-  
-    <meta property="og:image" content="undefined"/>
-  
+block main
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="richard&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-<link rel="stylesheet" href="/css/style.css">
-  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-368771XX-X']);
-  _gaq.push(['_trackPageview']);
+  // gallery that comes before the header
+  if page.photos
+     if page.photos.length
+      .article-gallery
+        .article-gallery-photos.container
+          for photo in page.photos
+            a.article-gallery-img.fancybox(href=url_for(photo), rel="gallery_" + page._id)
+              img(src=url_for(photo), itemprop="image")
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
+  .wrapper
+    .container.post-header
+      h1: = page.title
 
-</head>
-
-<body>
-  <header id="header" class='normal_mode'>
-    <nav id="main-nav">
-  <ul class='container'>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">目录</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-  </header>
-  <div id="content" class="container">
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-      <time datetime="2015-03-08T08:44:29.000Z"><a href="/2015/03/08/数据传递的三种方法：通知，代理，blcok/">Sun, Mar 8 2015, 4:44:29 pm</a></time>
-
-  
-    <h1 class="title">数据传递的三种方法：通知，代理，blcok</h1>
-  
+  .wrapper
+    .container.meta
+      .post-time= page.date.format(config.date_format)
+      if (page.categories && page.categories.length)
+        .post-categories
+          != list_categories(page.categories, {show_count: false, class: 'post-category', style: 'none', separator: '>'})
+      if (page.tags && page.tags.length)
+        .post-tags
+          != list_tags(page.tags, {show_count: false, class: 'post-tag', style:'none', separator:'/'})
 
 
+  article
+    .container.post
+      != page.content
 
-  
-  <div class="tags">
-  	<i class="fa fa-tag"></i>
-    <a href="/tags/iOS，开发/">iOS，开发</a>
-  </div>
+    // comment system
+    .container
+      hr
+      include _partial/comments
 
-<div class="clear"></div>
-      
-    </header>
-    <div class="entry">
-      
-        <p>Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。</p>
-<p>block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。</p>
-<p>数据传递有三种方法:通知，代理，block.</p>
-<p>而对于通知代理block的选择<br>1）如果数据传递两个对象没有联系。选择通知。</p>
-<p>2）如果两个对象有联系的话，三个都可以。</p>
-<p>3）能用代理的地方 一定也可以用block去代替。<br><a id="more"></a><br>首先说一下通知。</p>
-<p>通知 有三个属性。一个是通知的名称name。 通知的发布者object.一个是通知要传递的数据useInfo(可以为nil)。</p>
-<p>发布通知的方法：<br>一般用 [NSNotificationCenter defaultCenter] 方法来创建通知中心通知中心(NSNotificationCenter)提供了相应的方法来帮助发布通知<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)postNotification:(<span class="built_in">NSNotification</span>*)notification;</div></pre></td></tr></table></figure></p>
-<p>发布一个notification通知，可在notification对象中设置通知的名称、通知发布者、额外信息等<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)postNotificationName:(<span class="built_in">NSString</span>*)aName object:(<span class="keyword">id</span>)anObject;</div></pre></td></tr></table></figure></p>
-<p>发布一个名称为aName的通知，anObject为这个通知的发布者<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)postNotificationName:(<span class="built_in">NSString</span>*)aName object:(<span class="keyword">id</span>)anObject userInfo:(<span class="built_in">NSDictionary</span>*)aUserInfo;</div></pre></td></tr></table></figure></p>
-<p>发布一个名称为aName的通知，anObject为这个通知的发布者，aUserInfo为额外信息</p>
-<p>通知中心(NSNotificationCenter)提供了方法来注册一个监听通知的监听器(Observer)<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)addObserver:(<span class="keyword">id</span>)observer selector:(SEL)aSelector name (<span class="built_in">NSString</span>*)aName object:(<span class="keyword">id</span>)anObject;</div></pre></td></tr></table></figure></p>
-<p>observer：监听器，即谁要接收这个通知</p>
-<p>Selector：收到通知后，回调监听器的这个方法，并且把通知对象当做参数传入Name：通知的名称。如果为nil，那么无论通知的名称是什么，监听器都能收到这个通知</p>
-<p>Object：通知发布者。如果为anObject和aName都为nil，监听器都收到所有的通知</p>
-<p>第二种注册监听器的方法<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">id</span>)addObserverForName:(<span class="built_in">NSString</span>*)name object:(<span class="keyword">id</span>)obj queue:(<span class="built_in">NSOperationQueue</span>*)queue usingBlock:(<span class="keyword">void</span> (^)(<span class="built_in">NSNotification</span>*note))block;</div></pre></td></tr></table></figure></p>
-<p>name：通知的名称</p>
-<p>obj：通知发布者</p>
-<p>block：收到对应的通知时，会回调这个block</p>
-<p>queue：决定了block在哪个操作队列中执行，如果传nil，默认在当前操作队列中同步执行</p>
-<p>取消注册通知监听器<br>通知中心不会保留(retain)监听器对象，在通知中心注册过的对象，必须在该对象释放前取消注册。否则，当相应的通知再次出现时，通知中心仍然会向该监听器发送消息。因为相应的监听器对象已经被释放了，所以可能会导致应用崩溃</p>
-<p>通知中心提供了相应的方法来取消注册监听器<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)removeObserver:(<span class="keyword">id</span>)observer;</div><div class="line"></div><div class="line">-(<span class="keyword">void</span>)removeObserver:(<span class="keyword">id</span>)observer name:(<span class="built_in">NSString</span>*)aName object:(<span class="keyword">id</span>)anObject;</div></pre></td></tr></table></figure></p>
-<p>然后说一下代理。也是个人最喜欢用的。要分清被代理者和代理者。</p>
-<p>被代理者 有四部分</p>
-<p>1）首先定义代理（协议名称的命名规范:控件类名+Delegate）</p>
-<p>2）定义代理方法。（需要传递的属性，还有把自己本身传过去）这里要注意。代理</p>
-<p>3）设置属性。这里要注意代理的属性要使用weak。</p>
-<p>4）在需要传递值的地方去调用代理的方法。（要判断代理方法是否可以调用）</p>
-<p>在代理者需要三步。</p>
-<p>1）遵守代理协议。</p>
-<p>2）设置代理。</p>
-<p>3实现代理方法</p>
-<p>个人觉得代理比较简单。而且比较好理解。非常的规整。</p>
-<p>下面说一下第三种Block</p>
-<p>1）首先要在需要传递数据的类中定义一个block 属性为要传递数据的类型</p>
-<p>block的属性要和NSString 一样 为copy.</p>
-<p>2）在需要传递数据的地方 实现Blcok方法。首先要判断block是否可用。</p>
-<p>然后把数据回调。</p>
-<p>3）在需要数据的类中定义一个block 把数据接过去。</p>
-<p>个人理解 block比代理要简单。</p>
-<p>但是代理会看着比较清晰。让人理解。</p>
-<p>所执行的步骤也都差不多。</p>
-<p>只是把被代理者中的设置代理 转变成设置block接过去。然后设置一个Block去接一下回调的值。</p>
-
-      
-    </div>
-    <footer>
-      
-          
-<!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <span class="jiathis_txt">分享到：</span>
-  <a class="jiathis_button_weixin">微信</a>
-  <a class="jiathis_button_tsina">新浪微博</a>
-  <a class="jiathis_button_renren">人人网</a>
-  <a class="jiathis_button_qzone">QQ空间</a>
-  <a class="jiathis_button_douban">豆瓣</a>
-  <a class="jiathis_button_pocket">Pocket</a>
-  <a href="http://www.jiathis.com/share?uid=901656" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=901656" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-          <div class="clearfix"></div>
-          <nav id="pagination">
-  
-    <a href="/2015/04/06/关于http请求/" class="alignleft prev"><i class="fa fa-long-arrow-left"></i>Next</a>
-  
-  
-    <a href="/2015/03/06/Apachi在本地配置服务器 MAC专用/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
-  
-  <div class="clearfix"></div>
-</nav>
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-  <h1 class="title">Kommentare</h1>
-
-  
-      <!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread" data-thread-key="/2015/03/08/数据传递的三种方法：通知，代理，blcok/"></div>
-<!-- Duoshuo Comment END -->
-  
-</section>
-
-
-
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div>
-  
-  &copy; 2016 richard
-  
-</div>
-Powered by <a href="http://zespia.tw/hexo/" title="Hexo" target="_blank" rel="external">Hexo</a> and <a href="http://pages.github.com/" title="GitHub Pages" target="_blank" rel="external">GitHub Pages</a>
-
-<div class="clearfix"></div></footer>
-  
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
-
-
-
-    <script type="text/javascript">
-        (function(){
-
-            $(window).scroll(function(){
-
-                var scrollTop = $(window).scrollTop();
-                if ( scrollTop >200 ){
-                    $("#main-nav").removeClass('normal_mode').addClass('top_mode');
-                } else{
-                    $("#main-nav").removeClass('top_mode').addClass('normal_mode');
-                }
-
-            });
-
-        })();
-    </script>
-
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-  (function($){
-    $('.fancybox').fancybox({
-      'titlePosition': 'inside'
-    });
-  })(jQuery);
-  </script>
-
-
-
-    
-    <script type="text/javascript">
-      var duoshuoQuery = {short_name:"your_id"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = 'http://static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0] 
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-
-
-<script type="text/javascript">
-  
-  $(function(){
-
-    $('.title').hover(
-      function() {      
-        $(this).stop().animate(
-          {'marginLeft': '10px'}, 200
-        );   
-      }, 
-      function() {       
-        $(this).stop().animate({'marginLeft': '0px'}, 200);      
-      
-    });   
-
-  });
-
-</script>
-
-
-</body>
-</html>

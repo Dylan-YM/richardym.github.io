@@ -1,289 +1,40 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Swift中 core Foundation的运用 | richard&#39;s blog</title>
-  <meta name="author" content="richard">
-  
-  <meta name="description" content="Core Foundation#####Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Foundation 类型时，你也可以桥接一些 toll-free bridged Core Foundation 类型到 Swift 标准库类型。
-1.重定义类型
-当 Swift 导入 Core Foundation 类型时，编译器会重映射导入的类型名字。编译器会从每个类型名字的末端移除Ref，这是因为所有的 Swift 类都属于引用类型，因此后缀是多余的。
-Core Foundation 中的CFTypeRef类型会对Anyobject类型重映射。所以你以前使用的CFTypeRef，现在该换成AnyObject了。">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+extends base
 
-  <meta property="og:title" content="Swift中 core Foundation的运用"/>
-  <meta property="og:site_name" content="richard&#39;s blog"/>
+block title
+  title= page.title + " | " + config.title
 
-  
-    <meta property="og:image" content="undefined"/>
-  
+block main
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="richard&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-<link rel="stylesheet" href="/css/style.css">
-  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-368771XX-X']);
-  _gaq.push(['_trackPageview']);
+  // gallery that comes before the header
+  if page.photos
+     if page.photos.length
+      .article-gallery
+        .article-gallery-photos.container
+          for photo in page.photos
+            a.article-gallery-img.fancybox(href=url_for(photo), rel="gallery_" + page._id)
+              img(src=url_for(photo), itemprop="image")
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
+  .wrapper
+    .container.post-header
+      h1: = page.title
 
-</head>
-
-<body>
-  <header id="header" class='normal_mode'>
-    <nav id="main-nav">
-  <ul class='container'>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">目录</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-  </header>
-  <div id="content" class="container">
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-      <time datetime="2016-02-15T03:22:29.000Z"><a href="/2016/02/15/Swift中 core Foundation的运用/">Mon, Feb 15 2016, 11:22:29 am</a></time>
-
-  
-    <h1 class="title">Swift中 core Foundation的运用</h1>
-  
+  .wrapper
+    .container.meta
+      .post-time= page.date.format(config.date_format)
+      if (page.categories && page.categories.length)
+        .post-categories
+          != list_categories(page.categories, {show_count: false, class: 'post-category', style: 'none', separator: '>'})
+      if (page.tags && page.tags.length)
+        .post-tags
+          != list_tags(page.tags, {show_count: false, class: 'post-tag', style:'none', separator:'/'})
 
 
+  article
+    .container.post
+      != page.content
 
-  
-  <div class="tags">
-  	<i class="fa fa-tag"></i>
-    <a href="/tags/iOS，开发，swift/">iOS，开发，swift</a>
-  </div>
+    // comment system
+    .container
+      hr
+      include _partial/comments
 
-<div class="clear"></div>
-      
-    </header>
-    <div class="entry">
-      
-        <h2 id="Core-Foundation"><a href="#Core-Foundation" class="headerlink" title="Core Foundation"></a>Core Foundation</h2><p>#####Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Foundation 类型时，你也可以桥接一些 toll-free bridged Core Foundation 类型到 Swift 标准库类型。</p>
-<p>1.重定义类型</p>
-<p>当 Swift 导入 Core Foundation 类型时，编译器会重映射导入的类型名字。编译器会从每个类型名字的末端移除Ref，这是因为所有的 Swift 类都属于引用类型，因此后缀是多余的。</p>
-<p>Core Foundation 中的CFTypeRef类型会对Anyobject类型重映射。所以你以前使用的CFTypeRef，现在该换成AnyObject了。<br><a id="more"></a><br>2.内存管理对象</p>
-<p>在 Swift 中，从 annotated APIs 返回的 Core Foundation 对象能够自动进行内存管理–你不再需要调用自身的CFRetain，CFRelease，或者CFAutorelease函数。如果你从自身的C函数和 Objective-C 方法中返回一个 Core Foundation 对象，你需要用CF_RETURNS_RETAINED或者CF_RETURNS_NOT_RETAINED注释这个对象。当 Swift 代码中包含这些 APIs 时，编译器会在编译时自动调用内存管理。如果你只调用那些不会间接返回 Core Foundation 对象的 annotated APIs，那么现在你可以跳过本节的剩余部分了。否则，下面我们继续学习非托管的 Core Foundation 对象。</p>
-<p>3.非托管对象</p>
-<p>当 Swift 导入 unannotated 的APIs时，编译器将不会自动地对返回的 Core Foundation 对象进行内存管理托管。Swift 将这些返回的 Core Foundation 对象封闭在一个Unmanaged<t>结构中。那些间接返回 Core Foundation 的对象也是非托管的。举个例子，这里有一个 unannotated 的 C 函数:</t></p>
-<p>这里说明了Swift是怎么导入的:</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-529b451c7d6528cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unmanaged 为未被管理的类型"></p>
-<p>假设您从 unannotated APIs 接收了非托管的对象，在使用它之前，你必须将它转换为能够内存管理的对象。在这方面，Swift 可以帮你进行内存管理而不用自己动手。同时，Unmanaged<t>结构也提供了两个方法来把一个非托管对象转换为一个可内存管理的对象–takeUnretainedValue()方法和takeRetainedValue()方法。这两个方法会返回原始的，非封闭的对象类型。您可以根据您实际调用的APIs返回的unretained或retained的对象，来选择哪一方法更合适。</t></p>
-<p>比如，假设这里有一个 C 函数，这个函数在返回值前不会释放CFString对象。在使用这个对象前，您使用takeUnretainedValue()函数，以将它转换为一个能够内存管理托管的对象。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-40bf81a6ea664a9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unmanaged 未被管理"></p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> let firstName =  ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue()</div></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-32bc743c44817cb3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-6bb676ba42cc7dc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>这样的话 你就可以把这个属性转换成任意类型了。</p>
-<p>下边说一下ios9 新出的  ContactsUI 来代替  AddressBookUI<br>太简单了。这个就是面对对象来操作的。</p>
-<p>首先设置属性以及代理。以及遵守协议。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">viewController: <span class="built_in">UIViewController</span>,<span class="built_in">CNContactPickerDelegate</span> &#123;</div><div class="line"></div><div class="line">    override func viewDidLoad() &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line"></div><div class="line">        let vc = <span class="built_in">CNContactPickerViewController</span>()</div><div class="line">        vc.delegate = <span class="keyword">self</span></div><div class="line">        <span class="keyword">self</span>.presentViewController(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div></pre></td></tr></table></figure></p>
-<p>然后实现代理方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact) &#123;</div><div class="line">        </div><div class="line">        let name = contact.familyName</div><div class="line">        print(name)</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>contact 装的都是对象属性。<br>哪里不会点哪里</p>
-<pre><code>public var identifier: String { get }
-
- public var contactType: CNContactType { get }
-
- public var namePrefix: String { get }
- public var givenName: String { get }
- public var middleName: String { get }
- public var familyName: String { get }
- public var previousFamilyName: String { get }
- public var nameSuffix: String { get }
- public var nickname: String { get }
-
- public var phoneticGivenName: String { get }
- public var phoneticMiddleName: String { get }
- public var phoneticFamilyName: String { get }
-
- public var organizationName: String { get }
- public var departmentName: String { get }
- public var jobTitle: String { get }
-
- public var note: String { get }
-
- @NSCopying public var imageData: NSData? { get }
- @NSCopying public var thumbnailImageData: NSData? { get }
- @available(iOS 9.0, *)
- public var imageDataAvailable: Bool { get }
-
- public var phoneNumbers: [CNLabeledValue] { get }
- public var emailAddresses: [CNLabeledValue] { get }
- public var postalAddresses: [CNLabeledValue] { get }
- public var urlAddresses: [CNLabeledValue] { get }
- public var contactRelations: [CNLabeledValue] { get }
- public var socialProfiles: [CNLabeledValue] { get }
- public var instantMessageAddresses: [CNLabeledValue] { get }
-
- /*! The Gregorian birthday. */
- @NSCopying public var birthday: NSDateComponents? { get }
-
- /*! The alternate birthday (Lunisolar). */
- @NSCopying public var nonGregorianBirthday: NSDateComponents? { get }
-</code></pre><p>是不是比core foundation爽多了？？？</p>
-
-      
-    </div>
-    <footer>
-      
-          
-<!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <span class="jiathis_txt">分享到：</span>
-  <a class="jiathis_button_weixin">微信</a>
-  <a class="jiathis_button_tsina">新浪微博</a>
-  <a class="jiathis_button_renren">人人网</a>
-  <a class="jiathis_button_qzone">QQ空间</a>
-  <a class="jiathis_button_douban">豆瓣</a>
-  <a class="jiathis_button_pocket">Pocket</a>
-  <a href="http://www.jiathis.com/share?uid=901656" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=901656" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-          <div class="clearfix"></div>
-          <nav id="pagination">
-  
-  
-    <a href="/2016/02/15/覆盖(重写)，重构，重载的区别/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
-  
-  <div class="clearfix"></div>
-</nav>
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-  <h1 class="title">Kommentare</h1>
-
-  
-      <!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread" data-thread-key="/2016/02/15/Swift中 core Foundation的运用/"></div>
-<!-- Duoshuo Comment END -->
-  
-</section>
-
-
-
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div>
-  
-  &copy; 2016 richard
-  
-</div>
-Powered by <a href="http://zespia.tw/hexo/" title="Hexo" target="_blank" rel="external">Hexo</a> and <a href="http://pages.github.com/" title="GitHub Pages" target="_blank" rel="external">GitHub Pages</a>
-
-<div class="clearfix"></div></footer>
-  
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
-
-
-
-    <script type="text/javascript">
-        (function(){
-
-            $(window).scroll(function(){
-
-                var scrollTop = $(window).scrollTop();
-                if ( scrollTop >200 ){
-                    $("#main-nav").removeClass('normal_mode').addClass('top_mode');
-                } else{
-                    $("#main-nav").removeClass('top_mode').addClass('normal_mode');
-                }
-
-            });
-
-        })();
-    </script>
-
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-  (function($){
-    $('.fancybox').fancybox({
-      'titlePosition': 'inside'
-    });
-  })(jQuery);
-  </script>
-
-
-
-    
-    <script type="text/javascript">
-      var duoshuoQuery = {short_name:"your_id"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = 'http://static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0] 
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-
-
-<script type="text/javascript">
-  
-  $(function(){
-
-    $('.title').hover(
-      function() {      
-        $(this).stop().animate(
-          {'marginLeft': '10px'}, 200
-        );   
-      }, 
-      function() {       
-        $(this).stop().animate({'marginLeft': '0px'}, 200);      
-      
-    });   
-
-  });
-
-</script>
-
-
-</body>
-</html>

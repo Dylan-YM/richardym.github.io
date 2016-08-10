@@ -1,245 +1,40 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Swift中 覆盖(重写)，重构，重载的区别 | richard&#39;s blog</title>
-  <meta name="author" content="richard">
-  
-  <meta name="description" content="重构, 是对软计设计方法的描述, 这个层面是架构和设计方法。
-重构是一个软件维护的通用技巧, 重构的具体做法, 可以通过重写或者重载等, 但不限于此, 更改注释, 更改函数名类名等,都可以称之为重构。
-你今天写了一个应用, 读txt文档并显示, 几天后,用户的新需求来了, 告诉你, 我要读一个XML文本并显示, 这个时候, 你从前的代码需要做变更, 这个变更的动作, 就叫做重构。你维护的模块有个类叫做Class_B, 别人不爽, 觉得名字不好理解, 要你更改成TXTReader, 并附上注释。">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+extends base
 
-  <meta property="og:title" content="Swift中 覆盖(重写)，重构，重载的区别"/>
-  <meta property="og:site_name" content="richard&#39;s blog"/>
+block title
+  title= page.title + " | " + config.title
 
-  
-    <meta property="og:image" content="undefined"/>
-  
+block main
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="richard&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-<link rel="stylesheet" href="/css/style.css">
-  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-368771XX-X']);
-  _gaq.push(['_trackPageview']);
+  // gallery that comes before the header
+  if page.photos
+     if page.photos.length
+      .article-gallery
+        .article-gallery-photos.container
+          for photo in page.photos
+            a.article-gallery-img.fancybox(href=url_for(photo), rel="gallery_" + page._id)
+              img(src=url_for(photo), itemprop="image")
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
+  .wrapper
+    .container.post-header
+      h1: = page.title
 
-</head>
-
-<body>
-  <header id="header" class='normal_mode'>
-    <nav id="main-nav">
-  <ul class='container'>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">目录</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-  </header>
-  <div id="content" class="container">
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-      <time datetime="2016-02-15T03:22:29.000Z"><a href="/2016/02/15/覆盖(重写)，重构，重载的区别/">Mon, Feb 15 2016, 11:22:29 am</a></time>
-
-  
-    <h1 class="title">Swift中 覆盖(重写)，重构，重载的区别</h1>
-  
+  .wrapper
+    .container.meta
+      .post-time= page.date.format(config.date_format)
+      if (page.categories && page.categories.length)
+        .post-categories
+          != list_categories(page.categories, {show_count: false, class: 'post-category', style: 'none', separator: '>'})
+      if (page.tags && page.tags.length)
+        .post-tags
+          != list_tags(page.tags, {show_count: false, class: 'post-tag', style:'none', separator:'/'})
 
 
+  article
+    .container.post
+      != page.content
 
-  
-  <div class="tags">
-  	<i class="fa fa-tag"></i>
-    <a href="/tags/iOS，开发，swift/">iOS，开发，swift</a>
-  </div>
+    // comment system
+    .container
+      hr
+      include _partial/comments
 
-<div class="clear"></div>
-      
-    </header>
-    <div class="entry">
-      
-        <ul>
-<li>重构, 是对软计设计方法的描述, 这个层面是架构和设计方法。</li>
-<li>重构是一个软件维护的通用技巧, 重构的具体做法, 可以通过重写或者重载等, 但不限于此, 更改注释, 更改函数名类名等,都可以称之为重构。<blockquote>
-<p>你今天写了一个应用, 读txt文档并显示, 几天后,用户的新需求来了, 告诉你, 我要读一个XML文本并显示, 这个时候, 你从前的代码需要做变更, 这个变更的动作, 就叫做重构。<br>你维护的模块有个类叫做Class_B, 别人不爽, 觉得名字不好理解, 要你更改成TXTReader, 并附上注释。</p>
-<a id="more"></a></blockquote>
-</li>
-<li>覆盖(重写), 即override(Overwrite), 表达的都是一个含义。<blockquote>
-<p>父类的protect或者public方法无条件的成为子类的方法，但子类不爽， 想要将继承过来的方法改造一下。 这就是重写。<br>参数值，都是一模一样的。但内容体(方法中的代码)已经不同了。</p>
-</blockquote>
-</li>
-<li>重载(Overload)就是通过方法的参数识别不同的函数。<blockquote>
-<p>比如你有一个AMethod()不带参数, 然后你用了一个另外相同名称的方法,带一个参数AMethod(String para)。<br>这个过程就叫做重载。</p>
-</blockquote>
-</li>
-</ul>
-
-      
-    </div>
-    <footer>
-      
-          
-<!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <span class="jiathis_txt">分享到：</span>
-  <a class="jiathis_button_weixin">微信</a>
-  <a class="jiathis_button_tsina">新浪微博</a>
-  <a class="jiathis_button_renren">人人网</a>
-  <a class="jiathis_button_qzone">QQ空间</a>
-  <a class="jiathis_button_douban">豆瓣</a>
-  <a class="jiathis_button_pocket">Pocket</a>
-  <a href="http://www.jiathis.com/share?uid=901656" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=901656" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-          <div class="clearfix"></div>
-          <nav id="pagination">
-  
-    <a href="/2016/02/15/Swift中 core Foundation的运用/" class="alignleft prev"><i class="fa fa-long-arrow-left"></i>Next</a>
-  
-  
-    <a href="/2015/07/18/NSDictionary字典的使用以及注意/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
-  
-  <div class="clearfix"></div>
-</nav>
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-  <h1 class="title">Kommentare</h1>
-
-  
-      <!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread" data-thread-key="/2016/02/15/覆盖(重写)，重构，重载的区别/"></div>
-<!-- Duoshuo Comment END -->
-  
-</section>
-
-
-
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div>
-  
-  &copy; 2016 richard
-  
-</div>
-Powered by <a href="http://zespia.tw/hexo/" title="Hexo" target="_blank" rel="external">Hexo</a> and <a href="http://pages.github.com/" title="GitHub Pages" target="_blank" rel="external">GitHub Pages</a>
-
-<div class="clearfix"></div></footer>
-  
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
-
-
-
-    <script type="text/javascript">
-        (function(){
-
-            $(window).scroll(function(){
-
-                var scrollTop = $(window).scrollTop();
-                if ( scrollTop >200 ){
-                    $("#main-nav").removeClass('normal_mode').addClass('top_mode');
-                } else{
-                    $("#main-nav").removeClass('top_mode').addClass('normal_mode');
-                }
-
-            });
-
-        })();
-    </script>
-
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-  (function($){
-    $('.fancybox').fancybox({
-      'titlePosition': 'inside'
-    });
-  })(jQuery);
-  </script>
-
-
-
-    
-    <script type="text/javascript">
-      var duoshuoQuery = {short_name:"your_id"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = 'http://static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0] 
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-
-
-<script type="text/javascript">
-  
-  $(function(){
-
-    $('.title').hover(
-      function() {      
-        $(this).stop().animate(
-          {'marginLeft': '10px'}, 200
-        );   
-      }, 
-      function() {       
-        $(this).stop().animate({'marginLeft': '0px'}, 200);      
-      
-    });   
-
-  });
-
-</script>
-
-
-</body>
-</html>

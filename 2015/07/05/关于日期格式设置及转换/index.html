@@ -1,240 +1,40 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>关于日期格式设置及转换 | richard&#39;s blog</title>
-  <meta name="author" content="richard">
-  
-  <meta name="description" content="总结一下关于日期格式的问题汇总。
-####1.把字符串转化为任意日期时间格式123456789//将要转换的字符串 NSString* string = @&quot;20160512134106&quot;;    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init] ;//将要显示日期的时区。    [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@&quot;en_US&quot;] ];//显示日期的格式。    [inputFormatter setDateFormat:@&quot;yyyyMMddHHmmss&quot;];    NSDate* inputDate = [inputFormatter dateFromString:string];    NSLog(@&quot;date = %@&quot;, inputDate);
+extends base
 
-####连接到上面的代码">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+block title
+  title= page.title + " | " + config.title
 
-  <meta property="og:title" content="关于日期格式设置及转换"/>
-  <meta property="og:site_name" content="richard&#39;s blog"/>
+block main
 
-  
-    <meta property="og:image" content="undefined"/>
-  
+  // gallery that comes before the header
+  if page.photos
+     if page.photos.length
+      .article-gallery
+        .article-gallery-photos.container
+          for photo in page.photos
+            a.article-gallery-img.fancybox(href=url_for(photo), rel="gallery_" + page._id)
+              img(src=url_for(photo), itemprop="image")
 
-  <link href="/favicon.ico" rel="icon">
-  <link rel="alternate" href="/atom.xml" title="richard&#39;s blog" type="application/atom+xml">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-<link rel="stylesheet" href="/css/style.css">
-  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-368771XX-X']);
-  _gaq.push(['_trackPageview']);
+  .wrapper
+    .container.post-header
+      h1: = page.title
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-</head>
-
-<body>
-  <header id="header" class='normal_mode'>
-    <nav id="main-nav">
-  <ul class='container'>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">目录</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-  </header>
-  <div id="content" class="container">
-    <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-      <time datetime="2015-07-05T06:13:29.000Z"><a href="/2015/07/05/关于日期格式设置及转换/">Sun, Jul 5 2015, 2:13:29 pm</a></time>
-
-  
-    <h1 class="title">关于日期格式设置及转换</h1>
-  
+  .wrapper
+    .container.meta
+      .post-time= page.date.format(config.date_format)
+      if (page.categories && page.categories.length)
+        .post-categories
+          != list_categories(page.categories, {show_count: false, class: 'post-category', style: 'none', separator: '>'})
+      if (page.tags && page.tags.length)
+        .post-tags
+          != list_tags(page.tags, {show_count: false, class: 'post-tag', style:'none', separator:'/'})
 
 
+  article
+    .container.post
+      != page.content
 
-  
-  <div class="tags">
-  	<i class="fa fa-tag"></i>
-    <a href="/tags/iOS，开发/">iOS，开发</a>
-  </div>
+    // comment system
+    .container
+      hr
+      include _partial/comments
 
-<div class="clear"></div>
-      
-    </header>
-    <div class="entry">
-      
-        <p>总结一下关于日期格式的问题汇总。</p>
-<p>####1.把字符串转化为任意日期时间格式<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将要转换的字符串</span></div><div class="line"> <span class="built_in">NSString</span>* string = <span class="string">@"20160512134106"</span>;</div><div class="line">    <span class="built_in">NSDateFormatter</span> *inputFormatter = [[<span class="built_in">NSDateFormatter</span> alloc] init] ;</div><div class="line"><span class="comment">//将要显示日期的时区。</span></div><div class="line">    [inputFormatter setLocale:[[<span class="built_in">NSLocale</span> alloc] initWithLocaleIdentifier:<span class="string">@"en_US"</span>] ];</div><div class="line"><span class="comment">//显示日期的格式。</span></div><div class="line">    [inputFormatter setDateFormat:<span class="string">@"yyyyMMddHHmmss"</span>];</div><div class="line">    <span class="built_in">NSDate</span>* inputDate = [inputFormatter dateFromString:string];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"date = %@"</span>, inputDate);</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-3517069646bac263.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>####连接到上面的代码<br><a id="more"></a><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    <span class="built_in">NSDateFormatter</span> *outputFormatter = [[<span class="built_in">NSDateFormatter</span> alloc] init];</div><div class="line"><span class="comment">//当前的时区</span></div><div class="line">    [outputFormatter setLocale:[<span class="built_in">NSLocale</span> currentLocale]];</div><div class="line"><span class="comment">//设置格式</span></div><div class="line">    [outputFormatter setDateFormat:<span class="string">@"yyyy年MM月dd日 HH时mm分ss秒"</span>];</div><div class="line">    <span class="built_in">NSString</span> *str = [outputFormatter stringFromDate:inputDate];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"testDate:%@"</span>, str);</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-d61668c0a2f686c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>####2.关于NSDateFormatter的格式<br>    G: 公元时代，例如AD公元<br>    yy: 年的后2位<br>    yyyy: 完整年<br>    MM: 月，显示为1-12<br>    MMM: 月，显示为英文月份简写,如 Jan<br>    MMMM: 月，显示为英文月份全称，如 Janualy<br>    dd: 日，2位数表示，如02<br>    d: 日，1-2位显示，如 2<br>    EEE: 简写星期几，如Sun<br>    EEEE: 全写星期几，如Sunday<br>    aa: 上下午，AM/PM<br>    H: 时，24小时制，0-23<br>    K：时，12小时制，0-11<br>    m: 分，1-2位<br>    mm: 分，2位<br>    s: 秒，1-2位<br>    ss: 秒，2位<br>    S: 毫秒</p>
-<p>常用日期结构：<br>yyyy-MM-dd HH:mm:ss.SSS<br>yyyy-MM-dd HH:mm:ss<br>yyyy-MM-dd<br>MM dd yyyy</p>
-<p>####3.设置时间延长。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//设置延时的时间</span></div><div class="line">meInterval secondsPerDay = <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span>;</div><div class="line"></div><div class="line"><span class="comment">//设置以时间去创建</span></div><div class="line">  <span class="built_in">NSDate</span> * data = [[<span class="built_in">NSDate</span> alloc]initWithTimeIntervalSinceNow:-secondsPerDay];</div><div class="line">    </div><div class="line">    <span class="built_in">NSDateFormatter</span> *outputFormatter = [[<span class="built_in">NSDateFormatter</span> alloc] init];</div><div class="line">        [outputFormatter setLocale:[<span class="built_in">NSLocale</span> currentLocale]];</div><div class="line">        [outputFormatter setDateFormat:<span class="string">@"yyyy年MM月dd日 HH时mm分ss秒"</span>];</div><div class="line"> <span class="built_in">NSString</span> *str = [outputFormatter stringFromDate:data];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,str);</div></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-3224874d3d22b18b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="现在的时间"><br><img src="http://upload-images.jianshu.io/upload_images/1954780-74e4c0865185e6af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=" 显示的时间"></p>
-
-      
-    </div>
-    <footer>
-      
-          
-<!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <span class="jiathis_txt">分享到：</span>
-  <a class="jiathis_button_weixin">微信</a>
-  <a class="jiathis_button_tsina">新浪微博</a>
-  <a class="jiathis_button_renren">人人网</a>
-  <a class="jiathis_button_qzone">QQ空间</a>
-  <a class="jiathis_button_douban">豆瓣</a>
-  <a class="jiathis_button_pocket">Pocket</a>
-  <a href="http://www.jiathis.com/share?uid=901656" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=901656" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-          <div class="clearfix"></div>
-          <nav id="pagination">
-  
-    <a href="/2015/07/18/NSDictionary字典的使用以及注意/" class="alignleft prev"><i class="fa fa-long-arrow-left"></i>Next</a>
-  
-  
-    <a href="/2015/05/16/OC多线程GCD以及NSoperation/" class="alignright next">Prev<i class="fa fa-long-arrow-right"></i></a>
-  
-  <div class="clearfix"></div>
-</nav>
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-  <h1 class="title">Kommentare</h1>
-
-  
-      <!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread" data-thread-key="/2015/07/05/关于日期格式设置及转换/"></div>
-<!-- Duoshuo Comment END -->
-  
-</section>
-
-
-
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div>
-  
-  &copy; 2016 richard
-  
-</div>
-Powered by <a href="http://zespia.tw/hexo/" title="Hexo" target="_blank" rel="external">Hexo</a> and <a href="http://pages.github.com/" title="GitHub Pages" target="_blank" rel="external">GitHub Pages</a>
-
-<div class="clearfix"></div></footer>
-  
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-
-
-
-
-    <script type="text/javascript">
-        (function(){
-
-            $(window).scroll(function(){
-
-                var scrollTop = $(window).scrollTop();
-                if ( scrollTop >200 ){
-                    $("#main-nav").removeClass('normal_mode').addClass('top_mode');
-                } else{
-                    $("#main-nav").removeClass('top_mode').addClass('normal_mode');
-                }
-
-            });
-
-        })();
-    </script>
-
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript">
-  (function($){
-    $('.fancybox').fancybox({
-      'titlePosition': 'inside'
-    });
-  })(jQuery);
-  </script>
-
-
-
-    
-    <script type="text/javascript">
-      var duoshuoQuery = {short_name:"your_id"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = 'http://static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0] 
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-
-
-<script type="text/javascript">
-  
-  $(function(){
-
-    $('.title').hover(
-      function() {      
-        $(this).stop().animate(
-          {'marginLeft': '10px'}, 200
-        );   
-      }, 
-      function() {       
-        $(this).stop().animate({'marginLeft': '0px'}, 200);      
-      
-    });   
-
-  });
-
-</script>
-
-
-</body>
-</html>
