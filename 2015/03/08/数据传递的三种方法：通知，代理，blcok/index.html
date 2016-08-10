@@ -9,7 +9,9 @@
   <meta name="description" content="Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。
 block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。
 数据传递有三种方法:通知，代理，block.
-而对于通知代理block的选择1）">
+而对于通知代理block的选择1）如果数据传递两个对象没有联系。选择通知。
+2）如果两个对象有联系的话，三个都可以。
+3）能用代理的地方 一定也可以用block去代替。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -98,8 +100,7 @@ block其实是一个代码块，block本身也可以被作为参数在方法和�
 <p>数据传递有三种方法:通知，代理，block.</p>
 <p>而对于通知代理block的选择<br>1）如果数据传递两个对象没有联系。选择通知。</p>
 <p>2）如果两个对象有联系的话，三个都可以。</p>
-<p>3）能用代理的地方 一定也可以用block去代替。</p>
-<p>首先说一下通知。</p>
+<p>3）能用代理的地方 一定也可以用block去代替。<br><a id="more"></a><br>首先说一下通知。</p>
 <p>通知 有三个属性。一个是通知的名称name。 通知的发布者object.一个是通知要传递的数据useInfo(可以为nil)。</p>
 <p>发布通知的方法：<br>一般用 [NSNotificationCenter defaultCenter] 方法来创建通知中心通知中心(NSNotificationCenter)提供了相应的方法来帮助发布通知<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)postNotification:(NSNotification*)notification;</div></pre></td></tr></table></figure></p>
 <p>发布一个notification通知，可在notification对象中设置通知的名称、通知发布者、额外信息等<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)postNotificationName:(NSString*)aName object:(id)anObject;</div></pre></td></tr></table></figure></p>

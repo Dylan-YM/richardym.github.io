@@ -10,7 +10,14 @@
 ###1.HTTP请求。
 
 一般请求采用restful 设计风格：采用相同url 不同的http 实现不同的功能。
-利用不同请求，实现了 增/删/改/查的">
+利用不同请求，实现了 增/删/改/查的功能。
+PUT       增    在服务器新增123的信息
+DELETE 删
+POST     改
+GET       查
+HEAD 获取文件的大小。
+Range 这个可以解决断点续传。####！一般开发中，后台将post方法 替代Put和delete.
+http内部走的是socket/ (tcp/ip)。 默认情况下，tcp / ip 是一个‘长连接’。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -105,8 +112,7 @@
 <li>GET       查</li>
 <li>HEAD 获取文件的大小。</li>
 <li>Range 这个可以解决断点续传。<br>####！一般开发中，后台将post方法 替代Put和delete.</li>
-<li><p>http内部走的是socket/ (tcp/ip)。 默认情况下，tcp / ip 是一个‘长连接’。</p>
-</li>
+<li>http内部走的是socket/ (tcp/ip)。 默认情况下，tcp / ip 是一个‘长连接’。<a id="more"></a></li>
 <li><p>长连接：与服务器建立连接之后，就不会自动断开。聊天/推送 心跳包。是保证持续连接的持续。</p>
 </li>
 <li><p>短连接：一次连接，服务器只处理一个请求。然后自动断开连接。</p>

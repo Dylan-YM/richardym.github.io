@@ -7,7 +7,7 @@
   <meta name="author" content="richard">
   
   <meta name="description" content="使用xcode自带的代理方法。
-12345678910111213141516171819代理方法：//这个是开始下载时 调用的方法。- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse ">
+12345678910111213141516171819代理方法：//这个是开始下载时 调用的方法。- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response//这个也是每次都在调用的方法。data(代表每次下载的数据大小)- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data//这个方法是在下载时一直会调用的。这里有三个参数。bytesWritten（代表本次下载下载了多少）totalBytesWritten（代表已经下载了多少）totalBytesExpectedToWrite（代表文件总大小是多少）- (void)connection:(NSURLConnection *)connection   didSendBodyData:(NSInteger)bytesWritten                                                 totalBytesWritten:(NSInteger)totalBytesWritten                                         totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;//这个方法在下载完成后 会自动调用。connection（这个参数是下完完成后 文件的路径）- (void)connectionDidFinishLoading:(NSURLConnection *)connection;">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -93,7 +93,7 @@
       
         <p>使用xcode自带的代理方法。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">代理方法：</div><div class="line">//这个是开始下载时 调用的方法。</div><div class="line">- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response</div><div class="line">//这个也是每次都在调用的方法。</div><div class="line">data(代表每次下载的数据大小)</div><div class="line">- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data</div><div class="line"></div><div class="line">//这个方法是在下载时一直会调用的。这里有三个参数。</div><div class="line">bytesWritten（代表本次下载下载了多少）</div><div class="line">totalBytesWritten（代表已经下载了多少）</div><div class="line">totalBytesExpectedToWrite（代表文件总大小是多少）</div><div class="line">- (void)connection:(NSURLConnection *)connection   didSendBodyData:(NSInteger)bytesWritten</div><div class="line">                                                 totalBytesWritten:</div><div class="line">(NSInteger)totalBytesWritten</div><div class="line">                                         totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite;</div><div class="line"></div><div class="line">//这个方法在下载完成后 会自动调用。</div><div class="line">connection（这个参数是下完完成后 文件的路径）</div><div class="line">- (void)connectionDidFinishLoading:(NSURLConnection *)connection;</div></pre></td></tr></table></figure>
-<p>&lt;!— more –&gt;</p>
+<a id="more"></a>
 <p>###1.使用NSUrlContionDownloadDelegate.</p>
 <p> 1）内存不会暴涨 但是找不到下载完毕之后的文件。<br> 2）可以直接显示下载进度。</p>
 <p>###2.使用NSUrlconnectionDataDelegate.<br>  直接设置NSMutableData属性来接受下载完毕的数据 .<br>  1）内存依然“暴涨”：相当于还是先将整个文件下载到内存中 然后在写入沙盒中<br>  2) 无法直接显示下载进度。需要手动计算。</p>

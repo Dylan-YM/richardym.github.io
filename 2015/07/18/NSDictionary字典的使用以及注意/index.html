@@ -9,7 +9,8 @@
   <meta name="description" content="字典：NSDictionary字典就是关键字及其定义（描述）的集合。
 
 Cocoa中的实现字典的集合NSDictionary在给定的关键字（key）下存储一个数值（value）。然后你就可以用这个关键字来查找相应的数值。
-字典（也被称为散列表或关联数组）使用的是键查询的优化存储方式。它可以立即找出要">
+字典（也被称为散列表或关联数组）使用的是键查询的优化存储方式。它可以立即找出要查询的数据，而不需要遍历整个数组进行查找。
+!注意字典是无序的。数组是有序的。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -97,7 +98,9 @@ Cocoa中的实现字典的集合NSDictionary在给定的关键字（key）下存
 <ul>
 <li>Cocoa中的实现字典的集合NSDictionary在给定的关键字（key）下存储一个数值（value）。然后你就可以用这个关键字来查找相应的数值。</li>
 <li>字典（也被称为散列表或关联数组）使用的是键查询的优化存储方式。它可以立即找出要查询的数据，而不需要遍历整个数组进行查找。</li>
-<li>!注意字典是无序的。数组是有序的。<blockquote>
+<li>!注意字典是无序的。数组是有序的。</li>
+<li><a id="more"></a>
+<blockquote>
 <p>!!!!（因为做项目基本数据都会从数据库获取，所以会存在字典为空 或者有字典 但是value 为nil的情况。所以想要获取字典中的值中，就要首先判断。否则会崩溃）<br>!!!!不要判断字典是否存在。<br>!!!!当向nil发送消息时，返回NO，不会有异常，程序将继续执行下去；<br>而向NSNull的对象发送消息时会收到异常。<br>因为在NSArray和NSDictionary中nil中有特殊的含义（表示列表结束），所以不能在集合中放入nil值。如要确实需要存储一个表示“什么都没有”的值，可以使用NSNull类。<br>exam:<br><img src="http://upload-images.jianshu.io/upload_images/1954780-493c5733fb8b812b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>最后我是这样判断的。<br>//前边判断 是否有字典。 后边判断字典里是否有值。<br><img src="http://upload-images.jianshu.io/upload_images/1954780-5bd2b7be372c51ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
 </blockquote>
 </li>
