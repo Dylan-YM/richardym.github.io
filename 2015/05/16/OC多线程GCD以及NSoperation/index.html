@@ -116,22 +116,22 @@
 </li>
 </ul>
 <p>2.并发队列。<br> GCD默认已经提供了全局的并发队列，供整个应用使用，不需要手动创建</p>
-<p>使用dispatch_get_global_queue函数获得全局的并发队列<br>// 此参数暂时无用，用0即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dispatch_queue_t dispatch_get_global_queue(dispatch_queue_priority_t priority,unsigned long flags);</div></pre></td></tr></table></figure></p>
+<p>使用dispatch_get_global_queue函数获得全局的并发队列<br>// 此参数暂时无用，用0即可。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> dispatch_get_global_queue(dispatch_queue_priority_t priority,<span class="keyword">unsigned</span> <span class="keyword">long</span> flags);</div></pre></td></tr></table></figure></p>
 <p>GCD 小结： </p>
 <blockquote>
 <p>其实多线程就是在多个线程之间快速做“切换”的操作（在线程调度池里执行任务）。<br>线程里有个属性是优先级。这个属性决定的是线程有更多的机会去调用。并不是决定任务的先后顺序。<br>而且注意！！！！开发中 一定不要取修改优先级。否则会出现很多你想不到的错误。<br>不能把同步任务加入到主队列中。否则会出现同步锁现象。</p>
 </blockquote>
 <p> ###8.NSoperation的基础使用。</p>
 <ul>
-<li>并发数<br>（1）并发数:同时执⾏行的任务数.比如,同时开3个线程执行3个任务,并发数就是3<br>（2）最大并发数：同一时间最多只能执行的任务的个数。<br>（3）最⼤大并发数的相关⽅方法<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(NSInteger)maxConcurrentOperationCount;- (void)setMaxConcurrentOperationCount:(NSInteger)cnt;</div></pre></td></tr></table></figure>
+<li>并发数<br>（1）并发数:同时执⾏行的任务数.比如,同时开3个线程执行3个任务,并发数就是3<br>（2）最大并发数：同一时间最多只能执行的任务的个数。<br>（3）最⼤大并发数的相关⽅方法<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">NSInteger</span>)maxConcurrentOperationCount;- (<span class="keyword">void</span>)setMaxConcurrentOperationCount:(<span class="built_in">NSInteger</span>)cnt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>说明：如果没有设置最大并发数，那么并发的个数是由系统内存和CPU决定的，可能内存多久开多一点，内存少就开少一点。<br>注意：num的值并不代表线程的个数，仅仅代表线程的ID。<br>提示：最大并发数不要乱写（5以内），不要开太多，一般以2~3为宜，因为虽然任务是在子线程进行处理的，但是cpu处理这些过多的子线程可能会影响UI，让UI变卡。</p>
 <ul>
-<li>队列的取消，暂停和恢复<br>1）取消队列的所有操作<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> - (void)cancelAllOperations;</div><div class="line">提⽰:也可以调用NSOperation的- (void)cancel⽅法取消单个操作</div></pre></td></tr></table></figure>
+<li>队列的取消，暂停和恢复<br>1）取消队列的所有操作<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> - (<span class="keyword">void</span>)cancelAllOperations;</div><div class="line">提⽰:也可以调用<span class="built_in">NSOperation</span>的- (<span class="keyword">void</span>)cancel⽅法取消单个操作</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>（2）暂停和恢复队列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(void)setSuspended:(BOOL)b; // YES代表暂停队列,NO代表恢复队列</div><div class="line">-(BOOL)isSuspended; //当前状态</div></pre></td></tr></table></figure></p>
+<p>（2）暂停和恢复队列<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)setSuspended:(<span class="built_in">BOOL</span>)b; <span class="comment">// YES代表暂停队列,NO代表恢复队列</span></div><div class="line">-(<span class="built_in">BOOL</span>)isSuspended; <span class="comment">//当前状态</span></div></pre></td></tr></table></figure></p>
 <p>（3）暂停和恢复的适用场合：在tableview界面，开线程下载远程的网络界面，对UI会有影响，使用户体验变差。那么这种情况，就可以设置在用户操作UI（如滚动屏幕）的时候，暂停队列（不是取消队列），停止滚动的时候，恢复队列。</p>
 <p>NSOperation 小结：</p>
 <blockquote>
