@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="richard" />
+
+
+
+<meta name="description" content="首先讲一下关于线程的基础知识。
+1.什么是进程？进程是指在系统中正在运行的一个应用程序每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。
+2.什么是线程？1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OC多线程GCD以及NSoperation">
+<meta property="og:url" content="http://yoursite.com/blog/2015/05/16/NSoperation&GCD.html">
+<meta property="og:site_name" content="richard's blog">
+<meta property="og:description" content="首先讲一下关于线程的基础知识。
+1.什么是进程？进程是指在系统中正在运行的一个应用程序每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。
+2.什么是线程？1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。">
+<meta property="og:updated_time" content="2016-08-11T02:51:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OC多线程GCD以及NSoperation">
+<meta name="twitter:description" content="首先讲一下关于线程的基础知识。
+1.什么是进程？进程是指在系统中正在运行的一个应用程序每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。
+2.什么是线程？1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="richard&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>OC多线程GCD以及NSoperation | richard&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">richard</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:ym_302@163.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="http://weibo.com/u/3176570100?refer_flag=1001030102_" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/users/ee84d859d5f0/latest_articles" title="简书"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/下载/">下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发/">开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/请求/">请求</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱生活,爱唱歌,爱旅游的iOS开发者。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">richard</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">richard</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:ym_302@163.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/3176570100?refer_flag=1001030102_" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/users/ee84d859d5f0/latest_articles" title="简书"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-OC多线程GCD以及NSoperation" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2015/05/16/NSoperation&GCD.html" class="article-date">
+      <time datetime="2015-05-16T02:13:29.000Z" itemprop="datePublished">2015-05-16</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      OC多线程GCD以及NSoperation
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发/">开发</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>首先讲一下关于线程的基础知识。</p>
+<h3 id="1-什么是进程？"><a href="#1-什么是进程？" class="headerlink" title="1.什么是进程？"></a>1.什么是进程？</h3><p>进程是指在系统中正在运行的一个应用程序<br>每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。</p>
+<h3 id="2-什么是线程？"><a href="#2-什么是线程？" class="headerlink" title="2.什么是线程？"></a>2.什么是线程？</h3><p>1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。<br><a id="more"></a></p>
+<h3 id="4-多线程的原理。"><a href="#4-多线程的原理。" class="headerlink" title="4.多线程的原理。"></a>4.多线程的原理。</h3><p>同一时间，CPU只能处理1条线程，只有1条线程在工作（执行）多线程并发（同时）执行，其实是CPU快速地在多条线程之间调度（切换）如果CPU调度线程的时间足够快，就造成了多线程并发执行的假象思考：如果线程非常非常多，会发生什么情况？CPU会在N多线程之间调度，CPU会累死，消耗大量的CPU资源每条线程被调度执行的频次会降低（线程的执行效率降低）</p>
+<h3 id="4-多线程的优缺点。"><a href="#4-多线程的优缺点。" class="headerlink" title="4.多线程的优缺点。"></a>4.多线程的优缺点。</h3><p>多线程的优点<br>能适当提高程序的执行效率<br>能适当提高资源利用率（CPU、内存利用率）</p>
+<p>多线程的缺点<br>开启线程需要占用一定的内存空间（默认情况下，主线程占用1M，子线程占用512KB），如果开启大量的线程，会占用大量的内存空间，降低程序的性能<br>线程越多，CPU在调度线程上的开销就越大<br>程序设计更加复杂：比如线程之间的通信、多线程的数据共享</p>
+<h3 id="5-线程中的属性。"><a href="#5-线程中的属性。" class="headerlink" title="5.线程中的属性。"></a>5.线程中的属性。</h3><p>线程中有4个最主要的名词。</p>
+<ul>
+<li>同步任务：同步：在当前线程中执行任务，不具备开启新线程的能力。</li>
+<li>异步任务：在新的线程中执行任务，具备开启新线程的能力。<br>并发和串行决定了任务的执行方式</li>
+<li>并发队列：多个任务并发（同时）执行。</li>
+<li>串行队列：一个任务执行完毕后，再执行下一个任务。<br>而主队列是特殊的串行队列。<br>全局队列是特殊的并发队列。<h3 id="6-GCD的基础使用。"><a href="#6-GCD的基础使用。" class="headerlink" title="6.GCD的基础使用。"></a>6.GCD的基础使用。</h3></li>
+</ul>
+<p>1.串行队列。</p>
+<ul>
+<li><p>使用dispatch_queue_create函数创建串行队列</p>
+<blockquote>
+<p> // 队列名称， 队列属性，一般用NULL即可<br>dispatch_queue_t  dispatch_queue_create(const char *label,  dispatch_queue_attr_t attr);</p>
+</blockquote>
+</li>
+<li><p>使用 使用主队列（跟主线程相关联的队列）</p>
+<blockquote>
+<p>主队列是GCD自带的一种特殊的串行队列,放在主队列中的任务，都会放到主线程中执行<br>使用dispatch_get_main_queue()获得主队列</p>
+</blockquote>
+</li>
+</ul>
+<p>2.并发队列。<br> GCD默认已经提供了全局的并发队列，供整个应用使用，不需要手动创建</p>
+<p>使用dispatch_get_global_queue函数获得全局的并发队列<br>// 此参数暂时无用，用0即可。<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">dispatch_queue_t</span> dispatch_get_global_queue(dispatch_queue_priority_t priority,<span class="keyword">unsigned</span> <span class="keyword">long</span> flags);</div></pre></td></tr></table></figure></p>
+<p>GCD 小结： </p>
+<blockquote>
+<p>其实多线程就是在多个线程之间快速做“切换”的操作（在线程调度池里执行任务）。<br>线程里有个属性是优先级。这个属性决定的是线程有更多的机会去调用。并不是决定任务的先后顺序。<br>而且注意！！！！开发中 一定不要取修改优先级。否则会出现很多你想不到的错误。<br>不能把同步任务加入到主队列中。否则会出现同步锁现象。</p>
+</blockquote>
+<h3 id="7-NSoperation的基础使用。"><a href="#7-NSoperation的基础使用。" class="headerlink" title="7.NSoperation的基础使用。"></a>7.NSoperation的基础使用。</h3><ul>
+<li>并发数<br>（1）并发数:同时执⾏行的任务数.比如,同时开3个线程执行3个任务,并发数就是3<br>（2）最大并发数：同一时间最多只能执行的任务的个数。<br>（3）最⼤大并发数的相关⽅方法<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">NSInteger</span>)maxConcurrentOperationCount;- (<span class="keyword">void</span>)setMaxConcurrentOperationCount:(<span class="built_in">NSInteger</span>)cnt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>说明：如果没有设置最大并发数，那么并发的个数是由系统内存和CPU决定的，可能内存多久开多一点，内存少就开少一点。<br>注意：num的值并不代表线程的个数，仅仅代表线程的ID。<br>提示：最大并发数不要乱写（5以内），不要开太多，一般以2~3为宜，因为虽然任务是在子线程进行处理的，但是cpu处理这些过多的子线程可能会影响UI，让UI变卡。</p>
+<ul>
+<li>队列的取消，暂停和恢复<br>1）取消队列的所有操作<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> - (<span class="keyword">void</span>)cancelAllOperations;</div><div class="line">提⽰:也可以调用<span class="built_in">NSOperation</span>的- (<span class="keyword">void</span>)cancel⽅法取消单个操作</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>（2）暂停和恢复队列<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)setSuspended:(<span class="built_in">BOOL</span>)b; <span class="comment">// YES代表暂停队列,NO代表恢复队列</span></div><div class="line">-(<span class="built_in">BOOL</span>)isSuspended; <span class="comment">//当前状态</span></div></pre></td></tr></table></figure></p>
+<p>（3）暂停和恢复的适用场合：在tableview界面，开线程下载远程的网络界面，对UI会有影响，使用户体验变差。那么这种情况，就可以设置在用户操作UI（如滚动屏幕）的时候，暂停队列（不是取消队列），停止滚动的时候，恢复队列。</p>
+<p>NSOperation 小结：</p>
+<blockquote>
+<p>GCD和NSOperation 都各有各的好处。<br>GCD能够开多个线程 但是并不能管理。<br>但是NSOperation 可以管理线程。还可以设置最大操作并发数。<br>而GCD可以使用延时方法 after 和sleep 还有一次性once方法 创建单例对象。<br>根据你所需要的去选择恰当的方法。</p>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/blog/2015/07/05/dateFormatter.html">
+                    关于日期格式设置及转换
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/blog/2015/04/24/downLoad.html">
+                    关于文件下载
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-什么是进程？"><span class="toc-number">1.</span> <span class="toc-text">1.什么是进程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-什么是线程？"><span class="toc-number">2.</span> <span class="toc-text">2.什么是线程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-多线程的原理。"><span class="toc-number">3.</span> <span class="toc-text">4.多线程的原理。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-多线程的优缺点。"><span class="toc-number">4.</span> <span class="toc-text">4.多线程的优缺点。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-线程中的属性。"><span class="toc-number">5.</span> <span class="toc-text">5.线程中的属性。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-GCD的基础使用。"><span class="toc-number">6.</span> <span class="toc-text">6.GCD的基础使用。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-NSoperation的基础使用。"><span class="toc-number">7.</span> <span class="toc-text">7.NSoperation的基础使用。</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"OC多线程GCD以及NSoperation　| richard's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="blog/2015/05/16/NSoperation&amp;GCD.html" data-title="OC多线程GCD以及NSoperation" data-url="http://yoursite.com/blog/2015/05/16/NSoperation&amp;GCD.html"></div>
+    <script>
+        var duoshuoQuery = {short_name:"richard-yu"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/blog/2015/07/05/dateFormatter.html" title="Pre: 关于日期格式设置及转换">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/blog/2015/04/24/downLoad.html" title="Next: 关于文件下载">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2016/02/15/coreFoundation.html">Swift中 core Foundation的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2016/02/15/overLoad.html">Swift中 覆盖(重写)，重构，重载的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/08/13/cocoPod.html">cocoaPod的安装，删除以及基本使用</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/07/18/NSDictionary.html">NSDictionary字典的使用以及注意</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/07/05/dateFormatter.html">关于日期格式设置及转换</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/05/16/NSoperation&GCD.html">OC多线程GCD以及NSoperation</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/04/24/downLoad.html">关于文件下载</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/04/06/request.html">关于http请求</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/03/08/null.html">数据传递的三种方法：通知，代理，blcok</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/03/06/Apachi.html">Apachi在本地配置服务器 MAC专用</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2014-2016 richard
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

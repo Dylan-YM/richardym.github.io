@@ -5,14 +5,11 @@
     
     <entry>
       <title><![CDATA[Swift中 core Foundation的运用]]></title>
-      <url>http://yoursite.com/2016/02/15/Swift%E4%B8%AD%20core%20Foundation%E7%9A%84%E8%BF%90%E7%94%A8/</url>
-      <content type="html"><![CDATA[<h2 id="Core-Foundation"><a href="#Core-Foundation" class="headerlink" title="Core Foundation"></a>Core Foundation</h2><p>#####Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Foundation 类型时，你也可以桥接一些 toll-free bridged Core Foundation 类型到 Swift 标准库类型。</p>
-<p>1.重定义类型</p>
-<p>当 Swift 导入 Core Foundation 类型时，编译器会重映射导入的类型名字。编译器会从每个类型名字的末端移除Ref，这是因为所有的 Swift 类都属于引用类型，因此后缀是多余的。</p>
-<p>Core Foundation 中的CFTypeRef类型会对Anyobject类型重映射。所以你以前使用的CFTypeRef，现在该换成AnyObject了。<br><a id="more"></a><br>2.内存管理对象</p>
-<p>在 Swift 中，从 annotated APIs 返回的 Core Foundation 对象能够自动进行内存管理–你不再需要调用自身的CFRetain，CFRelease，或者CFAutorelease函数。如果你从自身的C函数和 Objective-C 方法中返回一个 Core Foundation 对象，你需要用CF_RETURNS_RETAINED或者CF_RETURNS_NOT_RETAINED注释这个对象。当 Swift 代码中包含这些 APIs 时，编译器会在编译时自动调用内存管理。如果你只调用那些不会间接返回 Core Foundation 对象的 annotated APIs，那么现在你可以跳过本节的剩余部分了。否则，下面我们继续学习非托管的 Core Foundation 对象。</p>
-<p>3.非托管对象</p>
-<p>当 Swift 导入 unannotated 的APIs时，编译器将不会自动地对返回的 Core Foundation 对象进行内存管理托管。Swift 将这些返回的 Core Foundation 对象封闭在一个Unmanaged<t>结构中。那些间接返回 Core Foundation 的对象也是非托管的。举个例子，这里有一个 unannotated 的 C 函数:</t></p>
+      <url>http://yoursite.com/blog/2016/02/15/coreFoundation.html</url>
+      <content type="html"><![CDATA[<h2 id="Core-Foundation"><a href="#Core-Foundation" class="headerlink" title="Core Foundation"></a>Core Foundation</h2><h4 id="Swift中的-Core-Foundation-类型是一个成熟的类。当出现内存管理注释时，Swift-会自动地管理-Core-Foundation-对象的内存，这其中包括你实例化了的-Core-Foundation-对象。在-Swift-中，你可以自由变换-Fundation-和-Core-Foundation-类型。如果你想先转换为桥接-Foundation-类型时，你也可以桥接一些-toll-free-bridged-Core-Foundation-类型到-Swift-标准库类型。"><a href="#Swift中的-Core-Foundation-类型是一个成熟的类。当出现内存管理注释时，Swift-会自动地管理-Core-Foundation-对象的内存，这其中包括你实例化了的-Core-Foundation-对象。在-Swift-中，你可以自由变换-Fundation-和-Core-Foundation-类型。如果你想先转换为桥接-Foundation-类型时，你也可以桥接一些-toll-free-bridged-Core-Foundation-类型到-Swift-标准库类型。" class="headerlink" title="Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Foundation 类型时，你也可以桥接一些 toll-free bridged Core Foundation 类型到 Swift 标准库类型。"></a>Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Foundation 类型时，你也可以桥接一些 toll-free bridged Core Foundation 类型到 Swift 标准库类型。</h4><h4 id="1-重定义类型"><a href="#1-重定义类型" class="headerlink" title="1.重定义类型"></a>1.重定义类型</h4><p>当 Swift 导入 Core Foundation 类型时，编译器会重映射导入的类型名字。编译器会从每个类型名字的末端移除Ref，这是因为所有的 Swift 类都属于引用类型，因此后缀是多余的。</p>
+<p>Core Foundation 中的CFTypeRef类型会对Anyobject类型重映射。所以你以前使用的CFTypeRef，现在该换成AnyObject了。<br><a id="more"></a></p>
+<h4 id="2-内存管理对象"><a href="#2-内存管理对象" class="headerlink" title="2.内存管理对象"></a>2.内存管理对象</h4><p>在 Swift 中，从 annotated APIs 返回的 Core Foundation 对象能够自动进行内存管理–你不再需要调用自身的CFRetain，CFRelease，或者CFAutorelease函数。如果你从自身的C函数和 Objective-C 方法中返回一个 Core Foundation 对象，你需要用CF_RETURNS_RETAINED或者CF_RETURNS_NOT_RETAINED注释这个对象。当 Swift 代码中包含这些 APIs 时，编译器会在编译时自动调用内存管理。如果你只调用那些不会间接返回 Core Foundation 对象的 annotated APIs，那么现在你可以跳过本节的剩余部分了。否则，下面我们继续学习非托管的 Core Foundation 对象。</p>
+<h4 id="3-非托管对象"><a href="#3-非托管对象" class="headerlink" title="3.非托管对象"></a>3.非托管对象</h4><p>当 Swift 导入 unannotated 的APIs时，编译器将不会自动地对返回的 Core Foundation 对象进行内存管理托管。Swift 将这些返回的 Core Foundation 对象封闭在一个Unmanaged<t>结构中。那些间接返回 Core Foundation 的对象也是非托管的。举个例子，这里有一个 unannotated 的 C 函数:</t></p>
 <p>这里说明了Swift是怎么导入的:</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1954780-529b451c7d6528cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="unmanaged 为未被管理的类型"></p>
 <p>假设您从 unannotated APIs 接收了非托管的对象，在使用它之前，你必须将它转换为能够内存管理的对象。在这方面，Swift 可以帮你进行内存管理而不用自己动手。同时，Unmanaged<t>结构也提供了两个方法来把一个非托管对象转换为一个可内存管理的对象–takeUnretainedValue()方法和takeRetainedValue()方法。这两个方法会返回原始的，非封闭的对象类型。您可以根据您实际调用的APIs返回的unretained或retained的对象，来选择哪一方法更合适。</t></p>
@@ -71,7 +68,7 @@
     
     <entry>
       <title><![CDATA[Swift中 覆盖(重写)，重构，重载的区别]]></title>
-      <url>http://yoursite.com/2016/02/15/%E8%A6%86%E7%9B%96(%E9%87%8D%E5%86%99)%EF%BC%8C%E9%87%8D%E6%9E%84%EF%BC%8C%E9%87%8D%E8%BD%BD%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+      <url>http://yoursite.com/blog/2016/02/15/overLoad.html</url>
       <content type="html"><![CDATA[<ul>
 <li>重构, 是对软计设计方法的描述, 这个层面是架构和设计方法。</li>
 <li>重构是一个软件维护的通用技巧, 重构的具体做法, 可以通过重写或者重载等, 但不限于此, 更改注释, 更改函数名类名等,都可以称之为重构。<blockquote>
@@ -92,10 +89,11 @@
     
     <entry>
       <title><![CDATA[cocoaPod的安装，删除以及基本使用]]></title>
-      <url>http://yoursite.com/2015/08/13/cocoaPod%E7%9A%84%E5%AE%89%E8%A3%85%EF%BC%8C%E5%88%A0%E9%99%A4%E4%BB%A5%E5%8F%8A%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+      <url>http://yoursite.com/blog/2015/08/13/cocoPod.html</url>
       <content type="html"><![CDATA[<p>如何安装?</p>
 <p>1.安装ruby环境,添加淘宝ruby镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ gem sources --remove https://rubygems.org/</div><div class="line">//等有反应之后再敲入以下命令</div><div class="line">$ gem sources <span class="_">-a</span> http://ruby.taobao.org/</div></pre></td></tr></table></figure></p>
-<p>2.查看是否设置成功:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gem sources <span class="_">-l</span></div></pre></td></tr></table></figure></p>
+<p>2.查看是否设置成功:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gem sources <span class="_">-l</span></div></pre></td></tr></table></figure>
 <p>3.然后安装cocoapods:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo gem install cocoapods</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>4.查看cocoapods是否支持某个类库</p>
@@ -110,35 +108,57 @@
 <ul>
 <li>编辑Podfile文件输入以下信息</li>
 </ul>
-<p>platform :iOS, ‘7.0’\所有库支持的IOS最低版本<br>pod ‘AFNetworking’, ‘~&gt; 2.0’\版本号</p>
+<p>platform :iOS, ‘7.0’\所有库支持的IOS最低版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod ‘AFNetworking’, ‘~&gt; 2.0’\\版本号</div></pre></td></tr></table></figure></p>
 <p>注:有些第三方库需要指明:platform 支持的IOS最低版本,否则在pod install时会报错,如下图,提示AFNetworking最低支持IOS6.0和OS X 10.8</p>
 <p>cocoapods指明ios版本</p>
 <ul>
 <li>然后在项目podfile所在目录下运行:(会在你当前项目中导入podfile所配置的库,所以要在项目目录下运行)<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod install</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>注意上述命令运行完毕后终端输出的最后一段话,意思就是以后打开项目就用CocoaPodsDemo.xcworkspace 打开，而不是之前的.xcodeproj文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[!] From now on use ```CocoaPodsDemo.xcworkspace```.</div></pre></td></tr></table></figure></p>
+<p>注意上述命令运行完毕后终端输出的最后一段话,意思就是以后打开项目就用CocoaPodsDemo.xcworkspace 打开，而不是之前的.xcodeproj文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[!] From now on use CocoaPodsDemo.xcworkspace.</div></pre></td></tr></table></figure>
 <p>经过以上步骤后,我们现在可以打开CocoaPodsDemo.xcworkspace启动我们的新工程了.新工程中已经通过cocoapods引入并配置好了我们刚在podfile写的需要依赖的第三方库了.</p>
-<p>引入第三方库后找不到头文件?<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">在项目的Targe-Build Settings-Search Paths-User Header Searcj Paths中添加</div><div class="line"></div><div class="line"><span class="variable">$&#123;SRCROOT&#125;</span> 值为 recursive</div></pre></td></tr></table></figure></p>
-<p>![Uploading Paste_Image_242830.png . . .]<br>如下图:</p>
+<p>引入第三方库后找不到头文件?</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">在项目的Targe-Build Settings-Search Paths-User Header Searcj Paths中添加</div><div class="line"></div><div class="line"><span class="variable">$&#123;SRCROOT&#125;</span> 值为 recursive</div></pre></td></tr></table></figure>
+<p>如下图:</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1954780-e42b4ca1f003f6ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>cocoapods<br>配置头文件</p>
 <p>如何编译从github上checkout下来的一个已包含CocoPods类库的项目?</p>
-<p>打开终端进入你所下载项目的根目录,执行以下命令,后会得到上面的那句话:</p>
-<p>$ pod update</p>
-<p>等待命令运行完毕后,同样最后会输出</p>
-<p>[!] From now on use <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">如何删除cocopods?</div><div class="line"></div><div class="line">![Paste_Image.png](http://upload-images.jianshu.io/upload_images/1954780-0f6de27d590f271f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</div><div class="line">- 删除工程文件夹下的Podfile、Podfile.lock及Pods文件夹</div><div class="line">- 删除xcworkspace文件</div><div class="line">- 使用xcodeproj文件打开工程，删除Frameworks组下的Pods.xcconfig及libPods.a引用</div><div class="line">- 在工程设置中的Build Phases下删除Check Pods Manifest.lock及Copy Pods Resources</div><div class="line"></div><div class="line">删除cocoapods</div><div class="line"></div><div class="line">CocoaPods常用命令</div><div class="line"></div><div class="line">1、pod install</div><div class="line"></div><div class="line">根据Podfile文件指定的内容，安装依赖库，如果有Podfile.lock文件而且对应的Podfile文件未被修改，则会根据Podfile.lock文件指定的版本安装。</div><div class="line"></div><div class="line">每次更新了Podfile文件时，都需要重新执行该命令，以便重新安装Pods依赖库。</div><div class="line"></div><div class="line">2、pod update</div><div class="line"></div><div class="line">若果Podfile中指定的依赖库版本不是写死的，当对应的依赖库有了更新，无论有没有Podfile.lock文件都会去获取Podfile文件描述的允许获取到的最新依赖库版本。</div><div class="line"></div><div class="line">3、pod search</div><div class="line"></div><div class="line">命令格式为：</div><div class="line"></div><div class="line">![Upload Paste_Image.png failed. Please try again.]</div><div class="line">$ pod search 类库名,支持模糊查询(如:AFNetworking)</div><div class="line"></div><div class="line">pod search功能</div><div class="line"></div><div class="line">红框中的信息为AFNetworking 最新版本,Version中显示了历史版本,根据这些信息来编写我们的Podfile文件如:</div><div class="line"></div><div class="line">pod ‘AFNetWorking’, ‘~&gt; 2.2.4′</div><div class="line"></div><div class="line">这句话具体含义是什么呢?</div><div class="line">当我们通过cocopods引入依赖库时，需要显示或隐式注明引用的依赖库版本，具体写法和表示含义如下</div><div class="line">```bash</div><div class="line">pod ‘AFNetworking’      //不显式指定依赖库版本，表示每次都获取最新版本</div><div class="line">pod ‘AFNetworking’, ‘2.0’     //只使用2.0版本</div><div class="line">pod ‘AFNetworking’, ‘&gt; 2.0′     //使用高于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘&gt;= 2.0′     //使用大于或等于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘&lt; 2.0′     //使用小于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘&lt;= 2.0′     //使用小于或等于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘~&gt; 0.1.2′     //使用大于等于0.1.2但小于0.2的版本</div><div class="line">pod ‘AFNetworking’, ‘~&gt;0.1′     //使用大于等于0.1但小于1.0的版本</div><div class="line">pod ‘AFNetworking’, ‘~&gt;0′     //高于0的版本，写这个限制和什么都不写是一个效果，都表示使用最新版本</div></pre></td></tr></table></figure></p>
-<p>4、pod setup</p>
+<p>打开终端进入你所下载项目的根目录,执行以下命令,后会得到上面的那句话:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod update</div></pre></td></tr></table></figure></p>
+<p>等待命令运行完毕后,同样最后会输出<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[!] From now on use xxxxx.xcworkspace.</div></pre></td></tr></table></figure></p>
+<p>如何删除cocopods?</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-0f6de27d590f271f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<ul>
+<li>删除工程文件夹下的Podfile、Podfile.lock及Pods文件夹</li>
+<li>删除xcworkspace文件</li>
+<li>使用xcodeproj文件打开工程，删除Frameworks组下的Pods.xcconfig及libPods.a引用</li>
+<li>在工程设置中的Build Phases下删除Check Pods Manifest.lock及Copy Pods Resources</li>
+</ul>
+<p>删除cocoapods</p>
+<p>CocoaPods常用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">1、pod install</div></pre></td></tr></table></figure>
+<p>根据Podfile文件指定的内容，安装依赖库，如果有Podfile.lock文件而且对应的Podfile文件未被修改，则会根据Podfile.lock文件指定的版本安装。</p>
+<p>每次更新了Podfile文件时，都需要重新执行该命令，以便重新安装Pods依赖库。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2、pod update</div></pre></td></tr></table></figure>
+<p>若果Podfile中指定的依赖库版本不是写死的，当对应的依赖库有了更新，无论有没有Podfile.lock文件都会去获取Podfile文件描述的允许获取到的最新依赖库版本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">3、pod search</div></pre></td></tr></table></figure>
+<p>命令格式为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ pod search 类库名,支持模糊查询(如:AFNetworking)</div><div class="line"></div><div class="line">pod search功能</div></pre></td></tr></table></figure>
+<p>红框中的信息为AFNetworking 最新版本,Version中显示了历史版本,根据这些信息来编写我们的Podfile文件如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pod ‘AFNetWorking’, ‘~&gt; 2.2.4′</div></pre></td></tr></table></figure>
+<p>这句话具体含义是什么呢?<br>当我们通过cocopods引入依赖库时，需要显示或隐式注明引用的依赖库版本，具体写法和表示含义如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">pod ‘AFNetworking’      //不显式指定依赖库版本，表示每次都获取最新版本</div><div class="line">pod ‘AFNetworking’, ‘2.0’     //只使用2.0版本</div><div class="line">pod ‘AFNetworking’, ‘&gt; 2.0′     //使用高于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘&gt;= 2.0′     //使用大于或等于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘&lt; 2.0′     //使用小于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘&lt;= 2.0′     //使用小于或等于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘~&gt; 0.1.2′     //使用大于等于0.1.2但小于0.2的版本</div><div class="line">pod ‘AFNetworking’, ‘~&gt;0.1′     //使用大于等于0.1但小于1.0的版本</div><div class="line">pod ‘AFNetworking’, ‘~&gt;0′     //高于0的版本，写这个限制和什么都不写是一个效果，都表示使用最新版本</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">4、pod setup</div></pre></td></tr></table></figure>
 <p>用于跟新本地电脑上的保存的Pods依赖库tree。由于每天有很多人会创建或者更新Pods依赖库，这条命令执行的时候会相当慢，还请耐心等待。我们需要经常执行这条命令，否则有新的Pods依赖库的时候执行pod search命令是搜不出来的。</p>
 <p>①多个target中使用相同的Pods依赖库</p>
-<p>比如，名称为CocoaPodsTest的target和Second的target都需要使用Reachability、SBJson、AFNetworking三个Pods依赖库，可以使用link_with关键字来实现，将Podfile写成如下方式：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">link_with ‘CocoaPodsTest’, ‘Second’</div><div class="line">platform :ios</div><div class="line">pod ‘Reachability’,  ‘~&gt; 3.0.0′</div><div class="line">pod ‘SBJson’, ‘~&gt; 4.0.0′</div><div class="line"></div><div class="line">platform :ios, ‘7.0’</div><div class="line">pod ‘AFNetworking’, ‘~&gt; 2.0′</div></pre></td></tr></table></figure></p>
+<p>比如，名称为CocoaPodsTest的target和Second的target都需要使用Reachability、SBJson、AFNetworking三个Pods依赖库，可以使用link_with关键字来实现，将Podfile写成如下方式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">link_with ‘CocoaPodsTest’, ‘Second’</div><div class="line">platform :ios</div><div class="line">pod ‘Reachability’,  ‘~&gt; 3.0.0′</div><div class="line">pod ‘SBJson’, ‘~&gt; 4.0.0′</div><div class="line"></div><div class="line">platform :ios, ‘7.0’</div><div class="line">pod ‘AFNetworking’, ‘~&gt; 2.0′</div></pre></td></tr></table></figure>
 <p>这种写法就实现了CocoaPodsTest和Second两个target共用相同的Pods依赖库。</p>
 <p>②不同的target使用完全不同的Pods依赖库</p>
-<p>CocoaPodsTest这个target使用的是Reachability、SBJson、AFNetworking三个依赖库，但Second这个target只需要使用OpenUDID这一个依赖库，这时可以使用target关键字，Podfile的描述方式如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">target :’CocoaPodsTest’ <span class="keyword">do</span></div><div class="line">platform :ios</div><div class="line">pod ‘Reachability’,  ‘~&gt; 3.0.0′</div><div class="line">pod ‘SBJson’, ‘~&gt; 4.0.0′</div><div class="line"></div><div class="line">platform :ios, ‘7.0’</div><div class="line">pod ‘AFNetworking’, ‘~&gt; 2.0′</div><div class="line">end</div><div class="line"></div><div class="line">target :’Second’ <span class="keyword">do</span></div><div class="line">pod ‘OpenUDID’, ‘~&gt; 1.0.0′</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>CocoaPodsTest这个target使用的是Reachability、SBJson、AFNetworking三个依赖库，但Second这个target只需要使用OpenUDID这一个依赖库，这时可以使用target关键字，Podfile的描述方式如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">target :’CocoaPodsTest’ <span class="keyword">do</span></div><div class="line">platform :ios</div><div class="line">pod ‘Reachability’,  ‘~&gt; 3.0.0′</div><div class="line">pod ‘SBJson’, ‘~&gt; 4.0.0′</div><div class="line"></div><div class="line">platform :ios, ‘7.0’</div><div class="line">pod ‘AFNetworking’, ‘~&gt; 2.0′</div><div class="line">end</div><div class="line"></div><div class="line">target :’Second’ <span class="keyword">do</span></div><div class="line">pod ‘OpenUDID’, ‘~&gt; 1.0.0′</div><div class="line">end</div></pre></td></tr></table></figure>
 <p>其中，do/end作为开始和结束标识符。</p>
 <p>Podfile.lock文件</p>
 <p>在使用CocoaPods，执行完pod install之后，会生成一个Podfile.lock文件。这个文件看起来跟我们关系不大，实际上绝对不应该忽略它。<br>该文件用于保存已经安装的Pods依赖库的版本，通过CocoaPods安装了SBJson、AFNetworking、Reachability三个POds依赖库以后对应的Podfile.lock文件内容为：</p>
-<p>PODS:<br>– AFNetworking (2.1.0):<br>– AFNetworking/NSURLConnection<br>– AFNetworking/NSURLSession<br>– AFNetworking/Reachability<br>– AFNetworking/Security<br>– AFNetworking/Serialization<br>– AFNetworking/UIKit<br>– AFNetworking/NSURLConnection (2.1.0):<br>– AFNetworking/Reachability<br>– AFNetworking/Security<br>– AFNetworking/Serialization<br>– AFNetworking/NSURLSession (2.1.0):<br>– AFNetworking/NSURLConnection<br>– AFNetworking/Reachability (2.1.0)<br>– AFNetworking/Security (2.1.0)<br>– AFNetworking/Serialization (2.1.0)<br>– AFNetworking/UIKit (2.1.0):<br>– AFNetworking/NSURLConnection<br>– Reachability (3.0.0)<br>– SBJson (4.0.0)</p>
-<p>DEPENDENCIES:<br>– AFNetworking (~&gt; 2.0)<br>– Reachability (~&gt; 3.0.0)<br>– SBJson (~&gt; 4.0.0)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SPEC CHECKSUMS:</div><div class="line">AFNetworking: c7d7901a83f631414c7eda1737261f696101a5<span class="built_in">cd</span></div><div class="line">Reachability: 500bd76bf6<span class="built_in">cd</span>8ff2c6fb715<span class="built_in">fc</span>5f44ef6e4c024f2</div><div class="line">SBJson: f3c686806e8e36ab89e020189ac582ba26ec4220</div><div class="line"></div><div class="line">COCOAPODS: 0.29.0</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">PODS:</div><div class="line">– AFNetworking (2.1.0):</div><div class="line">– AFNetworking/NSURLConnection</div><div class="line">– AFNetworking/NSURLSession</div><div class="line">– AFNetworking/Reachability</div><div class="line">– AFNetworking/Security</div><div class="line">– AFNetworking/Serialization</div><div class="line">– AFNetworking/UIKit</div><div class="line">– AFNetworking/NSURLConnection (2.1.0):</div><div class="line">– AFNetworking/Reachability</div><div class="line">– AFNetworking/Security</div><div class="line">– AFNetworking/Serialization</div><div class="line">– AFNetworking/NSURLSession (2.1.0):</div><div class="line">– AFNetworking/NSURLConnection</div><div class="line">– AFNetworking/Reachability (2.1.0)</div><div class="line">– AFNetworking/Security (2.1.0)</div><div class="line">– AFNetworking/Serialization (2.1.0)</div><div class="line">– AFNetworking/UIKit (2.1.0):</div><div class="line">– AFNetworking/NSURLConnection</div><div class="line">– Reachability (3.0.0)</div><div class="line">– SBJson (4.0.0)</div><div class="line"></div><div class="line">DEPENDENCIES:</div><div class="line">– AFNetworking (~&gt; 2.0)</div><div class="line">– Reachability (~&gt; 3.0.0)</div><div class="line">– SBJson (~&gt; 4.0.0)</div><div class="line"></div><div class="line">```bash</div><div class="line">SPEC CHECKSUMS:</div><div class="line">AFNetworking: c7d7901a83f631414c7eda1737261f696101a5<span class="built_in">cd</span></div><div class="line">Reachability: 500bd76bf6<span class="built_in">cd</span>8ff2c6fb715<span class="built_in">fc</span>5f44ef6e4c024f2</div><div class="line">SBJson: f3c686806e8e36ab89e020189ac582ba26ec4220</div><div class="line"></div><div class="line">COCOAPODS: 0.29.0</div></pre></td></tr></table></figure>
 <p>Podfile.lock文件最大得用处在于多人开发。当团队中的某个人执行完pod install命令后，生成的Podfile.lock文件就记录下了当时最新Pods依赖库的版本，这时团队中的其它人check下来这份包含Podfile.lock文件的工程以后，再去执行pod install命令时，获取下来的Pods依赖库的版本就和最开始用户获取到的版本一致。如果没有Podfile.lock文件，后续所有用户执行pod install命令都会获取最新版本的SBJson，这就有可能造成同一个团队使用的依赖库版本不一致，这对团队协作来说绝对是个灾难！<br>在这种情况下，如果团队想使用当前最新版本的SBJson依赖库，有两种方案：</p>
 <ul>
 <li>更改Podfile，使其指向最新版本的SBJson依赖库；</li>
@@ -146,12 +166,13 @@
 </ul>
 <p>鉴于Podfile.lock文件对团队协作如此重要，我们需要将它添加到版本管理中。</p>
 <p>如何制作自己的Cocopods库</p>
-<p>![Upload Paste_Image.png failed. Please try again.]<br>1.在github上新建一个工程</p>
+<p>1.在github上新建一个工程</p>
 <p>github上新建pod工程</p>
 <p>license类型</p>
 <p>正规的仓库都应该有一个license文件，Pods依赖库对这个文件的要求更严，是必须要有的。因此最好在这里让github创建一个，也可以自己后续再创建。我使用的license类型是MIT。</p>
 <p>把项目clone到本地然后在根目录下新建MyPodDemo.podspec</p>
-<p>或使用命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ pod spec create MyPodDemo</div></pre></td></tr></table></figure></p>
+<p>或使用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ pod spec create MyPodDemo</div></pre></td></tr></table></figure>
 <p>Spec文件编写:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new <span class="keyword">do</span> |s|</div><div class="line">s.name = <span class="string">"MyPodDemo"</span></div><div class="line">s.version = <span class="string">"0.0.1"</span></div><div class="line">s.summary = <span class="string">"A short description of MyPodDemo."</span></div><div class="line">s.description = &lt;&lt;-DESC</div><div class="line">A longer description of MyPodDemo <span class="keyword">in</span> Markdown format.</div><div class="line">* Think: Why did you write this? What is the focus? What does it <span class="keyword">do</span>?</div><div class="line">* CocoaPods will be using this to generate tags, and improve search results.</div><div class="line">* Try to keep it short, snappy and to the point.</div><div class="line">* Finally, don<span class="string">'t worry about the indent, CocoaPods strips it!</span></div><div class="line">DESC</div><div class="line">s.homepage = "https://github.com/goingta/MyPodDemo"</div><div class="line">s.license = "MIT"</div><div class="line">s.author = &#123; "goingta" =&gt; "tangle1128@gmail.com" &#125;</div><div class="line">s.source = &#123; :git =&gt; "https://github.com/goingta/MyPodDemo.git", :tag =&gt; "0.0.1" &#125;</div><div class="line">s.source_files = "MyPodDemo/Src", "MyPodDemo/Src/**/*.&#123;h,m&#125;"</div><div class="line">s.requires_arc = true</div><div class="line"># s.framework = "SomeFramework"</div><div class="line"># s.frameworks = "SomeFramework", "AnotherFramework"</div><div class="line"># s.library = "iconv"</div><div class="line"># s.libraries = "iconv", "xml2"</div><div class="line"># s.dependency "JSONKit", "~&gt; 1.4"</div><div class="line"># s.dependency "AFNetworking", "~&gt; 2.2.4"</div><div class="line">end</div></pre></td></tr></table></figure>
 <p>自解析:</p>
@@ -164,13 +185,13 @@
 <p>spec文件验证</p>
 <p>上传代码至github</p>
 <p>上传podspec文件到CocoaPods仓库(fork一下,修改完成后在push上去等待审核)</p>
-<p>将我们刚刚生成的MyPodDemo.spec 文件上传到Cocoapods官方specs仓库中 :<br>链接为：<a href="https://github.com/CocoaPods/Specs" target="_blank" rel="external">https://github.com/CocoaPods/Specs</a></p>
+<p>链接为：<a href="https://github.com/CocoaPods/Specs" target="_blank" rel="external">将我们刚刚生成的MyPodDemo.spec 文件上传到Cocoapods官方specs仓库中</a></p>
 <p>私有库实现,编写podfile</p>
 <p>如果由于某些原因我们编写的库不能公开,但是又想使用pods来进行管理,要怎么办呢?</p>
 <p>首先我们要将我们刚刚在github上建的仓库改为Private(不然还用Public搞毛啊)</p>
 <p>然后修改我们项目的podfile,与已加入Cocopods仓库的公有库相比我们只需要指明私有库低git地址,如下:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">platform :ios, <span class="string">'6.0'</span></div><div class="line">pod <span class="string">'MyPodDemo'</span>, :git =&gt; <span class="string">'https://github.com/goingta/MyPodDemo.git'</span> //私有库</div><div class="line">pod <span class="string">'CocoaLumberjack'</span>//公有库</div></pre></td></tr></table></figure>
-<p>版本控制和冲突(引用自<a href="http://bashcn.io/issue-6-4/" target="_blank" rel="external">http://bashcn.io/issue-6-4/</a>)</p>
+<p><a href="http://bashcn.io/issue-6-4/" target="_blank" rel="external">版本控制和冲突</a></p>
 <p>CocoaPods 使用语义版本控制 – Semantic Versioning 命名约定来解决对版本的依赖。由于冲突解决系统建立在非重大变更的补丁版本之间，这使得解决依赖关系变得容易很多。例如，两个不同的 pods 依赖于 CocoaLumberjack 的两个版本，假设一个依赖于2.3.1，另一个依赖于 2.3.3，此时冲突解决系统可以使用最新的版本 2.3.3，因为这个可以向后与 2.3.1 兼容。</p>
 <p>但这并不总是有效。有许多第三方库并不使用这样的约定，这让解决方案变得非常复杂。</p>
 <p>当然，总会有一些冲突需要手动解决。如果一个库依赖于 CocoaLumberjack 的 1.2.5，另外一个库则依赖于 2.3.1，那么只有最终用户通过明确指定使用某个版本来解决冲突。</p>
@@ -180,13 +201,13 @@
 <p>回退Cocoapods历史版本(2015.3.17号补充)</p>
 <p>先删除已经装过的版本(可能有几个,卸载的时候会让你输入1,2..n选择卸载那个版本</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem uninstall cocoapods</div></pre></td></tr></table></figure>
-<p>安装某一个版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo gem install cocoapods -v 0.35.0</div><div class="line">```·</div></pre></td></tr></table></figure></p>
+<p>安装某一个版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem install cocoapods -v 0.35.0</div></pre></td></tr></table></figure></p>
 ]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[NSDictionary字典的使用以及注意]]></title>
-      <url>http://yoursite.com/2015/07/18/NSDictionary%E5%AD%97%E5%85%B8%E7%9A%84%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8A%E6%B3%A8%E6%84%8F/</url>
+      <url>http://yoursite.com/blog/2015/07/18/NSDictionary.html</url>
       <content type="html"><![CDATA[<p>字典：NSDictionary<br>字典就是关键字及其定义（描述）的集合。</p>
 <ul>
 <li>Cocoa中的实现字典的集合NSDictionary在给定的关键字（key）下存储一个数值（value）。然后你就可以用这个关键字来查找相应的数值。</li>
@@ -198,7 +219,7 @@
 </blockquote>
 </li>
 </ul>
-<p>使用 setObject:forkey: 方法添加字典元素，如果关键字已存在，则用新植替换旧值。<br>NSMutableDictionary类允许随意添加或删除字典元素。</p>
+<p>使用 <code>setObject:forkey:</code> 方法添加字典元素，如果关键字已存在，则用新植替换旧值。<br>NSMutableDictionary类允许随意添加或删除字典元素。</p>
 <ul>
 <li>添加元素：setObject:forkey:</li>
 <li>删除元素：removeObjectForKey:</li>
@@ -208,7 +229,7 @@
     
     <entry>
       <title><![CDATA[关于日期格式设置及转换]]></title>
-      <url>http://yoursite.com/2015/07/05/%E5%85%B3%E4%BA%8E%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E8%AE%BE%E7%BD%AE%E5%8F%8A%E8%BD%AC%E6%8D%A2/</url>
+      <url>http://yoursite.com/blog/2015/07/05/dateFormatter.html</url>
       <content type="html"><![CDATA[<p>总结一下关于日期格式的问题汇总。</p>
 <h4 id="1-把字符串转化为任意日期时间格式"><a href="#1-把字符串转化为任意日期时间格式" class="headerlink" title="1.把字符串转化为任意日期时间格式"></a>1.把字符串转化为任意日期时间格式</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将要转换的字符串</span></div><div class="line"> <span class="built_in">NSString</span>* string = <span class="string">@"20160512134106"</span>;</div><div class="line">    <span class="built_in">NSDateFormatter</span> *inputFormatter = [[<span class="built_in">NSDateFormatter</span> alloc] init] ;</div><div class="line"><span class="comment">//将要显示日期的时区。</span></div><div class="line">    [inputFormatter setLocale:[[<span class="built_in">NSLocale</span> alloc] initWithLocaleIdentifier:<span class="string">@"en_US"</span>] ];</div><div class="line"><span class="comment">//显示日期的格式。</span></div><div class="line">    [inputFormatter setDateFormat:<span class="string">@"yyyyMMddHHmmss"</span>];</div><div class="line">    <span class="built_in">NSDate</span>* inputDate = [inputFormatter dateFromString:string];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"date = %@"</span>, inputDate);</div></pre></td></tr></table></figure>
 <p><img src="http://upload-images.jianshu.io/upload_images/1954780-3517069646bac263.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
@@ -241,7 +262,7 @@ S: 毫秒
     
     <entry>
       <title><![CDATA[OC多线程GCD以及NSoperation]]></title>
-      <url>http://yoursite.com/2015/05/16/OC%E5%A4%9A%E7%BA%BF%E7%A8%8BGCD%E4%BB%A5%E5%8F%8ANSoperation/</url>
+      <url>http://yoursite.com/blog/2015/05/16/NSoperation&GCD.html</url>
       <content type="html"><![CDATA[<p>首先讲一下关于线程的基础知识。</p>
 <h3 id="1-什么是进程？"><a href="#1-什么是进程？" class="headerlink" title="1.什么是进程？"></a>1.什么是进程？</h3><p>进程是指在系统中正在运行的一个应用程序<br>每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。</p>
 <h3 id="2-什么是线程？"><a href="#2-什么是线程？" class="headerlink" title="2.什么是线程？"></a>2.什么是线程？</h3><p>1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。<br><a id="more"></a></p>
@@ -253,7 +274,10 @@ S: 毫秒
 <li>同步任务：同步：在当前线程中执行任务，不具备开启新线程的能力。</li>
 <li>异步任务：在新的线程中执行任务，具备开启新线程的能力。<br>并发和串行决定了任务的执行方式</li>
 <li>并发队列：多个任务并发（同时）执行。</li>
-<li>串行队列：一个任务执行完毕后，再执行下一个任务。<br>而主队列是特殊的串行队列。<br>全局队列是特殊的并发队列。<h3 id="6-GCD的基础使用。"><a href="#6-GCD的基础使用。" class="headerlink" title="6.GCD的基础使用。"></a>6.GCD的基础使用。</h3>1.串行队列。</li>
+<li>串行队列：一个任务执行完毕后，再执行下一个任务。<br>而主队列是特殊的串行队列。<br>全局队列是特殊的并发队列。<h3 id="6-GCD的基础使用。"><a href="#6-GCD的基础使用。" class="headerlink" title="6.GCD的基础使用。"></a>6.GCD的基础使用。</h3></li>
+</ul>
+<p>1.串行队列。</p>
+<ul>
 <li><p>使用dispatch_queue_create函数创建串行队列</p>
 <blockquote>
 <p> // 队列名称， 队列属性，一般用NULL即可<br>dispatch_queue_t  dispatch_queue_create(const char *label,  dispatch_queue_attr_t attr);</p>
@@ -291,7 +315,7 @@ S: 毫秒
     
     <entry>
       <title><![CDATA[关于文件下载]]></title>
-      <url>http://yoursite.com/2015/04/24/%E5%85%B3%E4%BA%8E%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/</url>
+      <url>http://yoursite.com/blog/2015/04/24/downLoad.html</url>
       <content type="html"><![CDATA[<p>使用xcode自带的代理方法。</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">代理方法：</div><div class="line"><span class="comment">//这个是开始下载时 调用的方法。</span></div><div class="line">- (<span class="keyword">void</span>)connection:(<span class="built_in">NSURLConnection</span> *)connection didReceiveResponse:(<span class="built_in">NSURLResponse</span> *)response</div><div class="line"><span class="comment">//这个也是每次都在调用的方法。</span></div><div class="line">data(代表每次下载的数据大小)</div><div class="line">- (<span class="keyword">void</span>)connection:(<span class="built_in">NSURLConnection</span> *)connection didReceiveData:(<span class="built_in">NSData</span> *)data</div><div class="line"></div><div class="line"><span class="comment">//这个方法是在下载时一直会调用的。这里有三个参数。</span></div><div class="line">bytesWritten（代表本次下载下载了多少）</div><div class="line">totalBytesWritten（代表已经下载了多少）</div><div class="line">totalBytesExpectedToWrite（代表文件总大小是多少）</div><div class="line">- (<span class="keyword">void</span>)connection:(<span class="built_in">NSURLConnection</span> *)connection   didSendBodyData:(<span class="built_in">NSInteger</span>)bytesWritten</div><div class="line">                                                 totalBytesWritten:</div><div class="line">(<span class="built_in">NSInteger</span>)totalBytesWritten</div><div class="line">                                         totalBytesExpectedToWrite:(<span class="built_in">NSInteger</span>)totalBytesExpectedToWrite;</div><div class="line"></div><div class="line"><span class="comment">//这个方法在下载完成后 会自动调用。</span></div><div class="line">connection（这个参数是下完完成后 文件的路径）</div><div class="line">- (<span class="keyword">void</span>)connectionDidFinishLoading:(<span class="built_in">NSURLConnection</span> *)connection;</div></pre></td></tr></table></figure>
 <a id="more"></a>
@@ -354,7 +378,7 @@ S: 毫秒
     
     <entry>
       <title><![CDATA[关于http请求]]></title>
-      <url>http://yoursite.com/2015/04/06/%E5%85%B3%E4%BA%8Ehttp%E8%AF%B7%E6%B1%82/</url>
+      <url>http://yoursite.com/blog/2015/04/06/request.html</url>
       <content type="html"><![CDATA[<h4 id="网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80-，默认的http请求就是get请求。"><a href="#网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80-，默认的http请求就是get请求。" class="headerlink" title="网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80%，默认的http请求就是get请求。"></a>网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80%，默认的http请求就是get请求。</h4><h3 id="1-HTTP请求。"><a href="#1-HTTP请求。" class="headerlink" title="1.HTTP请求。"></a>1.HTTP请求。</h3><ul>
 <li>一般请求采用restful 设计风格：采用相同url 不同的http 实现不同的功能。</li>
 <li>利用不同请求，实现了 增/删/改/查的功能。</li>
@@ -395,7 +419,7 @@ S: 毫秒
     
     <entry>
       <title><![CDATA[数据传递的三种方法：通知，代理，blcok]]></title>
-      <url>http://yoursite.com/2015/03/08/%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%9A%E9%80%9A%E7%9F%A5%EF%BC%8C%E4%BB%A3%E7%90%86%EF%BC%8Cblcok/</url>
+      <url>http://yoursite.com/blog/2015/03/08/null.html</url>
       <content type="html"><![CDATA[<h2 id="Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能-带有自动变量-局部变量-的匿名函数。"><a href="#Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能-带有自动变量-局部变量-的匿名函数。" class="headerlink" title="Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。"></a>Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。</h2><h2 id="block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。"><a href="#block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。" class="headerlink" title="block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。"></a>block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。</h2><h3 id="数据传递有三种方法-通知，代理，block"><a href="#数据传递有三种方法-通知，代理，block" class="headerlink" title="数据传递有三种方法:通知，代理，block."></a>数据传递有三种方法:通知，代理，block.</h3><p>而对于通知代理block的选择<br>1）如果数据传递两个对象没有联系。选择通知。</p>
 <p>2）如果两个对象有联系的话，三个都可以。</p>
 <p>3）能用代理的地方 一定也可以用block去代替。<br><a id="more"></a><br>首先说一下通知。</p>
@@ -437,7 +461,7 @@ S: 毫秒
     
     <entry>
       <title><![CDATA[Apachi在本地配置服务器 MAC专用]]></title>
-      <url>http://yoursite.com/2015/03/06/Apachi%E5%9C%A8%E6%9C%AC%E5%9C%B0%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%20MAC%E4%B8%93%E7%94%A8/</url>
+      <url>http://yoursite.com/blog/2015/03/06/Apachi.html</url>
       <content type="html"><![CDATA[<h3 id="首先要在你的磁盘里-设置一个服务器文件夹。我把他设置sites"><a href="#首先要在你的磁盘里-设置一个服务器文件夹。我把他设置sites" class="headerlink" title="首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites"></a>首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites</h3><p><img src="http://upload-images.jianshu.io/upload_images/1954780-21734f5fd3a5fbea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
 <h3 id="切换工作目录"><a href="#切换工作目录" class="headerlink" title="切换工作目录"></a>切换工作目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$cd</span> /etc/apache2</div></pre></td></tr></table></figure>
 <h3 id="用Vim编辑-httped-conf"><a href="#用Vim编辑-httped-conf" class="headerlink" title="用Vim编辑 httped.conf"></a>用Vim编辑 httped.conf</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim httpd.conf</div></pre></td></tr></table></figure>
