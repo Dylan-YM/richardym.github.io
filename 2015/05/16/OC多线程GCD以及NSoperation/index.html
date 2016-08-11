@@ -16,21 +16,21 @@
 
 
 <meta name="description" content="首先讲一下关于线程的基础知识。
-###1.什么是进程？进程是指在系统中正在运行的一个应用程序每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。
-###2.什么是线程？1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。">
+1.什么是进程？进程是指在系统中正在运行的一个应用程序每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。
+2.什么是线程？1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OC多线程GCD以及NSoperation">
 <meta property="og:url" content="http://yoursite.com/2015/05/16/OC多线程GCD以及NSoperation/index.html">
 <meta property="og:site_name" content="richard's blog">
 <meta property="og:description" content="首先讲一下关于线程的基础知识。
-###1.什么是进程？进程是指在系统中正在运行的一个应用程序每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。
-###2.什么是线程？1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。">
-<meta property="og:updated_time" content="2016-08-10T08:33:20.000Z">
+1.什么是进程？进程是指在系统中正在运行的一个应用程序每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。
+2.什么是线程？1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。">
+<meta property="og:updated_time" content="2016-08-11T01:53:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC多线程GCD以及NSoperation">
 <meta name="twitter:description" content="首先讲一下关于线程的基础知识。
-###1.什么是进程？进程是指在系统中正在运行的一个应用程序每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。
-###2.什么是线程？1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。">
+1.什么是进程？进程是指在系统中正在运行的一个应用程序每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。
+2.什么是线程？1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -311,17 +311,17 @@
       
           
         <p>首先讲一下关于线程的基础知识。</p>
-<p>###1.什么是进程？<br>进程是指在系统中正在运行的一个应用程序<br>每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。</p>
-<p>###2.什么是线程？<br>1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。<br><a id="more"></a></p>
-<p>###4.多线程的原理。<br>同一时间，CPU只能处理1条线程，只有1条线程在工作（执行）多线程并发（同时）执行，其实是CPU快速地在多条线程之间调度（切换）如果CPU调度线程的时间足够快，就造成了多线程并发执行的假象思考：如果线程非常非常多，会发生什么情况？CPU会在N多线程之间调度，CPU会累死，消耗大量的CPU资源每条线程被调度执行的频次会降低（线程的执行效率降低）</p>
-<p>###4.多线程的优缺点。<br>多线程的优点<br>能适当提高程序的执行效率<br>能适当提高资源利用率（CPU、内存利用率）</p>
+<h3 id="1-什么是进程？"><a href="#1-什么是进程？" class="headerlink" title="1.什么是进程？"></a>1.什么是进程？</h3><p>进程是指在系统中正在运行的一个应用程序<br>每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。</p>
+<h3 id="2-什么是线程？"><a href="#2-什么是线程？" class="headerlink" title="2.什么是线程？"></a>2.什么是线程？</h3><p>1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。<br><a id="more"></a></p>
+<h3 id="4-多线程的原理。"><a href="#4-多线程的原理。" class="headerlink" title="4.多线程的原理。"></a>4.多线程的原理。</h3><p>同一时间，CPU只能处理1条线程，只有1条线程在工作（执行）多线程并发（同时）执行，其实是CPU快速地在多条线程之间调度（切换）如果CPU调度线程的时间足够快，就造成了多线程并发执行的假象思考：如果线程非常非常多，会发生什么情况？CPU会在N多线程之间调度，CPU会累死，消耗大量的CPU资源每条线程被调度执行的频次会降低（线程的执行效率降低）</p>
+<h3 id="4-多线程的优缺点。"><a href="#4-多线程的优缺点。" class="headerlink" title="4.多线程的优缺点。"></a>4.多线程的优缺点。</h3><p>多线程的优点<br>能适当提高程序的执行效率<br>能适当提高资源利用率（CPU、内存利用率）</p>
 <p>多线程的缺点<br>开启线程需要占用一定的内存空间（默认情况下，主线程占用1M，子线程占用512KB），如果开启大量的线程，会占用大量的内存空间，降低程序的性能<br>线程越多，CPU在调度线程上的开销就越大<br>程序设计更加复杂：比如线程之间的通信、多线程的数据共享</p>
-<p>###6.线程中的属性。<br>线程中有4个最主要的名词。</p>
+<h3 id="5-线程中的属性。"><a href="#5-线程中的属性。" class="headerlink" title="5.线程中的属性。"></a>5.线程中的属性。</h3><p>线程中有4个最主要的名词。</p>
 <ul>
 <li>同步任务：同步：在当前线程中执行任务，不具备开启新线程的能力。</li>
 <li>异步任务：在新的线程中执行任务，具备开启新线程的能力。<br>并发和串行决定了任务的执行方式</li>
 <li>并发队列：多个任务并发（同时）执行。</li>
-<li>串行队列：一个任务执行完毕后，再执行下一个任务。<br>而主队列是特殊的串行队列。<br>全局队列是特殊的并发队列。<br>###7.GCD的基础使用。<br>1.串行队列。</li>
+<li>串行队列：一个任务执行完毕后，再执行下一个任务。<br>而主队列是特殊的串行队列。<br>全局队列是特殊的并发队列。<h3 id="6-GCD的基础使用。"><a href="#6-GCD的基础使用。" class="headerlink" title="6.GCD的基础使用。"></a>6.GCD的基础使用。</h3>1.串行队列。</li>
 <li><p>使用dispatch_queue_create函数创建串行队列</p>
 <blockquote>
 <p> // 队列名称， 队列属性，一般用NULL即可<br>dispatch_queue_t  dispatch_queue_create(const char *label,  dispatch_queue_attr_t attr);</p>
@@ -339,8 +339,7 @@
 <blockquote>
 <p>其实多线程就是在多个线程之间快速做“切换”的操作（在线程调度池里执行任务）。<br>线程里有个属性是优先级。这个属性决定的是线程有更多的机会去调用。并不是决定任务的先后顺序。<br>而且注意！！！！开发中 一定不要取修改优先级。否则会出现很多你想不到的错误。<br>不能把同步任务加入到主队列中。否则会出现同步锁现象。</p>
 </blockquote>
-<p> ###8.NSoperation的基础使用。</p>
-<ul>
+<h3 id="7-NSoperation的基础使用。"><a href="#7-NSoperation的基础使用。" class="headerlink" title="7.NSoperation的基础使用。"></a>7.NSoperation的基础使用。</h3><ul>
 <li>并发数<br>（1）并发数:同时执⾏行的任务数.比如,同时开3个线程执行3个任务,并发数就是3<br>（2）最大并发数：同一时间最多只能执行的任务的个数。<br>（3）最⼤大并发数的相关⽅方法<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">NSInteger</span>)maxConcurrentOperationCount;- (<span class="keyword">void</span>)setMaxConcurrentOperationCount:(<span class="built_in">NSInteger</span>)cnt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -387,7 +386,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-什么是进程？"><span class="toc-number">1.</span> <span class="toc-text">1.什么是进程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-什么是线程？"><span class="toc-number">2.</span> <span class="toc-text">2.什么是线程？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-多线程的原理。"><span class="toc-number">3.</span> <span class="toc-text">4.多线程的原理。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-多线程的优缺点。"><span class="toc-number">4.</span> <span class="toc-text">4.多线程的优缺点。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-线程中的属性。"><span class="toc-number">5.</span> <span class="toc-text">5.线程中的属性。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-GCD的基础使用。"><span class="toc-number">6.</span> <span class="toc-text">6.GCD的基础使用。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-NSoperation的基础使用。"><span class="toc-number">7.</span> <span class="toc-text">7.NSoperation的基础使用。</span></a></li></ol>
         
     </div>
     <style>

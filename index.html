@@ -458,12 +458,9 @@
       
           
               <p>如何安装?</p>
-<p>1.安装ruby环境,添加淘宝ruby镜像<br><code>bashbash
-$ gem sources --remove https://rubygems.org/
-//等有反应之后再敲入以下命令
-$ gem sources -a http://ruby.taobao.org/</code><br>2.查看是否设置成功:<br><code>bash
-$ gem sources -l</code><br>3.然后安装cocoapods:<br><code>bash
-$ sudo gem install cocoapods</code><br>
+<p>1.安装ruby环境,添加淘宝ruby镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ gem sources --remove https://rubygems.org/</div><div class="line">//等有反应之后再敲入以下命令</div><div class="line">$ gem sources <span class="_">-a</span> http://ruby.taobao.org/</div></pre></td></tr></table></figure></p>
+<p>2.查看是否设置成功:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gem sources <span class="_">-l</span></div></pre></td></tr></table></figure></p>
+<p>3.然后安装cocoapods:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo gem install cocoapods</div></pre></td></tr></table></figure></p>
           
       
     </div>
@@ -615,9 +612,9 @@ $ sudo gem install cocoapods</code><br>
       
           
               <p>总结一下关于日期格式的问题汇总。</p>
-<p>####1.把字符串转化为任意日期时间格式<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将要转换的字符串</span></div><div class="line"> <span class="built_in">NSString</span>* string = <span class="string">@"20160512134106"</span>;</div><div class="line">    <span class="built_in">NSDateFormatter</span> *inputFormatter = [[<span class="built_in">NSDateFormatter</span> alloc] init] ;</div><div class="line"><span class="comment">//将要显示日期的时区。</span></div><div class="line">    [inputFormatter setLocale:[[<span class="built_in">NSLocale</span> alloc] initWithLocaleIdentifier:<span class="string">@"en_US"</span>] ];</div><div class="line"><span class="comment">//显示日期的格式。</span></div><div class="line">    [inputFormatter setDateFormat:<span class="string">@"yyyyMMddHHmmss"</span>];</div><div class="line">    <span class="built_in">NSDate</span>* inputDate = [inputFormatter dateFromString:string];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"date = %@"</span>, inputDate);</div></pre></td></tr></table></figure></p>
+<h4 id="1-把字符串转化为任意日期时间格式"><a href="#1-把字符串转化为任意日期时间格式" class="headerlink" title="1.把字符串转化为任意日期时间格式"></a>1.把字符串转化为任意日期时间格式</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//将要转换的字符串</span></div><div class="line"> <span class="built_in">NSString</span>* string = <span class="string">@"20160512134106"</span>;</div><div class="line">    <span class="built_in">NSDateFormatter</span> *inputFormatter = [[<span class="built_in">NSDateFormatter</span> alloc] init] ;</div><div class="line"><span class="comment">//将要显示日期的时区。</span></div><div class="line">    [inputFormatter setLocale:[[<span class="built_in">NSLocale</span> alloc] initWithLocaleIdentifier:<span class="string">@"en_US"</span>] ];</div><div class="line"><span class="comment">//显示日期的格式。</span></div><div class="line">    [inputFormatter setDateFormat:<span class="string">@"yyyyMMddHHmmss"</span>];</div><div class="line">    <span class="built_in">NSDate</span>* inputDate = [inputFormatter dateFromString:string];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"date = %@"</span>, inputDate);</div></pre></td></tr></table></figure>
 <p><img src="http://upload-images.jianshu.io/upload_images/1954780-3517069646bac263.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<p>####连接到上面的代码<br>
+<h4 id="连接到上面的代码"><a href="#连接到上面的代码" class="headerlink" title="连接到上面的代码"></a>连接到上面的代码</h4>
           
       
     </div>
@@ -691,8 +688,8 @@ $ sudo gem install cocoapods</code><br>
       
           
               <p>首先讲一下关于线程的基础知识。</p>
-<p>###1.什么是进程？<br>进程是指在系统中正在运行的一个应用程序<br>每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。</p>
-<p>###2.什么是线程？<br>1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。<br>
+<h3 id="1-什么是进程？"><a href="#1-什么是进程？" class="headerlink" title="1.什么是进程？"></a>1.什么是进程？</h3><p>进程是指在系统中正在运行的一个应用程序<br>每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内。</p>
+<h3 id="2-什么是线程？"><a href="#2-什么是线程？" class="headerlink" title="2.什么是线程？"></a>2.什么是线程？</h3><p>1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。<br>
           
       
     </div>
@@ -839,9 +836,7 @@ $ sudo gem install cocoapods</code><br>
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>####网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80%，默认的http请求就是get请求。</p>
-<p>###1.HTTP请求。</p>
-<ul>
+              <h4 id="网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80-，默认的http请求就是get请求。"><a href="#网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80-，默认的http请求就是get请求。" class="headerlink" title="网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80%，默认的http请求就是get请求。"></a>网络中的请求分很多种，不过最常见的两种一种是Get请求。一种是Post请求。get请求占常用的80%，默认的http请求就是get请求。</h4><h3 id="1-HTTP请求。"><a href="#1-HTTP请求。" class="headerlink" title="1.HTTP请求。"></a>1.HTTP请求。</h3><ul>
 <li>一般请求采用restful 设计风格：采用相同url 不同的http 实现不同的功能。</li>
 <li>利用不同请求，实现了 增/删/改/查的功能。</li>
 <li>PUT       增    在服务器新增123的信息</li>
@@ -849,7 +844,7 @@ $ sudo gem install cocoapods</code><br>
 <li>POST     改</li>
 <li>GET       查</li>
 <li>HEAD 获取文件的大小。</li>
-<li>Range 这个可以解决断点续传。<br>####！一般开发中，后台将post方法 替代Put和delete.</li>
+<li>Range 这个可以解决断点续传。<h4 id="！一般开发中，后台将post方法-替代Put和delete"><a href="#！一般开发中，后台将post方法-替代Put和delete" class="headerlink" title="！一般开发中，后台将post方法 替代Put和delete."></a>！一般开发中，后台将post方法 替代Put和delete.</h4></li>
 <li>http内部走的是socket/ (tcp/ip)。 默认情况下，tcp / ip 是一个‘长连接’。
           
       
@@ -923,10 +918,7 @@ $ sudo gem install cocoapods</code><br>
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。</p>
-<p>block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。</p>
-<p>数据传递有三种方法:通知，代理，block.</p>
-<p>而对于通知代理block的选择<br>1）如果数据传递两个对象没有联系。选择通知。</p>
+              <h2 id="Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能-带有自动变量-局部变量-的匿名函数。"><a href="#Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能-带有自动变量-局部变量-的匿名函数。" class="headerlink" title="Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。"></a>Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。</h2><h2 id="block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。"><a href="#block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。" class="headerlink" title="block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。"></a>block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。</h2><h3 id="数据传递有三种方法-通知，代理，block"><a href="#数据传递有三种方法-通知，代理，block" class="headerlink" title="数据传递有三种方法:通知，代理，block."></a>数据传递有三种方法:通知，代理，block.</h3><p>而对于通知代理block的选择<br>1）如果数据传递两个对象没有联系。选择通知。</p>
 <p>2）如果两个对象有联系的话，三个都可以。</p>
 <p>3）能用代理的地方 一定也可以用block去代替。<br>
           
@@ -1001,9 +993,10 @@ $ sudo gem install cocoapods</code><br>
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>###首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites<br><img src="http://upload-images.jianshu.io/upload_images/1954780-21734f5fd3a5fbea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<h3 id="切换工作目录"><a href="#切换工作目录" class="headerlink" title="切换工作目录"></a>切换工作目录</h3><p>$cd /etc/apache2</p>
-<p>###用Vim编辑 httped.conf<br>sudo vim httpd.conf<br><img src="http://upload-images.jianshu.io/upload_images/1954780-fbf414b2bf1e7e16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>
+              <h3 id="首先要在你的磁盘里-设置一个服务器文件夹。我把他设置sites"><a href="#首先要在你的磁盘里-设置一个服务器文件夹。我把他设置sites" class="headerlink" title="首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites"></a>首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites</h3><p><img src="http://upload-images.jianshu.io/upload_images/1954780-21734f5fd3a5fbea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<h3 id="切换工作目录"><a href="#切换工作目录" class="headerlink" title="切换工作目录"></a>切换工作目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$cd</span> /etc/apache2</div></pre></td></tr></table></figure>
+<h3 id="用Vim编辑-httped-conf"><a href="#用Vim编辑-httped-conf" class="headerlink" title="用Vim编辑 httped.conf"></a>用Vim编辑 httped.conf</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim httpd.conf</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-fbf414b2bf1e7e16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>
           
       
     </div>

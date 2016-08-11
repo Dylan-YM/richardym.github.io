@@ -16,35 +16,25 @@
 
 
 <meta name="description" content="如何安装?
-1.安装ruby环境,添加淘宝ruby镜像bashbash
-$ gem sources --remove https://rubygems.org/
-//等有反应之后再敲入以下命令
-$ gem sources -a http://ruby.taobao.org/2.查看是否设置成功:bash
-$ gem sources -l3.然后安装cocoapods:bash
-$ sudo gem">
+1.安装ruby环境,添加淘宝ruby镜像123$ gem sources --remove https://rubygems.org///等有反应之后再敲入以下命令$ gem sources -a http://ruby.taobao.org/
+2.查看是否设置成功:1$ gem sources -l
+3.然后安装cocoapods:1$ sudo gem install cocoa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cocoaPod的安装，删除以及基本使用">
 <meta property="og:url" content="http://yoursite.com/2015/08/13/cocoaPod的安装，删除以及基本使用/index.html">
 <meta property="og:site_name" content="richard's blog">
 <meta property="og:description" content="如何安装?
-1.安装ruby环境,添加淘宝ruby镜像bashbash
-$ gem sources --remove https://rubygems.org/
-//等有反应之后再敲入以下命令
-$ gem sources -a http://ruby.taobao.org/2.查看是否设置成功:bash
-$ gem sources -l3.然后安装cocoapods:bash
-$ sudo gem">
+1.安装ruby环境,添加淘宝ruby镜像123$ gem sources --remove https://rubygems.org///等有反应之后再敲入以下命令$ gem sources -a http://ruby.taobao.org/
+2.查看是否设置成功:1$ gem sources -l
+3.然后安装cocoapods:1$ sudo gem install cocoa">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-e42b4ca1f003f6ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1954780-0f6de27d590f271f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-08-11T01:47:14.000Z">
+<meta property="og:updated_time" content="2016-08-11T01:50:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cocoaPod的安装，删除以及基本使用">
 <meta name="twitter:description" content="如何安装?
-1.安装ruby环境,添加淘宝ruby镜像bashbash
-$ gem sources --remove https://rubygems.org/
-//等有反应之后再敲入以下命令
-$ gem sources -a http://ruby.taobao.org/2.查看是否设置成功:bash
-$ gem sources -l3.然后安装cocoapods:bash
-$ sudo gem">
+1.安装ruby环境,添加淘宝ruby镜像123$ gem sources --remove https://rubygems.org///等有反应之后再敲入以下命令$ gem sources -a http://ruby.taobao.org/
+2.查看是否设置成功:1$ gem sources -l
+3.然后安装cocoapods:1$ sudo gem install cocoa">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1954780-e42b4ca1f003f6ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -326,12 +316,11 @@ $ sudo gem">
       
           
         <p>如何安装?</p>
-<p>1.安装ruby环境,添加淘宝ruby镜像<br><code>bashbash
-$ gem sources --remove https://rubygems.org/
-//等有反应之后再敲入以下命令
-$ gem sources -a http://ruby.taobao.org/</code><br>2.查看是否设置成功:<br><code>bash
-$ gem sources -l</code><br>3.然后安装cocoapods:<br><code>bash
-$ sudo gem install cocoapods</code><br><a id="more"></a><br>4.查看cocoapods是否支持某个类库</p>
+<p>1.安装ruby环境,添加淘宝ruby镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ gem sources --remove https://rubygems.org/</div><div class="line">//等有反应之后再敲入以下命令</div><div class="line">$ gem sources <span class="_">-a</span> http://ruby.taobao.org/</div></pre></td></tr></table></figure></p>
+<p>2.查看是否设置成功:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gem sources <span class="_">-l</span></div></pre></td></tr></table></figure></p>
+<p>3.然后安装cocoapods:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo gem install cocoapods</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>4.查看cocoapods是否支持某个类库</p>
 <p>$ pod search 类库名,支持模糊查询(如:AFNetworking)</p>
 <p>如何使用?</p>
 <ul>
@@ -347,55 +336,32 @@ $ sudo gem install cocoapods</code><br><a id="more"></a><br>4.查看cocoapods是
 <p>注:有些第三方库需要指明:platform 支持的IOS最低版本,否则在pod install时会报错,如下图,提示AFNetworking最低支持IOS6.0和OS X 10.8</p>
 <p>cocoapods指明ios版本</p>
 <ul>
-<li>然后在项目podfile所在目录下运行:(会在你当前项目中导入podfile所配置的库,所以要在项目目录下运行)<br><code>bash
-$ pod install</code><br>注意上述命令运行完毕后终端输出的最后一段话,意思就是以后打开项目就用CocoaPodsDemo.xcworkspace 打开，而不是之前的.xcodeproj文件。<br><code>bash
-[!] From now on use</code>CocoaPodsDemo.xcworkspace<code>.</code><br>经过以上步骤后,我们现在可以打开CocoaPodsDemo.xcworkspace启动我们的新工程了.新工程中已经通过cocoapods引入并配置好了我们刚在podfile写的需要依赖的第三方库了.</li>
+<li>然后在项目podfile所在目录下运行:(会在你当前项目中导入podfile所配置的库,所以要在项目目录下运行)<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pod install</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>引入第三方库后找不到头文件?<br>`bash<br>在项目的Targe-Build Settings-Search Paths-User Header Searcj Paths中添加</p>
-<p>${SRCROOT} 值为 recursive<br>`<br>![Uploading Paste_Image_242830.png . . .]<br>如下图:</p>
+<p>注意上述命令运行完毕后终端输出的最后一段话,意思就是以后打开项目就用CocoaPodsDemo.xcworkspace 打开，而不是之前的.xcodeproj文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[!] From now on use ```CocoaPodsDemo.xcworkspace```.</div></pre></td></tr></table></figure></p>
+<p>经过以上步骤后,我们现在可以打开CocoaPodsDemo.xcworkspace启动我们的新工程了.新工程中已经通过cocoapods引入并配置好了我们刚在podfile写的需要依赖的第三方库了.</p>
+<p>引入第三方库后找不到头文件?<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">在项目的Targe-Build Settings-Search Paths-User Header Searcj Paths中添加</div><div class="line"></div><div class="line"><span class="variable">$&#123;SRCROOT&#125;</span> 值为 recursive</div></pre></td></tr></table></figure></p>
+<p>![Uploading Paste_Image_242830.png . . .]<br>如下图:</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1954780-e42b4ca1f003f6ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>cocoapods<br>配置头文件</p>
 <p>如何编译从github上checkout下来的一个已包含CocoPods类库的项目?</p>
 <p>打开终端进入你所下载项目的根目录,执行以下命令,后会得到上面的那句话:</p>
 <p>$ pod update</p>
 <p>等待命令运行完毕后,同样最后会输出</p>
-<p>[!] From now on use <code>xxxxx.xcworkspace</code>.</p>
-<p>如何删除cocopods?</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-0f6de27d590f271f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
-<ul>
-<li>删除工程文件夹下的Podfile、Podfile.lock及Pods文件夹</li>
-<li>删除xcworkspace文件</li>
-<li>使用xcodeproj文件打开工程，删除Frameworks组下的Pods.xcconfig及libPods.a引用</li>
-<li>在工程设置中的Build Phases下删除Check Pods Manifest.lock及Copy Pods Resources</li>
-</ul>
-<p>删除cocoapods</p>
-<p>CocoaPods常用命令</p>
-<p>1、pod install</p>
-<p>根据Podfile文件指定的内容，安装依赖库，如果有Podfile.lock文件而且对应的Podfile文件未被修改，则会根据Podfile.lock文件指定的版本安装。</p>
-<p>每次更新了Podfile文件时，都需要重新执行该命令，以便重新安装Pods依赖库。</p>
-<p>2、pod update</p>
-<p>若果Podfile中指定的依赖库版本不是写死的，当对应的依赖库有了更新，无论有没有Podfile.lock文件都会去获取Podfile文件描述的允许获取到的最新依赖库版本。</p>
-<p>3、pod search</p>
-<p>命令格式为：</p>
-<p>![Upload Paste_Image.png failed. Please try again.]<br>$ pod search 类库名,支持模糊查询(如:AFNetworking)</p>
-<p>pod search功能</p>
-<p>红框中的信息为AFNetworking 最新版本,Version中显示了历史版本,根据这些信息来编写我们的Podfile文件如:</p>
-<p>pod ‘AFNetWorking’, ‘~&gt; 2.2.4′</p>
-<p>这句话具体含义是什么呢?<br>当我们通过cocopods引入依赖库时，需要显示或隐式注明引用的依赖库版本，具体写法和表示含义如下</p>
-<p>pod ‘AFNetworking’      //不显式指定依赖库版本，表示每次都获取最新版本<br>pod ‘AFNetworking’, ‘2.0’     //只使用2.0版本<br>pod ‘AFNetworking’, ‘&gt; 2.0′     //使用高于2.0的版本<br>pod ‘AFNetworking’, ‘&gt;= 2.0′     //使用大于或等于2.0的版本<br>pod ‘AFNetworking’, ‘&lt; 2.0′     //使用小于2.0的版本<br>pod ‘AFNetworking’, ‘&lt;= 2.0′     //使用小于或等于2.0的版本<br>pod ‘AFNetworking’, ‘~&gt; 0.1.2′     //使用大于等于0.1.2但小于0.2的版本<br>pod ‘AFNetworking’, ‘~&gt;0.1′     //使用大于等于0.1但小于1.0的版本<br>pod ‘AFNetworking’, ‘~&gt;0′     //高于0的版本，写这个限制和什么都不写是一个效果，都表示使用最新版本</p>
+<p>[!] From now on use <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">如何删除cocopods?</div><div class="line"></div><div class="line">![Paste_Image.png](http://upload-images.jianshu.io/upload_images/1954780-0f6de27d590f271f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</div><div class="line">- 删除工程文件夹下的Podfile、Podfile.lock及Pods文件夹</div><div class="line">- 删除xcworkspace文件</div><div class="line">- 使用xcodeproj文件打开工程，删除Frameworks组下的Pods.xcconfig及libPods.a引用</div><div class="line">- 在工程设置中的Build Phases下删除Check Pods Manifest.lock及Copy Pods Resources</div><div class="line"></div><div class="line">删除cocoapods</div><div class="line"></div><div class="line">CocoaPods常用命令</div><div class="line"></div><div class="line">1、pod install</div><div class="line"></div><div class="line">根据Podfile文件指定的内容，安装依赖库，如果有Podfile.lock文件而且对应的Podfile文件未被修改，则会根据Podfile.lock文件指定的版本安装。</div><div class="line"></div><div class="line">每次更新了Podfile文件时，都需要重新执行该命令，以便重新安装Pods依赖库。</div><div class="line"></div><div class="line">2、pod update</div><div class="line"></div><div class="line">若果Podfile中指定的依赖库版本不是写死的，当对应的依赖库有了更新，无论有没有Podfile.lock文件都会去获取Podfile文件描述的允许获取到的最新依赖库版本。</div><div class="line"></div><div class="line">3、pod search</div><div class="line"></div><div class="line">命令格式为：</div><div class="line"></div><div class="line">![Upload Paste_Image.png failed. Please try again.]</div><div class="line">$ pod search 类库名,支持模糊查询(如:AFNetworking)</div><div class="line"></div><div class="line">pod search功能</div><div class="line"></div><div class="line">红框中的信息为AFNetworking 最新版本,Version中显示了历史版本,根据这些信息来编写我们的Podfile文件如:</div><div class="line"></div><div class="line">pod ‘AFNetWorking’, ‘~&gt; 2.2.4′</div><div class="line"></div><div class="line">这句话具体含义是什么呢?</div><div class="line">当我们通过cocopods引入依赖库时，需要显示或隐式注明引用的依赖库版本，具体写法和表示含义如下</div><div class="line">```bash</div><div class="line">pod ‘AFNetworking’      //不显式指定依赖库版本，表示每次都获取最新版本</div><div class="line">pod ‘AFNetworking’, ‘2.0’     //只使用2.0版本</div><div class="line">pod ‘AFNetworking’, ‘&gt; 2.0′     //使用高于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘&gt;= 2.0′     //使用大于或等于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘&lt; 2.0′     //使用小于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘&lt;= 2.0′     //使用小于或等于2.0的版本</div><div class="line">pod ‘AFNetworking’, ‘~&gt; 0.1.2′     //使用大于等于0.1.2但小于0.2的版本</div><div class="line">pod ‘AFNetworking’, ‘~&gt;0.1′     //使用大于等于0.1但小于1.0的版本</div><div class="line">pod ‘AFNetworking’, ‘~&gt;0′     //高于0的版本，写这个限制和什么都不写是一个效果，都表示使用最新版本</div></pre></td></tr></table></figure></p>
 <p>4、pod setup</p>
 <p>用于跟新本地电脑上的保存的Pods依赖库tree。由于每天有很多人会创建或者更新Pods依赖库，这条命令执行的时候会相当慢，还请耐心等待。我们需要经常执行这条命令，否则有新的Pods依赖库的时候执行pod search命令是搜不出来的。</p>
 <p>①多个target中使用相同的Pods依赖库</p>
-<p>比如，名称为CocoaPodsTest的target和Second的target都需要使用Reachability、SBJson、AFNetworking三个Pods依赖库，可以使用link_with关键字来实现，将Podfile写成如下方式：<br>`bash<br>link_with ‘CocoaPodsTest’, ‘Second’<br>platform :ios<br>pod ‘Reachability’,  ‘~&gt; 3.0.0′<br>pod ‘SBJson’, ‘~&gt; 4.0.0′</p>
-<p>platform :ios, ‘7.0’<br>pod ‘AFNetworking’, ‘~&gt; 2.0′<br>`<br>这种写法就实现了CocoaPodsTest和Second两个target共用相同的Pods依赖库。</p>
+<p>比如，名称为CocoaPodsTest的target和Second的target都需要使用Reachability、SBJson、AFNetworking三个Pods依赖库，可以使用link_with关键字来实现，将Podfile写成如下方式：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">link_with ‘CocoaPodsTest’, ‘Second’</div><div class="line">platform :ios</div><div class="line">pod ‘Reachability’,  ‘~&gt; 3.0.0′</div><div class="line">pod ‘SBJson’, ‘~&gt; 4.0.0′</div><div class="line"></div><div class="line">platform :ios, ‘7.0’</div><div class="line">pod ‘AFNetworking’, ‘~&gt; 2.0′</div></pre></td></tr></table></figure></p>
+<p>这种写法就实现了CocoaPodsTest和Second两个target共用相同的Pods依赖库。</p>
 <p>②不同的target使用完全不同的Pods依赖库</p>
-<p>CocoaPodsTest这个target使用的是Reachability、SBJson、AFNetworking三个依赖库，但Second这个target只需要使用OpenUDID这一个依赖库，这时可以使用target关键字，Podfile的描述方式如下：<br>`bash<br>target :’CocoaPodsTest’ do<br>platform :ios<br>pod ‘Reachability’,  ‘~&gt; 3.0.0′<br>pod ‘SBJson’, ‘~&gt; 4.0.0′</p>
-<p>platform :ios, ‘7.0’<br>pod ‘AFNetworking’, ‘~&gt; 2.0′<br>end</p>
-<p>target :’Second’ do<br>pod ‘OpenUDID’, ‘~&gt; 1.0.0′<br>end<br>`<br>其中，do/end作为开始和结束标识符。</p>
+<p>CocoaPodsTest这个target使用的是Reachability、SBJson、AFNetworking三个依赖库，但Second这个target只需要使用OpenUDID这一个依赖库，这时可以使用target关键字，Podfile的描述方式如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">target :’CocoaPodsTest’ <span class="keyword">do</span></div><div class="line">platform :ios</div><div class="line">pod ‘Reachability’,  ‘~&gt; 3.0.0′</div><div class="line">pod ‘SBJson’, ‘~&gt; 4.0.0′</div><div class="line"></div><div class="line">platform :ios, ‘7.0’</div><div class="line">pod ‘AFNetworking’, ‘~&gt; 2.0′</div><div class="line">end</div><div class="line"></div><div class="line">target :’Second’ <span class="keyword">do</span></div><div class="line">pod ‘OpenUDID’, ‘~&gt; 1.0.0′</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>其中，do/end作为开始和结束标识符。</p>
 <p>Podfile.lock文件</p>
 <p>在使用CocoaPods，执行完pod install之后，会生成一个Podfile.lock文件。这个文件看起来跟我们关系不大，实际上绝对不应该忽略它。<br>该文件用于保存已经安装的Pods依赖库的版本，通过CocoaPods安装了SBJson、AFNetworking、Reachability三个POds依赖库以后对应的Podfile.lock文件内容为：</p>
 <p>PODS:<br>– AFNetworking (2.1.0):<br>– AFNetworking/NSURLConnection<br>– AFNetworking/NSURLSession<br>– AFNetworking/Reachability<br>– AFNetworking/Security<br>– AFNetworking/Serialization<br>– AFNetworking/UIKit<br>– AFNetworking/NSURLConnection (2.1.0):<br>– AFNetworking/Reachability<br>– AFNetworking/Security<br>– AFNetworking/Serialization<br>– AFNetworking/NSURLSession (2.1.0):<br>– AFNetworking/NSURLConnection<br>– AFNetworking/Reachability (2.1.0)<br>– AFNetworking/Security (2.1.0)<br>– AFNetworking/Serialization (2.1.0)<br>– AFNetworking/UIKit (2.1.0):<br>– AFNetworking/NSURLConnection<br>– Reachability (3.0.0)<br>– SBJson (4.0.0)</p>
-<p>DEPENDENCIES:<br>– AFNetworking (~&gt; 2.0)<br>– Reachability (~&gt; 3.0.0)<br>– SBJson (~&gt; 4.0.0)<br>`bash<br>SPEC CHECKSUMS:<br>AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd<br>Reachability: 500bd76bf6cd8ff2c6fb715fc5f44ef6e4c024f2<br>SBJson: f3c686806e8e36ab89e020189ac582ba26ec4220</p>
-<p>COCOAPODS: 0.29.0<br>`<br>Podfile.lock文件最大得用处在于多人开发。当团队中的某个人执行完pod install命令后，生成的Podfile.lock文件就记录下了当时最新Pods依赖库的版本，这时团队中的其它人check下来这份包含Podfile.lock文件的工程以后，再去执行pod install命令时，获取下来的Pods依赖库的版本就和最开始用户获取到的版本一致。如果没有Podfile.lock文件，后续所有用户执行pod install命令都会获取最新版本的SBJson，这就有可能造成同一个团队使用的依赖库版本不一致，这对团队协作来说绝对是个灾难！<br>在这种情况下，如果团队想使用当前最新版本的SBJson依赖库，有两种方案：</p>
+<p>DEPENDENCIES:<br>– AFNetworking (~&gt; 2.0)<br>– Reachability (~&gt; 3.0.0)<br>– SBJson (~&gt; 4.0.0)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SPEC CHECKSUMS:</div><div class="line">AFNetworking: c7d7901a83f631414c7eda1737261f696101a5<span class="built_in">cd</span></div><div class="line">Reachability: 500bd76bf6<span class="built_in">cd</span>8ff2c6fb715<span class="built_in">fc</span>5f44ef6e4c024f2</div><div class="line">SBJson: f3c686806e8e36ab89e020189ac582ba26ec4220</div><div class="line"></div><div class="line">COCOAPODS: 0.29.0</div></pre></td></tr></table></figure></p>
+<p>Podfile.lock文件最大得用处在于多人开发。当团队中的某个人执行完pod install命令后，生成的Podfile.lock文件就记录下了当时最新Pods依赖库的版本，这时团队中的其它人check下来这份包含Podfile.lock文件的工程以后，再去执行pod install命令时，获取下来的Pods依赖库的版本就和最开始用户获取到的版本一致。如果没有Podfile.lock文件，后续所有用户执行pod install命令都会获取最新版本的SBJson，这就有可能造成同一个团队使用的依赖库版本不一致，这对团队协作来说绝对是个灾难！<br>在这种情况下，如果团队想使用当前最新版本的SBJson依赖库，有两种方案：</p>
 <ul>
 <li>更改Podfile，使其指向最新版本的SBJson依赖库；</li>
 <li>执行pod update命令；</li>
@@ -407,18 +373,9 @@ $ pod install</code><br>注意上述命令运行完毕后终端输出的最后�
 <p>license类型</p>
 <p>正规的仓库都应该有一个license文件，Pods依赖库对这个文件的要求更严，是必须要有的。因此最好在这里让github创建一个，也可以自己后续再创建。我使用的license类型是MIT。</p>
 <p>把项目clone到本地然后在根目录下新建MyPodDemo.podspec</p>
-<p>或使用命令<br>`bash</p>
-<p>$ pod spec create MyPodDemo</p>
-<p>`</p>
+<p>或使用命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ pod spec create MyPodDemo</div></pre></td></tr></table></figure></p>
 <p>Spec文件编写:</p>
-<p>`bash<br>Pod::Spec.new do |s|<br>s.name = “MyPodDemo”<br>s.version = “0.0.1”<br>s.summary = “A short description of MyPodDemo.”<br>s.description = &lt;&lt;-DESC<br>A longer description of MyPodDemo in Markdown format.</p>
-<ul>
-<li>Think: Why did you write this? What is the focus? What does it do?</li>
-<li>CocoaPods will be using this to generate tags, and improve search results.</li>
-<li>Try to keep it short, snappy and to the point.</li>
-<li>Finally, don’t worry about the indent, CocoaPods strips it!<br>DESC<br>s.homepage = “<a href="https://github.com/goingta/MyPodDemo" target="_blank" rel="external">https://github.com/goingta/MyPodDemo</a>“<br>s.license = “MIT”<br>s.author = { “goingta” =&gt; “tangle1128@gmail.com” }<br>s.source = { :git =&gt; “<a href="https://github.com/goingta/MyPodDemo.git" target="_blank" rel="external">https://github.com/goingta/MyPodDemo.git</a>“, :tag =&gt; “0.0.1” }<br>s.source_files = “MyPodDemo/Src”, “MyPodDemo/Src/<em>*/</em>.{h,m}”<br>s.requires_arc = true<h1 id="s-framework-“SomeFramework”"><a href="#s-framework-“SomeFramework”" class="headerlink" title="s.framework = “SomeFramework”"></a>s.framework = “SomeFramework”</h1><h1 id="s-frameworks-“SomeFramework”-“AnotherFramework”"><a href="#s-frameworks-“SomeFramework”-“AnotherFramework”" class="headerlink" title="s.frameworks = “SomeFramework”, “AnotherFramework”"></a>s.frameworks = “SomeFramework”, “AnotherFramework”</h1><h1 id="s-library-“iconv”"><a href="#s-library-“iconv”" class="headerlink" title="s.library = “iconv”"></a>s.library = “iconv”</h1><h1 id="s-libraries-“iconv”-“xml2”"><a href="#s-libraries-“iconv”-“xml2”" class="headerlink" title="s.libraries = “iconv”, “xml2”"></a>s.libraries = “iconv”, “xml2”</h1><h1 id="s-dependency-“JSONKit”-“-gt-1-4”"><a href="#s-dependency-“JSONKit”-“-gt-1-4”" class="headerlink" title="s.dependency “JSONKit”, “~&gt; 1.4”"></a>s.dependency “JSONKit”, “~&gt; 1.4”</h1><h1 id="s-dependency-“AFNetworking”-“-gt-2-2-4”"><a href="#s-dependency-“AFNetworking”-“-gt-2-2-4”" class="headerlink" title="s.dependency “AFNetworking”, “~&gt; 2.2.4”"></a>s.dependency “AFNetworking”, “~&gt; 2.2.4”</h1>end</li>
-</ul>
-<p>`</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new <span class="keyword">do</span> |s|</div><div class="line">s.name = <span class="string">"MyPodDemo"</span></div><div class="line">s.version = <span class="string">"0.0.1"</span></div><div class="line">s.summary = <span class="string">"A short description of MyPodDemo."</span></div><div class="line">s.description = &lt;&lt;-DESC</div><div class="line">A longer description of MyPodDemo <span class="keyword">in</span> Markdown format.</div><div class="line">* Think: Why did you write this? What is the focus? What does it <span class="keyword">do</span>?</div><div class="line">* CocoaPods will be using this to generate tags, and improve search results.</div><div class="line">* Try to keep it short, snappy and to the point.</div><div class="line">* Finally, don<span class="string">'t worry about the indent, CocoaPods strips it!</span></div><div class="line">DESC</div><div class="line">s.homepage = "https://github.com/goingta/MyPodDemo"</div><div class="line">s.license = "MIT"</div><div class="line">s.author = &#123; "goingta" =&gt; "tangle1128@gmail.com" &#125;</div><div class="line">s.source = &#123; :git =&gt; "https://github.com/goingta/MyPodDemo.git", :tag =&gt; "0.0.1" &#125;</div><div class="line">s.source_files = "MyPodDemo/Src", "MyPodDemo/Src/**/*.&#123;h,m&#125;"</div><div class="line">s.requires_arc = true</div><div class="line"># s.framework = "SomeFramework"</div><div class="line"># s.frameworks = "SomeFramework", "AnotherFramework"</div><div class="line"># s.library = "iconv"</div><div class="line"># s.libraries = "iconv", "xml2"</div><div class="line"># s.dependency "JSONKit", "~&gt; 1.4"</div><div class="line"># s.dependency "AFNetworking", "~&gt; 2.2.4"</div><div class="line">end</div></pre></td></tr></table></figure>
 <p>自解析:</p>
 <p>name: 导入pod后的目录名<br>version: 当前版本号<br>deployment_target: 配置的target<br>prefix_header_file: 预编译头文件路径，将该文件的内容插入到Pod的pch文件内<br>source: 来源的具体路径，是http链接还是本地路径<br>requires_arc: 是否需要arc<br>source_files: 指定该目录下包含哪些文件<br>其他可选参数还包括：<br>dependency: 指定依赖，如果依赖的库不存在或者依赖库的版本不符合要求将会报错<br>libraries: 指定导入的库，比如sqlite3<br>frameworks: 指定导入的framework<br>weak_frameworks: 弱链接，比如说一个项目同时兼容iOS6和iOS7，但某一个framework只在iOS7上有，这时候如果用强链接，那么在iOS7上运行就会crash，使用weak_frameworks可以避免这种情况。</p>
 <p>整个podspec语法是一个嵌套结构从Pod::Spec.new do |s|到最后一个end是最大的循环，表示整个podspec导入的文件。中间每一个subspec到end结束是一个子目录，Pods会为每个subspec创建一个逻辑目录，相当于Xcode的group概念。|**|中间是subspec的名字，可以随便命名，但后面使用的名称必须一致。</p>
@@ -434,22 +391,18 @@ $ pod install</code><br>注意上述命令运行完毕后终端输出的最后�
 <p>如果由于某些原因我们编写的库不能公开,但是又想使用pods来进行管理,要怎么办呢?</p>
 <p>首先我们要将我们刚刚在github上建的仓库改为Private(不然还用Public搞毛啊)</p>
 <p>然后修改我们项目的podfile,与已加入Cocopods仓库的公有库相比我们只需要指明私有库低git地址,如下:</p>
-<p>`bash<br>platform :ios, ‘6.0’<br>pod ‘MyPodDemo’, :git =&gt; ‘<a href="https://github.com/goingta/MyPodDemo.git" target="_blank" rel="external">https://github.com/goingta/MyPodDemo.git</a>‘ //私有库<br>pod ‘CocoaLumberjack’//公有库</p>
-<p>`</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">platform :ios, <span class="string">'6.0'</span></div><div class="line">pod <span class="string">'MyPodDemo'</span>, :git =&gt; <span class="string">'https://github.com/goingta/MyPodDemo.git'</span> //私有库</div><div class="line">pod <span class="string">'CocoaLumberjack'</span>//公有库</div></pre></td></tr></table></figure>
 <p>版本控制和冲突(引用自<a href="http://bashcn.io/issue-6-4/" target="_blank" rel="external">http://bashcn.io/issue-6-4/</a>)</p>
 <p>CocoaPods 使用语义版本控制 – Semantic Versioning 命名约定来解决对版本的依赖。由于冲突解决系统建立在非重大变更的补丁版本之间，这使得解决依赖关系变得容易很多。例如，两个不同的 pods 依赖于 CocoaLumberjack 的两个版本，假设一个依赖于2.3.1，另一个依赖于 2.3.3，此时冲突解决系统可以使用最新的版本 2.3.3，因为这个可以向后与 2.3.1 兼容。</p>
 <p>但这并不总是有效。有许多第三方库并不使用这样的约定，这让解决方案变得非常复杂。</p>
 <p>当然，总会有一些冲突需要手动解决。如果一个库依赖于 CocoaLumberjack 的 1.2.5，另外一个库则依赖于 2.3.1，那么只有最终用户通过明确指定使用某个版本来解决冲突。</p>
 <p>配置非ARC文件(8.5号补充)</p>
 <p>前几天项目中由于历史原因,导致有一个私有的pods库中某几个文件是在非ARC时代写的,如果要进行修改工程量浩大,于是乎要对这几个文件单独处理,这几个文件不使用arc其他文件使用arc,网上查了一些资料,只需要对source_file进行修改并排除那几个不使用ARC的文件就可以了,大致修改如下:</p>
-<p>`bash<br>Pod::Spec.new do |s|<br>s.name = “MyPodDemo”<br>s.version = “0.0.1”<br>s.summary = “A short description of MyPodDemo.<br>s.homepage = “<a href="https://github.com/goingta/MyPodDemo" target="_blank" rel="external">https://github.com/goingta/MyPodDemo</a>“<br>s.license = “MIT”<br>s.author = { “goingta” =&gt; “tangle1128@gmail.com” }<br>s.source = { :git =&gt; “<a href="https://github.com/goingta/MyPodDemo.git" target="_blank" rel="external">https://github.com/goingta/MyPodDemo.git</a>“, :tag =&gt; “0.0.1” }<br>s.source_files = “MyPodDemo”<br>non_arc_files = ‘MyPodDemo/NoArcFile1.{h,m}’,’MyPodDemo/NoArcFile2.{h,m}’<br>s.requires_arc = true</p>
-<p>s.exclude_files = non_arc_files<br>s.subspec ‘no-arc’ do |sna|<br>sna.requires_arc = false<br>sna.source_files = non_arc_files<br>end<br>end</p>
-<p>`<br>回退Cocoapods历史版本(2015.3.17号补充)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Pod::Spec.new <span class="keyword">do</span> |s|</div><div class="line">s.name = <span class="string">"MyPodDemo"</span></div><div class="line">s.version = <span class="string">"0.0.1"</span></div><div class="line">s.summary = <span class="string">"A short description of MyPodDemo.</span></div><div class="line">s.homepage = "https://github.com/goingta/MyPodDemo<span class="string">"</span></div><div class="line">s.license = "MIT<span class="string">"</span></div><div class="line">s.author = &#123; "goingta<span class="string">" =&gt; "</span>tangle1128@gmail.com<span class="string">" &#125;</span></div><div class="line">s.source = &#123; :git =&gt; "https://github.com/goingta/MyPodDemo.git<span class="string">", :tag =&gt; "</span>0.0.1<span class="string">" &#125;</span></div><div class="line">s.source_files = "MyPodDemo<span class="string">"</span></div><div class="line">non_arc_files = 'MyPodDemo/NoArcFile1.&#123;h,m&#125;','MyPodDemo/NoArcFile2.&#123;h,m&#125;'</div><div class="line">s.requires_arc = true</div><div class="line"></div><div class="line">s.exclude_files = non_arc_files</div><div class="line">s.subspec 'no-arc' do |sna|</div><div class="line">sna.requires_arc = false</div><div class="line">sna.source_files = non_arc_files</div><div class="line">end</div><div class="line">end</div></pre></td></tr></table></figure>
+<p>回退Cocoapods历史版本(2015.3.17号补充)</p>
 <p>先删除已经装过的版本(可能有几个,卸载的时候会让你输入1,2..n选择卸载那个版本</p>
-<p>`bash<br>sudo gem uninstall cocoapods</p>
-<p>`</p>
-<p>安装某一个版本<br><code>bash
-sudo gem install cocoapods -v 0.35.0</code>·`</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo gem uninstall cocoapods</div></pre></td></tr></table></figure>
+<p>安装某一个版本<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo gem install cocoapods -v 0.35.0</div><div class="line">```·</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -482,7 +435,7 @@ sudo gem install cocoapods -v 0.35.0</code>·`</p>
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#s-framework-“SomeFramework”"><span class="toc-number">1.</span> <span class="toc-text">s.framework = “SomeFramework”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#s-frameworks-“SomeFramework”-“AnotherFramework”"><span class="toc-number">2.</span> <span class="toc-text">s.frameworks = “SomeFramework”, “AnotherFramework”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#s-library-“iconv”"><span class="toc-number">3.</span> <span class="toc-text">s.library = “iconv”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#s-libraries-“iconv”-“xml2”"><span class="toc-number">4.</span> <span class="toc-text">s.libraries = “iconv”, “xml2”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#s-dependency-“JSONKit”-“-gt-1-4”"><span class="toc-number">5.</span> <span class="toc-text">s.dependency “JSONKit”, “~> 1.4”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#s-dependency-“AFNetworking”-“-gt-2-2-4”"><span class="toc-number">6.</span> <span class="toc-text">s.dependency “AFNetworking”, “~> 2.2.4”</span></a></li></ol>
+            
         
     </div>
     <style>
