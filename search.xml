@@ -4,39 +4,6 @@
   
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://yoursite.com/blog/2016/08/16/undefined.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>http://yoursite.com/blog/2016/08/16/undefined.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[Swift中 覆盖(重写)，重构，重载的区别]]></title>
-      <url>http://yoursite.com/blog/2016/02/15/overLoad.html</url>
-      <content type="html"><![CDATA[<ul>
-<li>重构, 是对软计设计方法的描述, 这个层面是架构和设计方法。</li>
-<li>重构是一个软件维护的通用技巧, 重构的具体做法, 可以通过重写或者重载等, 但不限于此, 更改注释, 更改函数名类名等,都可以称之为重构。<blockquote>
-<p>你今天写了一个应用, 读txt文档并显示, 几天后,用户的新需求来了, 告诉你, 我要读一个XML文本并显示, 这个时候, 你从前的代码需要做变更, 这个变更的动作, 就叫做重构。<br>你维护的模块有个类叫做Class_B, 别人不爽, 觉得名字不好理解, 要你更改成TXTReader, 并附上注释。</p>
-<a id="more"></a></blockquote>
-</li>
-<li>覆盖(重写), 即override(Overwrite), 表达的都是一个含义。<blockquote>
-<p>父类的protect或者public方法无条件的成为子类的方法，但子类不爽， 想要将继承过来的方法改造一下。 这就是重写。<br>参数值，都是一模一样的。但内容体(方法中的代码)已经不同了。</p>
-</blockquote>
-</li>
-<li>重载(Overload)就是通过方法的参数识别不同的函数。<blockquote>
-<p>比如你有一个AMethod()不带参数, 然后你用了一个另外相同名称的方法,带一个参数AMethod(String para)。<br>这个过程就叫做重载。</p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[Swift中 core Foundation的运用]]></title>
       <url>http://yoursite.com/blog/2016/02/15/coreFoundation.html</url>
       <content type="html"><![CDATA[<p>Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Foundation 类型时，你也可以桥接一些 toll-free bridged Core Foundation 类型到 Swift 标准库类型。</p>
@@ -97,6 +64,27 @@
  /*! The alternate birthday (Lunisolar). */
  @NSCopying public var nonGregorianBirthday: NSDateComponents? { get }
 </code></pre><p>是不是比core foundation爽多了？？？</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Swift中 覆盖(重写)，重构，重载的区别]]></title>
+      <url>http://yoursite.com/blog/2016/02/15/overLoad.html</url>
+      <content type="html"><![CDATA[<ul>
+<li>重构, 是对软计设计方法的描述, 这个层面是架构和设计方法。</li>
+<li>重构是一个软件维护的通用技巧, 重构的具体做法, 可以通过重写或者重载等, 但不限于此, 更改注释, 更改函数名类名等,都可以称之为重构。<blockquote>
+<p>你今天写了一个应用, 读txt文档并显示, 几天后,用户的新需求来了, 告诉你, 我要读一个XML文本并显示, 这个时候, 你从前的代码需要做变更, 这个变更的动作, 就叫做重构。<br>你维护的模块有个类叫做Class_B, 别人不爽, 觉得名字不好理解, 要你更改成TXTReader, 并附上注释。</p>
+<a id="more"></a></blockquote>
+</li>
+<li>覆盖(重写), 即override(Overwrite), 表达的都是一个含义。<blockquote>
+<p>父类的protect或者public方法无条件的成为子类的方法，但子类不爽， 想要将继承过来的方法改造一下。 这就是重写。<br>参数值，都是一模一样的。但内容体(方法中的代码)已经不同了。</p>
+</blockquote>
+</li>
+<li>重载(Overload)就是通过方法的参数识别不同的函数。<blockquote>
+<p>比如你有一个AMethod()不带参数, 然后你用了一个另外相同名称的方法,带一个参数AMethod(String para)。<br>这个过程就叫做重载。</p>
+</blockquote>
+</li>
+</ul>
 ]]></content>
     </entry>
     

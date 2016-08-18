@@ -263,19 +263,19 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-tags-1" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Swift中 core Foundation的运用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2016/08/16/undefined.html" class="article-date">
-      <time datetime="2016-08-16T09:50:34.000Z" itemprop="datePublished">2016-08-16</time>
+      <a href="/blog/2016/02/15/coreFoundation.html" class="article-date">
+      <time datetime="2016-02-15T03:22:29.000Z" itemprop="datePublished">2016-02-15</time>
 </a>
 
  
-    <a href="/blog/2016/08/16/undefined.html#comments" title="查看评论">
+    <a href="/blog/2016/02/15/coreFoundation.html#comments" title="查看评论">
         <i class="fa fa-comments-o" aria-hidden="true"></i>
         <span class="count-comment"></span>
         
-            <span class="ds-thread-count"  data-thread-key="blog/2016/08/16/undefined.html" ></span>
+            <span class="ds-thread-count"  data-thread-key="blog/2016/02/15/coreFoundation.html" ></span>
         
         
     </a>
@@ -291,7 +291,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/08/16/undefined.html">tags</a>
+      <a class="article-title" href="/blog/2016/02/15/coreFoundation.html">Swift中 core Foundation的运用</a>
     </h1>
   
 
@@ -301,71 +301,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-tags" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2016/08/16/undefined.html" class="article-date">
-      <time datetime="2016-08-16T09:50:24.000Z" itemprop="datePublished">2016-08-16</time>
-</a>
-
- 
-    <a href="/blog/2016/08/16/undefined.html#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-            <span class="ds-thread-count"  data-thread-key="blog/2016/08/16/undefined.html" ></span>
-        
-        
-    </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/08/16/undefined.html">tags</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+              <p>Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Foundation 类型时，你也可以桥接一些 toll-free bridged Core Foundation 类型到 Swift 标准库类型。</p>
+<h4 id="1-重定义类型"><a href="#1-重定义类型" class="headerlink" title="1.重定义类型"></a>1.重定义类型</h4><p>当 Swift 导入 Core Foundation 类型时，编译器会重映射导入的类型名字。编译器会从每个类型名字的末端移除Ref，这是因为所有的 Swift 类都属于引用类型，因此后缀是多余的。</p>
+<p>Core Foundation 中的CFTypeRef类型会对Anyobject类型重映射。所以你以前使用的CFTypeRef，现在该换成AnyObject了。<br>
           
-        
       
     </div>
     
@@ -374,6 +313,14 @@
       
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发/">开发</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/blog/2016/02/15/coreFoundation.html#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -449,81 +396,6 @@
       
         <p class="article-more-link">
           <a href="/blog/2016/02/15/overLoad.html#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Swift中 core Foundation的运用" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2016/02/15/coreFoundation.html" class="article-date">
-      <time datetime="2016-02-15T03:22:29.000Z" itemprop="datePublished">2016-02-15</time>
-</a>
-
- 
-    <a href="/blog/2016/02/15/coreFoundation.html#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-            <span class="ds-thread-count"  data-thread-key="blog/2016/02/15/coreFoundation.html" ></span>
-        
-        
-    </a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/02/15/coreFoundation.html">Swift中 core Foundation的运用</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Foundation 类型时，你也可以桥接一些 toll-free bridged Core Foundation 类型到 Swift 标准库类型。</p>
-<h4 id="1-重定义类型"><a href="#1-重定义类型" class="headerlink" title="1.重定义类型"></a>1.重定义类型</h4><p>当 Swift 导入 Core Foundation 类型时，编译器会重映射导入的类型名字。编译器会从每个类型名字的末端移除Ref，这是因为所有的 Swift 类都属于引用类型，因此后缀是多余的。</p>
-<p>Core Foundation 中的CFTypeRef类型会对Anyobject类型重映射。所以你以前使用的CFTypeRef，现在该换成AnyObject了。<br>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发/">开发</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/blog/2016/02/15/coreFoundation.html#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -1004,10 +876,157 @@
 
 
   
+    <article id="post-数据传递的三种方法：通知，代理，blcok" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+    <div class="article-meta">
+      <a href="/blog/2015/03/08/null.html" class="article-date">
+      <time datetime="2015-03-08T08:44:29.000Z" itemprop="datePublished">2015-03-08</time>
+</a>
+
+ 
+    <a href="/blog/2015/03/08/null.html#comments" title="查看评论">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        <span class="count-comment"></span>
+        
+            <span class="ds-thread-count"  data-thread-key="blog/2015/03/08/null.html" ></span>
+        
+        
+    </a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2015/03/08/null.html">数据传递的三种方法：通知，代理，blcok</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能-带有自动变量-局部变量-的匿名函数。"><a href="#Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能-带有自动变量-局部变量-的匿名函数。" class="headerlink" title="Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。"></a>Blocks是C语言的扩充功能。用一句话来表示Blocks的扩充功能:带有自动变量(局部变量)的匿名函数。</h2><h2 id="block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。"><a href="#block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。" class="headerlink" title="block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。"></a>block其实是一个代码块，block本身也可以被作为参数在方法和函数间传递，这就给予了block无限的可能。</h2><h3 id="数据传递有三种方法-通知，代理，block"><a href="#数据传递有三种方法-通知，代理，block" class="headerlink" title="数据传递有三种方法:通知，代理，block."></a>数据传递有三种方法:通知，代理，block.</h3><p>而对于通知代理block的选择<br>1）如果数据传递两个对象没有联系。选择通知。</p>
+<p>2）如果两个对象有联系的话，三个都可以。</p>
+<p>3）能用代理的地方 一定也可以用block去代替。<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发/">开发</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/blog/2015/03/08/null.html#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Apachi在本地配置服务器 MAC专用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2015/03/06/Apachi.html" class="article-date">
+      <time datetime="2015-03-06T03:34:29.000Z" itemprop="datePublished">2015-03-06</time>
+</a>
+
+ 
+    <a href="/blog/2015/03/06/Apachi.html#comments" title="查看评论">
+        <i class="fa fa-comments-o" aria-hidden="true"></i>
+        <span class="count-comment"></span>
+        
+            <span class="ds-thread-count"  data-thread-key="blog/2015/03/06/Apachi.html" ></span>
+        
+        
+    </a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2015/03/06/Apachi.html">Apachi在本地配置服务器 MAC专用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h3 id="首先要在你的磁盘里-设置一个服务器文件夹。我把他设置sites"><a href="#首先要在你的磁盘里-设置一个服务器文件夹。我把他设置sites" class="headerlink" title="首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites"></a>首先要在你的磁盘里 设置一个服务器文件夹。我把他设置sites</h3><p><img src="http://upload-images.jianshu.io/upload_images/1954780-21734f5fd3a5fbea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"></p>
+<h3 id="切换工作目录"><a href="#切换工作目录" class="headerlink" title="切换工作目录"></a>切换工作目录</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$cd</span> /etc/apache2</div></pre></td></tr></table></figure>
+<h3 id="用Vim编辑-httped-conf"><a href="#用Vim编辑-httped-conf" class="headerlink" title="用Vim编辑 httped.conf"></a>用Vim编辑 httped.conf</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim httpd.conf</div></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-fbf414b2bf1e7e16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Paste_Image.png"><br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发/">开发</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/blog/2015/03/06/Apachi.html#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
   
 </div>
       <footer id="footer">
