@@ -4,6 +4,18 @@
   
     
     <entry>
+      <title><![CDATA[tags]]></title>
+      <url>http://yoursite.com/blog/2016/08/16/undefined.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>http://yoursite.com/blog/2016/08/16/undefined.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Swift中 core Foundation的运用]]></title>
       <url>http://yoursite.com/blog/2016/02/15/coreFoundation.html</url>
       <content type="html"><![CDATA[<p>Swift中的 Core Foundation 类型是一个成熟的类。当出现内存管理注释时，Swift 会自动地管理 Core Foundation 对象的内存，这其中包括你实例化了的 Core Foundation 对象。在 Swift 中，你可以自由变换 Fundation 和 Core Foundation 类型。如果你想先转换为桥接 Foundation 类型时，你也可以桥接一些 toll-free bridged Core Foundation 类型到 Swift 标准库类型。</p>
