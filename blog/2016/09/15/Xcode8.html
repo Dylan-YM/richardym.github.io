@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="richard" />
+
+
+
+<meta name="description" content="现在在苹果的官网上，我们已经可以下载到Xcode8的GM版本了，加上9.14日凌晨，苹果就要正式推出iOS10系统的推送了，在此之际，iOS10的适配已经迫在眉睫啦，不知道Xcode8 beat版本，童鞋们有木有下载过来试试呢？就我的使用来说，总体觉得苹果还是坑不断，但是也在一直进步的啦。下面我就来说说，iOS10的适配以及Xcode8使用上的一些注意点。
+Notification(通知)自从No">
+<meta property="og:type" content="article">
+<meta property="og:title" content="更新Xcode8的坑">
+<meta property="og:url" content="http://yoursite.com/blog/2016/09/15/Xcode8.html">
+<meta property="og:site_name" content="richard's blog">
+<meta property="og:description" content="现在在苹果的官网上，我们已经可以下载到Xcode8的GM版本了，加上9.14日凌晨，苹果就要正式推出iOS10系统的推送了，在此之际，iOS10的适配已经迫在眉睫啦，不知道Xcode8 beat版本，童鞋们有木有下载过来试试呢？就我的使用来说，总体觉得苹果还是坑不断，但是也在一直进步的啦。下面我就来说说，iOS10的适配以及Xcode8使用上的一些注意点。
+Notification(通知)自从No">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918170238256-1807962290.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918164446868-505879984.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114127228-2093692903.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114153542-1346537228.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114216825-2072979176.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114540839-1874104118.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114620576-1303627103.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114911979-1889192985.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114920417-1828331146.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918115047642-1072358093.png">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918164934170-318856946.png">
+<meta property="og:updated_time" content="2016-09-20T03:59:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="更新Xcode8的坑">
+<meta name="twitter:description" content="现在在苹果的官网上，我们已经可以下载到Xcode8的GM版本了，加上9.14日凌晨，苹果就要正式推出iOS10系统的推送了，在此之际，iOS10的适配已经迫在眉睫啦，不知道Xcode8 beat版本，童鞋们有木有下载过来试试呢？就我的使用来说，总体觉得苹果还是坑不断，但是也在一直进步的啦。下面我就来说说，iOS10的适配以及Xcode8使用上的一些注意点。
+Notification(通知)自从No">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918170238256-1807962290.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="richard&#39;s blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>更新Xcode8的坑 | richard&#39;s blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">richard</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:ym_302@163.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="http://weibo.com/u/3176570100?refer_flag=1001030102_" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" href="http://www.jianshu.com/users/ee84d859d5f0/latest_articles" title="简书"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/APP/">APP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MAC/">MAC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/U盘/">U盘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xcode8/">Xcode8</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/下载/">下载</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发/">开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/系统/">系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/请求/">请求</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跳转/">跳转</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/适配/">适配</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱生活,爱唱歌,爱旅游的iOS开发者。</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">richard</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">richard</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:ym_302@163.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/u/3176570100?refer_flag=1001030102_" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="http://www.jianshu.com/users/ee84d859d5f0/latest_articles" title="简书"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-更新Xcode8的坑" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2016/09/15/Xcode8.html" class="article-date">
+      <time datetime="2016-09-15T05:20:29.000Z" itemprop="datePublished">2016-09-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      更新Xcode8的坑
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Xcode8/">Xcode8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发/">开发</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>现在在苹果的官网上，我们已经可以下载到Xcode8的GM版本了，加上9.14日凌晨，苹果就要正式推出iOS10系统的推送了，在此之际，iOS10的适配已经迫在眉睫啦，不知道Xcode8 beat版本，童鞋们有木有下载过来试试呢？就我的使用来说，总体觉得苹果还是坑不断，但是也在一直进步的啦。下面我就来说说，iOS10的适配以及Xcode8使用上的一些注意点。</p>
+<h2 id="Notification-通知"><a href="#Notification-通知" class="headerlink" title="Notification(通知)"></a>Notification(通知)</h2><p>自从Notification被引入之后，苹果就不断的更新优化，但这些更新优化只是小打小闹，直至现在iOS 10开始真正的进行大改重构，这让开发者也体会到UserNotifications的易用，功能也变得非常强大。</p>
+<ul>
+<li>iOS 9 以前的通知</li>
+</ul>
+<p>1.在调用方法时，有些方法让人很难区分，容易写错方法，这让开发者有时候很苦恼。</p>
+<p>2.应用在运行时和非运行时捕获通知的路径还不一致。</p>
+<p>3.应用在前台时，是无法直接显示远程通知，还需要进一步处理。</p>
+<p>4.已经发出的通知是不能更新的，内容发出时是不能改变的，并且只有简单文本展示方式，扩展性根本不是很好。</p>
+<ul>
+<li>iOS 10 开始的通知</li>
+</ul>
+<p>1.所有相关通知被统一到了UserNotifications.framework框架中。</p>
+<p>2.增加了撤销、更新、中途还可以修改通知的内容。</p>
+<p>3.通知不在是简单的文本了，可以加入视频、图片，自定义通知的展示等等。</p>
+<p>4.iOS 10相对之前的通知来说更加好用易于管理，并且进行了大规模优化，对于开发者来说是一件好事。</p>
+<p>5.iOS 10开始对于权限问题进行了优化，申请权限就比较简单了(本地与远程通知集成在一个方法中)。</p>
+<h2 id="ATS的问题"><a href="#ATS的问题" class="headerlink" title="ATS的问题"></a>ATS的问题</h2><p>iOS 9中默认非HTTS的网络是被禁止的，当然我们也可以把NSAllowsArbitraryLoads设置为YES禁用ATS。不过iOS 10从2017年1月1日起苹果不允许我们通过这个方法跳过ATS，也就是说强制我们用HTTPS，如果不这样的话提交App可能会被拒绝。但是我们可以通过NSExceptionDomains来针对特定的域名开放HTTP可以容易通过审核。</p>
+<p>NSExceptionDomains方式 设置域。可以简单理解成，把不支持https协议的接口设置成http的接口。</p>
+<p>具体方法：</p>
+<p>1.在项目的info.plist中添加一个Key：App Transport Security Settings，类型为字典类型。</p>
+<p>2.然后给它添加一个Exception Domains，类型为字典类型；</p>
+<p>3.把需要的支持的域添加給Exception Domains。其中域作为Key，类型为字典类型。</p>
+<p>4.每个域下面需要设置3个属性：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSIncludesSubdomains</div><div class="line">NSExceptionRequiresForwardSecrecy</div><div class="line">NSExceptionAllowsInsecureHTTPLoads</div></pre></td></tr></table></figure>
+<p><img src="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918170238256-1807962290.png" alt=""></p>
+<p>细节提示:在iOS9以后的系统中如果使用到网络图片，也要注意网络图片是否是HTTP的哦，如果是，也要把图片的域设置哦！</p>
+<h2 id="iOS-10-隐私权限设置"><a href="#iOS-10-隐私权限设置" class="headerlink" title="iOS 10 隐私权限设置"></a>iOS 10 隐私权限设置</h2><p>iOS 10 开始对隐私权限更加严格，如果你不设置就会直接崩溃，现在很多遇到崩溃问题了，一般解决办法都是在info.plist文件添加对应的Key-Value就可以了。</p>
+<p><img src="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918164446868-505879984.png" alt=""></p>
+<p>以上Value值，圈出的红线部分的文字是展示给用户看的，必须添加。</p>
+<h2 id="Xcode-8-运行一堆没用的logs解决办法"><a href="#Xcode-8-运行一堆没用的logs解决办法" class="headerlink" title="Xcode 8 运行一堆没用的logs解决办法"></a>Xcode 8 运行一堆没用的logs解决办法</h2><p><img src="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114127228-2093692903.jpg" alt=""><br>上图我们看到，自己新建的一个工程啥也没干就打印一堆烂七八糟的东西，我觉得这个应该是Xcode 8的问题，</p>
+<p>具体也没细研究，解决办法是设置OS_ACTIVITY_MODE : disable如下图:<br><img src="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114153542-1346537228.jpg" alt=""></p>
+<h2 id="iOS-10-UIStatusBar方法过期"><a href="#iOS-10-UIStatusBar方法过期" class="headerlink" title="iOS 10 UIStatusBar方法过期:"></a>iOS 10 UIStatusBar方法过期:</h2><p><img src="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114216825-2072979176.jpg" alt=""></p>
+<p>在我们开发中有可能用到UIStatusBar一些属性，在iOS 10 中这些方法已经过期了，如果你的项目中有用的话就得需要适配。</p>
+<p>上面的图片也能发现，如果在iOS 10中你需要使用preferredStatusBar比如这样：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (<span class="built_in">UIStatusBarStyle</span>)preferredStatusBarStyle &#123; </div><div class="line">   <span class="keyword">return</span> <span class="built_in">UIStatusBarStyleDefault</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="iOS-10-UICollectionView-性能优化"><a href="#iOS-10-UICollectionView-性能优化" class="headerlink" title="iOS 10 UICollectionView 性能优化"></a>iOS 10 UICollectionView 性能优化</h2><p>随着开发者对UICollectionView的信赖，项目中用的地方也比较多，但是还是存在一些问题，比如有时会卡顿、加载慢等。所以iOS 10 对UICollectionView进一步的优化。</p>
+<ul>
+<li>UICollectionView cell pre-fetching预加载机制</li>
+<li>UICollectionView and UITableView prefetchDataSource    新增的API 针对self-sizing cells 的改进</li>
+<li>Interactive reordering</li>
+</ul>
+<p>在iOS 10 之前,UICollectionView上面如果有大量cell,当用户活动很快的时候,整个UICollectionView的卡顿会很明显,为什么会造成这样的问题,这里涉及到了iOS 系统的重用机制,当cell准备加载进屏幕的时候,整个cell都已经加载完成,等待在屏幕外面了,也就是整整一行cell都已经加载完毕,这就是造成卡顿的主要原因,专业术语叫做:掉帧.<br>要想让用户感觉不到卡顿,我们的app必须帧率达到60帧/秒,也就是说每帧16毫秒要刷新一次.</p>
+<p>iOS 10 之前UICollectionViewCell的生命周期是这样的:</p>
+<ul>
+<li>1.用户滑动屏幕,屏幕外有一个cell准备加载进来,把cell从reusr队列拿出来,然后调用prepareForReuse方法,在这个方法里面,可以重置cell的状态,加载新的数据;</li>
+<li>2.继续滑动,就会调用cellForItemAtIndexPath方法,在这个方法里面给cell赋值模型,然后返回给系统;</li>
+<li>3.当cell马上进去屏幕的时候,就会调用willDisplayCell方法,在这个方法里面我们还可以修改cell,为进入屏幕做最后的准备工作;</li>
+<li>4.执行完willDisplayCell方法后,cell就进去屏幕了.当cell完全离开屏幕以后,会调用didEndDisplayingCell方法.</li>
+</ul>
+<p>　iOS 10 UICollectionViewCell的生命周期是这样的:</p>
+<ul>
+<li>1.用户滑动屏幕,屏幕外有一个cell准备加载进来,把cell从reusr队列拿出来,然后调用prepareForReuse方法,在这里当cell还没有进去屏幕的时候,就已经提前调用这个方法了,对比之前的区别是之前是cell的上边缘马上进去屏幕的时候就会调用该方法,而iOS 10 提前到cell还在屏幕外面的时候就调用;</li>
+<li>2.在cellForItemAtIndexPath中创建cell，填充数据，刷新状态等操作,相比于之前也提前了;</li>
+<li>3.用户继续滑动的话,当cell马上就需要显示的时候我们再调用willDisplayCell方法,原则就是:何时需要显示,何时再去调用willDisplayCell方法;</li>
+<li>4.当cell完全离开屏幕以后,会调用didEndDisplayingCell方法,跟之前一样,cell会进入重用队列.</li>
+<li>在iOS 10 之前,cell只能从重用队列里面取出,再走一遍生命周期,并调用cellForItemAtIndexPath创建或者生成一个cell.<br>在iOS 10 中,系统会cell保存一段时间,也就是说当用户把cell滑出屏幕以后,如果又滑动回来,cell不用再走一遍生命周期了,只需要调用willDisplayCell方法就可以重新出现在屏幕中了.</li>
+<li>iOS 10 中,系统是一个一个加载cell的,二以前是一行一行加载的,这样就可以提升很多性能;</li>
+<li>iOS 10 新增加的Pre-Fetching预加载 </li>
+<li>这个是为了降低UICollectionViewCell在加载的时候所花费的时间,在 iOS 10 中,除了数据源协议和代理协议外,新增加了一个UICollectionViewDataSourcePrefetching协议,这个协议里面定义了两个方法:</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView prefetchItemsAtIndexPaths:(<span class="built_in">NSArray</span>&lt;<span class="built_in">NSIndexPath</span> *&gt; *)indexPaths <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)collectionView:(<span class="built_in">UICollectionView</span> *)collectionView cancelPrefetchingForItemsAtIndexPaths:(<span class="built_in">NSArray</span>&lt;<span class="built_in">NSIndexPath</span> *&gt; *)indexPaths  <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);</div></pre></td></tr></table></figure>
+<p>　　　在ColletionView prefetchItemsAt indexPaths这个方法是异步预加载数据的,当中的indexPaths数组是有序的,就是item接收数据的顺序;<br>　　　CollectionView cancelPrefetcingForItemsAt indexPaths这个方法是可选的,可以用来处理在滑动中取消或者降低提前加载数据的优先级.<br>　　　注意:这个协议并不能代替之前读取数据的方法,仅仅是辅助加载数据.<br>　　　Pre-Fetching预加载对UITableViewCell同样适用.
+　　　</p>
+<h2 id="iOS-10-UIColor-新增方法"><a href="#iOS-10-UIColor-新增方法" class="headerlink" title="iOS 10 UIColor 新增方法"></a>iOS 10 UIColor 新增方法</h2><p>以下是官方文档的说明：</p>
+<p>Most graphics frameworks throughout the system, including Core Graphics, Core Image, Metal, and AVFoundation, have substantially improved support for extended-range pixel formats and wide-gamut color spaces. By extending this behavior throughout the entire graphics stack, it is easier than ever to support devices with a wide color display. In addition, UIKit standardizes on working in a new extended sRGB color space, making it easy to mix sRGB colors with colors in other, wider color gamuts without a significant performance penalty.</p>
+<p>Here are some best practices to adopt as you start working with Wide Color.</p>
+<ul>
+<li>In iOS 10, the UIColor class uses the extended sRGB color space and its initializers no longer clamp raw component values to between 0.0 and 1.0. If your app relies on UIKit to clamp component values (whether you’re creating a color or asking a color for its component values), you need to change your app’s behavior when you link against iOS 10.</li>
+<li>When performing custom drawing in a UIView on an iPad Pro (9.7 inch), the underlying drawing environment is configured with an extended sRGB color space.</li>
+<li>If your app renders custom image objects, use the new UIGraphicsImageRenderer class to control whether the destination bitmap is created using an extended-range or standard-range format.</li>
+<li>If you are performing your own image processing on wide-gamut devices using a lower level API, such as Core Graphics or Metal, you should use an extended range color space and a pixel format that supports 16-bit floating-point component values. When clamping of color values is necessary, you should do so explicitly.</li>
+<li><p>Core Graphics, Core Image, and Metal Performance Shaders provide new options for easily converting colors and images between color spaces.</p>
+<p>因为之前我们都是用RGB来设置颜色，反正用起来也不是特别多样化，这次新增的方法应该就是一个弥补吧。所以在iOS 10 苹果官方建议我们使用sRGB，因为它性能更好，色彩更丰富。如果你自己为UIColor写了一套分类的话也可尝试替换为sRGB，UIColor类中新增了两个Api如下:</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">UIColor</span> *)colorWithDisplayP3Red:(<span class="built_in">CGFloat</span>)displayP3Red green:(<span class="built_in">CGFloat</span>)green blue:(<span class="built_in">CGFloat</span>)blue alpha:(<span class="built_in">CGFloat</span>)alpha <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);</div><div class="line">- (<span class="built_in">UIColor</span> *)initWithDisplayP3Red:(<span class="built_in">CGFloat</span>)displayP3Red green:(<span class="built_in">CGFloat</span>)green blue:(<span class="built_in">CGFloat</span>)blue alpha:(<span class="built_in">CGFloat</span>)alpha <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="iOS-10-UITextContentType"><a href="#iOS-10-UITextContentType" class="headerlink" title="iOS 10 UITextContentType"></a>iOS 10 UITextContentType</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// The textContentType property is to provide the keyboard with extra information about the semantic intent of the text document.@property(nonatomic,copy) UITextContentType textContentType NS_AVAILABLE_IOS(10_0); // default is nil</div></pre></td></tr></table></figure>
+<p>在iOS 10 UITextField添加了textContentType枚举，指示文本输入区域所期望的语义意义。</p>
+<p>使用此属性可以给键盘和系统信息，关于用户输入的内容的预期的语义意义。例如，您可以指定一个文本字段，用户填写收到一封电子邮件确认uitextcontenttypeemailaddress。当您提供有关您期望用户在文本输入区域中输入的内容的信息时，系统可以在某些情况下自动选择适当的键盘，并提高键盘修正和主动与其他文本输入机会的整合。 </p>
+<h2 id="iOS-10-字体随着手机系统字体而改变"><a href="#iOS-10-字体随着手机系统字体而改变" class="headerlink" title="iOS 10 字体随着手机系统字体而改变"></a>iOS 10 字体随着手机系统字体而改变</h2><p>当我们手机系统字体改变了之后，那我们App的label也会跟着一起变化，这需要我们写很多代码来进一步处理才能实现，但是iOS 10 提供了这样的属性adjustsFontForContentSizeCategory来设置。因为没有真机，具体实际操作还没去实现，如果理解错误帮忙指正。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">UILabel *myLabel = [UILabel new];   /*</div><div class="line">   UIFont 的preferredFontForTextStyle: 意思是指定一个样式，并让字体大小符合用户设定的字体大小。</div><div class="line">  */</div><div class="line">   myLabel.font =[UIFont preferredFontForTextStyle: UIFontTextStyleHeadline]; /*</div><div class="line">Indicates whether the corresponding element should automatically update its font when the device’s UIContentSizeCategory is changed.</div><div class="line">For this property to take effect, the element’s font must be a font vended using +preferredFontForTextStyle: or +preferredFontForTextStyle:compatibleWithTraitCollection: with a valid UIFontTextStyle.</div><div class="line">*/</div><div class="line">    //是否更新字体的变化</div><div class="line">   myLabel.adjustsFontForContentSizeCategory = YES;</div></pre></td></tr></table></figure>
+<h2 id="iOS-10-UIScrollView新增refreshControl"><a href="#iOS-10-UIScrollView新增refreshControl" class="headerlink" title="iOS 10 UIScrollView新增refreshControl"></a>iOS 10 UIScrollView新增refreshControl</h2><p><img src="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114540839-1874104118.png" alt=""></p>
+<p>iOS 10 以后只要是继承UIScrollView那么就支持刷新功能：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">nullable</span>) <span class="built_in">UIRefreshControl</span> *refreshControl <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0) __TVOS_PROHIBITED;</div></pre></td></tr></table></figure>
+<h2 id="iOS-10-判断系统版本正确姿势"><a href="#iOS-10-判断系统版本正确姿势" class="headerlink" title="iOS 10 判断系统版本正确姿势"></a>iOS 10 判断系统版本正确姿势</h2><p>判断系统版本是我们经常用到的，尤其是现在大家都有可能需要适配iOS 10，那么问题就出现了，如下图：<br><img src="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114620576-1303627103.jpg" alt=""></p>
+<p>我们得到了答案是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//值为 1 [[[[UIDevice currentDevice] systemVersion] substringToIndex:1] <span class="built_in">integer</span>Value]</div><div class="line"></div><div class="line">//值为10.000000 [[UIDevice currentDevice] systemVersion].floatValue,</div><div class="line"></div><div class="line">//值为10.0 [[UIDevice currentDevice] systemVersion]</div></pre></td></tr></table></figure>
+<p>所以说判断系统方法最好还是用后面的两种方法，哦~我忘记说了[[UIDevice currentDevice] systemVersion].floatValue这个方法也是不靠谱的，好像在8.3版本输出的值是8.2，记不清楚了反正是不靠谱的，所以建议大家用[[UIDevice<br> currentDevice] systemVersion]这个方法！</p>
+<p> Swift判断如下：</p>
+ <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> </div><div class="line"><span class="keyword">if</span> #available(iOS <span class="number">10.0</span>, *) &#123;</div><div class="line">         <span class="comment">// iOS 10.0</span></div><div class="line">         <span class="built_in">print</span>(<span class="string">"iOS 10.0"</span>);</div><div class="line">     &#125; <span class="keyword">else</span> &#123; &#125;</div></pre></td></tr></table></figure>
+<h2 id="Xcode-8-插件不能用的问题"><a href="#Xcode-8-插件不能用的问题" class="headerlink" title="Xcode 8 插件不能用的问题"></a>Xcode 8 插件不能用的问题</h2><p>大家都升级了Xcode 8，但是对于插件依赖的开发者们，一边哭着一边去网上寻找解决办法。那么下面是解决办法：<br>让你的 Xcode8 继续使用插件(<a href="http://vongloo.me/2016/09/10/Make-Your-Xcode8-Great-Again/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="external">http://vongloo.me/2016/09/10/Make-Your-Xcode8-Great-Again/?utm_source=tuicool&amp;utm_medium=referral</a> )</p>
+<p>但是看到文章最后的解释，我们知道如果用插件的话，可能安全上会有问题、并且提交审核会被拒绝，所以建议大家还是不要用了，解决办法总是有的，比如在Xcode中添加注释的代码块也是很方便的。</p>
+<h2 id="iOS-10开始项目中有的文字显示不全问题"><a href="#iOS-10开始项目中有的文字显示不全问题" class="headerlink" title="iOS 10开始项目中有的文字显示不全问题"></a>iOS 10开始项目中有的文字显示不全问题</h2><p>我用Xcode 8 和Xcode 7.3分别测试了下，如下图：</p>
+<p>xcode7<br><img src="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114911979-1889192985.jpg" alt="xcode7"><br>xcode8</p>
+<p><img src="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918114920417-1828331146.jpg" alt="xcode8"></p>
+<p>创建一个Label然后让它自适应大小，字体大小都是17最后输出的宽度是不一样的，我们再看一下，<br>下面的数据就知道为什么升级iOS 10 之后App中有的文字显示不全了：</p>
+<p><img src="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918115047642-1072358093.png" alt=""></p>
+<p>英文字母会不会也有这种问题，我又通过测试，后来发现英文字母没有问题，只有汉字有问题。<br>目前只有一个一个修改控件解决这个问题，暂时没有其他好办法来解决。</p>
+<h2 id="Xcode-8使用Xib-awakeFromNib的警告问题"><a href="#Xcode-8使用Xib-awakeFromNib的警告问题" class="headerlink" title="Xcode 8使用Xib awakeFromNib的警告问题"></a>Xcode 8使用Xib awakeFromNib的警告问题</h2><p>在Xcode 8之前我们使用Xib初始化- (void)awakeFromNib {}都是这么写也没什么问题，但是在Xcode 8会有如下警告：</p>
+<p><img src="http://images2015.cnblogs.com/blog/575661/201609/575661-20160918164934170-318856946.png" alt=""></p>
+<p>官方解释：<br>You must call the super implementation of awakeFromNib to give parent classes the opportunity to perform any additional initialization they require.<br>Although the default implementation of this method does nothing, many UIKit classes provide non-empty implementations.<br>You may call the super implementation at any point during your own awakeFromNib method.</p>
+<p>你必须调用父类实现awakeFromNib来给父类来执行它们需要的任何额外的初始化的机会。<br>虽然这种方法的默认实现不做任何事情，许多UIKit类提供非空的实现。<br>你可以调用自己的awakeFromNib方法中的任何时候超级实现</p>
+<p>　</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/blog/2016/08/15/MacOSCreat.html">
+                    苹果Mac os系统u盘安装系统制作教程
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Notification-通知"><span class="toc-number">1.</span> <span class="toc-text">Notification(通知)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ATS的问题"><span class="toc-number">2.</span> <span class="toc-text">ATS的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-10-隐私权限设置"><span class="toc-number">3.</span> <span class="toc-text">iOS 10 隐私权限设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Xcode-8-运行一堆没用的logs解决办法"><span class="toc-number">4.</span> <span class="toc-text">Xcode 8 运行一堆没用的logs解决办法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-10-UIStatusBar方法过期"><span class="toc-number">5.</span> <span class="toc-text">iOS 10 UIStatusBar方法过期:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-10-UICollectionView-性能优化"><span class="toc-number">6.</span> <span class="toc-text">iOS 10 UICollectionView 性能优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-10-UIColor-新增方法"><span class="toc-number">7.</span> <span class="toc-text">iOS 10 UIColor 新增方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-10-UITextContentType"><span class="toc-number">8.</span> <span class="toc-text">iOS 10 UITextContentType</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-10-字体随着手机系统字体而改变"><span class="toc-number">9.</span> <span class="toc-text">iOS 10 字体随着手机系统字体而改变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-10-UIScrollView新增refreshControl"><span class="toc-number">10.</span> <span class="toc-text">iOS 10 UIScrollView新增refreshControl</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-10-判断系统版本正确姿势"><span class="toc-number">11.</span> <span class="toc-text">iOS 10 判断系统版本正确姿势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Xcode-8-插件不能用的问题"><span class="toc-number">12.</span> <span class="toc-text">Xcode 8 插件不能用的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iOS-10开始项目中有的文字显示不全问题"><span class="toc-number">13.</span> <span class="toc-text">iOS 10开始项目中有的文字显示不全问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Xcode-8使用Xib-awakeFromNib的警告问题"><span class="toc-number">14.</span> <span class="toc-text">Xcode 8使用Xib awakeFromNib的警告问题</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"更新Xcode8的坑　| richard's blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="blog/2016/09/15/Xcode8.html" data-title="更新Xcode8的坑" data-url="http://yoursite.com/blog/2016/09/15/Xcode8.html"></div>
+    <script>
+        var duoshuoQuery = {short_name:"richard-yu"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/blog/2016/08/15/MacOSCreat.html" title="下一篇: 苹果Mac os系统u盘安装系统制作教程">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/blog/2016/09/15/Xcode8.html">更新Xcode8的坑</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2016/08/15/MacOSCreat.html">苹果Mac os系统u盘安装系统制作教程</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2016/06/20/swift-UIButton.html">Swift - 按钮（UIButton）的用法</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2016/03/13/openSchemes.html">iOS从App跳转至系统设置菜单</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2016/02/15/coreFoundation.html">Swift中 core Foundation的运用</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2016/02/15/overLoad.html">Swift中 覆盖(重写)，重构，重载的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/09/10/xcode8.html">ios10以及Xcode8的一些更新（转）</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/08/13/cocoPod.html">cocoaPod的安装，删除以及基本使用</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/07/18/NSDictionary.html">NSDictionary字典的使用以及注意</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/07/05/dateFormatter.html">关于日期格式设置及转换</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/05/16/NSoperation&GCD.html">OC多线程GCD以及NSoperation</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/04/24/downLoad.html">关于文件下载</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/04/06/request.html">关于http请求</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/03/08/null.html">数据传递的三种方法：通知，代理，blcok</a></li><li class="post-list-item"><a class="post-list-link" href="/blog/2015/03/06/Apachi.html">Apachi在本地配置服务器 MAC专用</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2014-2016 richard
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
