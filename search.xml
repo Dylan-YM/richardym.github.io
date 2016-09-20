@@ -14,7 +14,7 @@
 <p>1.在调用方法时，有些方法让人很难区分，容易写错方法，这让开发者有时候很苦恼。</p>
 <p>2.应用在运行时和非运行时捕获通知的路径还不一致。</p>
 <p>3.应用在前台时，是无法直接显示远程通知，还需要进一步处理。</p>
-<p>4.已经发出的通知是不能更新的，内容发出时是不能改变的，并且只有简单文本展示方式，扩展性根本不是很好。</p>
+<p>4.已经发出的通知是不能更新的，内容发出时是不能改变的，并且只有简单文本展示方式，扩展性根本不是很好。<br><a id="more"></a></p>
 <ul>
 <li>iOS 10 开始的通知</li>
 </ul>
@@ -253,10 +253,11 @@
     
     <entry>
       <title><![CDATA[ios10以及Xcode8的一些更新（转）]]></title>
-      <url>http://yoursite.com/blog/2015/09/10/xcode8.html</url>
+      <url>http://yoursite.com/blog/2015/09/10/ios10.html</url>
       <content type="html"><![CDATA[<p>本文主要是一些对iOS新功能的探索，之前发现博客里关于iOS新功能的分析大多是过于概括，每个功能几句话，无法了解到具体的功能。所以本次的探索是基于Api层面，着重看一些具体用法所做的笔记，本来想分别画个类图来着，后来还是觉得太耗时而放弃。如果不想把苹果iOSSDK里的.h文件都摆出来详细读，那看这篇笔记应该是个不错的选择。</p>
 <p> 本文以文档的目录为基础，提到的功能模块有：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Proactive Suggestions</div><div class="line"></div><div class="line">Integrating with the Messages App</div><div class="line"></div><div class="line">User Notifications</div><div class="line"></div><div class="line">Speech Recognition</div><div class="line"></div><div class="line">Wide Color</div><div class="line"></div><div class="line">Adapting to the True Tone Display</div><div class="line"></div><div class="line">App Search Enhancements</div><div class="line"></div><div class="line">Widget Enhancements</div><div class="line"></div><div class="line">Security and Privacy Enhancements</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>还没有详细探索的模块是</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SiriKit </div><div class="line"></div><div class="line">CallKit （工作职能和这里联系不多，还不care这里）</div><div class="line"></div><div class="line">Apple Pay Enhancements （工作职能和这里联系不多，还不care这里）</div></pre></td></tr></table></figure>
 <h2 id="SiriKit"><a href="#SiriKit" class="headerlink" title="SiriKit"></a>SiriKit</h2><p> SiriKit的功能非常强大，支持音频、视频、消息发送接收、搜索照片、预订行程、管理锻炼等等。在用到此服务时，siri会发送Intent对象，里面包括用户的请求和各种数据，可以对这个intent处理选择适当的响应。 这个功能主要是看这两个头文件（#import <intents intents.h="">、#import <intentsui intentsui.h="">）所涵盖到的类太多，前期先略过了，之后等iOS10可以推送更新了再做进一步调研。</intentsui></intents></p>
