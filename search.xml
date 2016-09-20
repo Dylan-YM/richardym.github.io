@@ -114,6 +114,139 @@
     </entry>
     
     <entry>
+      <title><![CDATA[ios10以及Xcode8的一些更新（转）]]></title>
+      <url>http://yoursite.com/blog/2016/09/10/ios10.html</url>
+      <content type="html"><![CDATA[<p>本文主要是一些对iOS新功能的探索，之前发现博客里关于iOS新功能的分析大多是过于概括，每个功能几句话，无法了解到具体的功能。所以本次的探索是基于Api层面，着重看一些具体用法所做的笔记，本来想分别画个类图来着，后来还是觉得太耗时而放弃。如果不想把苹果iOSSDK里的.h文件都摆出来详细读，那看这篇笔记应该是个不错的选择。</p>
+<p> 本文以文档的目录为基础，提到的功能模块有：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Proactive Suggestions</div><div class="line"></div><div class="line">Integrating with the Messages App</div><div class="line"></div><div class="line">User Notifications</div><div class="line"></div><div class="line">Speech Recognition</div><div class="line"></div><div class="line">Wide Color</div><div class="line"></div><div class="line">Adapting to the True Tone Display</div><div class="line"></div><div class="line">App Search Enhancements</div><div class="line"></div><div class="line">Widget Enhancements</div><div class="line"></div><div class="line">Security and Privacy Enhancements</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>还没有详细探索的模块是</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SiriKit </div><div class="line"></div><div class="line">CallKit （工作职能和这里联系不多，还不care这里）</div><div class="line"></div><div class="line">Apple Pay Enhancements （工作职能和这里联系不多，还不care这里）</div></pre></td></tr></table></figure>
+<h2 id="SiriKit"><a href="#SiriKit" class="headerlink" title="SiriKit"></a>SiriKit</h2><p> SiriKit的功能非常强大，支持音频、视频、消息发送接收、搜索照片、预订行程、管理锻炼等等。在用到此服务时，siri会发送Intent对象，里面包括用户的请求和各种数据，可以对这个intent处理选择适当的响应。 这个功能主要是看这两个头文件（#import <intents intents.h="">、#import <intentsui intentsui.h="">）所涵盖到的类太多，前期先略过了，之后等iOS10可以推送更新了再做进一步调研。</intentsui></intents></p>
+<h2 id="Proactive-Suggestions-系统预先建议"><a href="#Proactive-Suggestions-系统预先建议" class="headerlink" title="Proactive Suggestions 系统预先建议"></a>Proactive Suggestions 系统预先建议</h2><h4 id="背景就是iOS9的时候系统给予的主动建议会通过：Spolight搜索，Safari搜索，Handoff，或者siri建议。-在iOS10之后新增了，键盘QuickType建议，地图，车载娱乐，应用切换，siri交互，锁屏播放。-比如你正在一个应用里看一个酒店，可以使用mapitem属性保存正在查看的这个酒店的位置，然后你切换旅行或地图App时这个位置可以自动提供使用。-如果你需要这样利用系统来共享一个位置，那你需要指定这个位置的经纬度，地名-电话等属性-来便于siri的直接调起。"><a href="#背景就是iOS9的时候系统给予的主动建议会通过：Spolight搜索，Safari搜索，Handoff，或者siri建议。-在iOS10之后新增了，键盘QuickType建议，地图，车载娱乐，应用切换，siri交互，锁屏播放。-比如你正在一个应用里看一个酒店，可以使用mapitem属性保存正在查看的这个酒店的位置，然后你切换旅行或地图App时这个位置可以自动提供使用。-如果你需要这样利用系统来共享一个位置，那你需要指定这个位置的经纬度，地名-电话等属性-来便于siri的直接调起。" class="headerlink" title="背景就是iOS9的时候系统给予的主动建议会通过：Spolight搜索，Safari搜索，Handoff，或者siri建议。 在iOS10之后新增了，键盘QuickType建议，地图，车载娱乐，应用切换，siri交互，锁屏播放。 比如你正在一个应用里看一个酒店，可以使用mapitem属性保存正在查看的这个酒店的位置，然后你切换旅行或地图App时这个位置可以自动提供使用。  如果你需要这样利用系统来共享一个位置，那你需要指定这个位置的经纬度，地名,电话等属性 来便于siri的直接调起。"></a>背景就是iOS9的时候系统给予的主动建议会通过：Spolight搜索，Safari搜索，Handoff，或者siri建议。 在iOS10之后新增了，键盘QuickType建议，地图，车载娱乐，应用切换，siri交互，锁屏播放。 比如你正在一个应用里看一个酒店，可以使用mapitem属性保存正在查看的这个酒店的位置，然后你切换旅行或地图App时这个位置可以自动提供使用。  如果你需要这样利用系统来共享一个位置，那你需要指定这个位置的经纬度，地名,电话等属性 来便于siri的直接调起。</h4><p> 文档中还列出了几种场景</p>
+<p> 1.在输入框（UITextFiled）输入时，可以指定一下这个输入框的类型，以便系统可以分析出用户的语义。 是电话类型就建议一些电话，是地址类型就建议一些地址。看下头文件（#import <uikit uitextinputtraits.h="">）可指定的类型 就是这个新增的textContentType字段，里面有很多种类型可选。</uikit></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeName                      NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeNamePrefix                NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeGivenName                 NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeMiddleName                NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeFamilyName                NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeNameSuffix                NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeNickname                  NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeJobTitle                  NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeOrganizationName          NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeLocation                  NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeFullStreetAddress         NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeStreetAddressLine1        NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeStreetAddressLine2        NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeAddressCity               NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeAddressState              NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeAddressCityAndState       NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeSublocality               NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeCountryName               NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypePostalCode                NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeTelephoneNumber           NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeEmailAddress              NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeURL                       NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeCreditCardNumber          NS_AVAILABLE_IOS(10_0);</div></pre></td></tr></table></figure>
+<p>2.如果是视频类App可以使用MPPlayableContentManager （#import <mediaplayer mpplayablecontentmanager.h="">）看了下，新增了一个属性nowPlayingIdentifiers，苹果的意思应该是只要你以前是用这个多媒体类播放音乐的我就可以让你在锁屏页面交互，需要配置在这个数组里。</mediaplayer></p>
+<p>3.如果是出行类app可以使用MKDirectionsRequest。 （#import <mapkit mkdirectionsrequest.h="">  ）这个类里几乎没有新增api，iOS10就新增了一个枚举，而且看上去就是个默认值。如果要使用此功能，需要配置在info.plist文件里 新增key - value ，MKDirectionsApplicationSupportedModes - MKDirectionsModeRideShare。</mapkit></p>
+<h2 id="User-Notifications-用户通知"><a href="#User-Notifications-用户通知" class="headerlink" title="User Notifications 用户通知"></a>User Notifications 用户通知</h2><p> 总体的意思就是支持了很多用户定义的通知，并且可以捕捉到各个通知状态的回调。以往通知的概念是：大家想接收的都提前做好准备，然后一下全量分发，没收到也不管了，也不关心发送者。现在用户通知做成了和网络请求有点像 一个先发request再得到response的流程，甚至封装了error，可以在各个状态的方法中做一些额外操作，并且也能取到一些字段，如发送者等。</p>
+<p>此功能的头文件入口在#import <usernotifications usernotifications.h=""><br><img src="http://upload-images.jianshu.io/upload_images/1954780-7a6c2ffa9bb15c8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="717809-20160620194852069-1522419410.png"></usernotifications></p>
+<p> 1.NSString+UserNotifications.h</p>
+<p>有一个方法 localizedUserNotificationStringForKey: arguments: （提供该通知被呈现时的本地化字符串），猜测下面的类有很多initWithIdentifier的，他们的indentifier就是这个。</p>
+<p>2.UNError.h</p>
+<p>有一个属性UNErrorDomain 和一个枚举 UNErrorCode，顾名思义。</p>
+<p>3.UNNotification.h</p>
+<p>里面有两个属性，date日期 和 request，这个request是上面“8”的类型UNNotificationRequest，点进去看了下比较清晰，有identifier标识，content内容，trigger触发条件， 和带上这三个东西的初始化方法。 其中内容 和 触发条件这两个属性，分别是上面“7” 和 “12”的类型，这个下面再谈。</p>
+<p>4.UNNotificationAction.h</p>
+<p>这个类突出的是一个通知的动作，有identifier，title，options（枚举，就是通知当前的权限，允许？拒绝？前台时允许？）属性。然后就是带上这三个东西的初始化方法。 然后比较费解的就是下面有一个子类UNTextInputNotificationAction ，这个子类有两个额外属性， 按钮title，和文本框placeholder， 为什么会是这两个属性？ 莫非是点击通知后下拉出的快速回复，有一个输入框和一个按钮。</p>
+<p>5.UNNotificationAttachment.h</p>
+<p>这个里面就是URL（资源url属性），type（附件类型）。 然后是带上这两个属性的初始化方法。 下面声明了几个字符串常量，暂时还不知道具体用在哪里，typeHint，hiddenKey，clippingRectKey，TimeKey。</p>
+<p>6.UNNotificationCategory.h</p>
+<p>有indentifier属性，actions（里面是数组），minimalActions（最重要的数组，就是只能给你两个位置显示你显示哪两个，这么个意思），intentIdentifiers属性（应该是和上面的动作数组关联的吧），options（权限相关，无？允许自定义关闭？允许车载系统交互？）。最后就是把这些都带上的init方法。  猜测这个类之所以取名叫category应该是，在某个地方展示通知的时候会把所有通知一一分类， 然后每个类别的通知可能最多只能让你展示几个，如果不做限制应该会展示全部通知，如果权限设置的是允许自定义关闭那可能就是支持类似一键清除的操作。</p>
+<p>7.UNNotificationContent.h</p>
+<p>消息的内容，一看就能知道应该是一个类似于Entity的东西，里面装有大量的属性：attachments（可选的附件集合），badge（小红点数量），body，categoryIndentifier，launchImageName（从消息里点开的应用程序应该能看到启动图对吧），subtitle，threadIdentifier（与request关联），title，userInfo，sound这个是“11”的类型，应该是同时来时的声音，点开“11”看一下 ，就俩方法，defaultSound，soundNamed: 自定义声音，都在~/Library/Sounds 目录下。 恩再回到刚才那个content类里面有个子类UNMutableNotificationContent，属性和父类相同，只不过是子类的属性都可以修改了，父类的那些属性都是readonly的。</p>
+<p>8.UNNotificationRequest.h 上面第3条说过了</p>
+<p>9.UNNotificationResponse.h </p>
+<p>有action，也有request，那也就有response，这里面有两个属性，notification，actionIdentifier  响应里就这俩破玩意。 然后有个子类UNTextInputNotificationResponse， 这里面就一个属性userText ，看命名很好猜，应该就是前面说的那个有输入框里输入的内容。</p>
+<p>10.UNNotificationSettings.h</p>
+<p>这个类里就是一些设置了，有一个枚举说的是有没有权限，一个枚举说的是不支持？禁用？启用？。 然后下面一大波属性，小红点设置，声音设置，弹窗设置等等 都是这个枚举类型， 最后还有个alertStyle属性（枚举，None？Banner？alert？）。</p>
+<p>11.sound前面第7条说过了</p>
+<p>12.UNNotificationTrigger.h</p>
+<p>有一个属性 repeats（是否重复发通知）。 下面有四个子类，push通知触发， 时间通知触发，日历通知触发，地区通知触发， 时间的有timeInterval属性， 日历的有dateComponents属性。 然后时间和日历的子类都有nextTriggerDate 方法。</p>
+<p>13.UNUserNotificationCenter.h</p>
+<p>这里面东西多到吐了，同学你记得NSNotificationCenter么？ 需要提一点的就是以前的通知中心有个方法[NSNotificationCenter defaultCenter]， 这里是[UNUserNotificationCenter currentNotificationCenter]， 提醒一下到时候别说敲不出来。 方法大多是一些remove，add，get等操作， 还有2个代理方法：通知将要发出去时调用，收到通知的response后调用。</p>
+<p>14.UNNotificationServiceExtension.h</p>
+<p>里面有两个方法，收到通知的请求后调用， 系统将要销毁时调用。</p>
+<p>通知里面有UI相关的类 #import <usernotificationsui usernotificationsui.h=""></usernotificationsui></p>
+<p>这个类里面就一个文件， 而且方法比较单一，就是收到通知调用，和收到通知的响应调用。 其他方法也就是mediaPlay 和 mediaPause 。和一些多媒体播放的按钮frame，color等， 这里面的作用难道仅仅就是通知来了后播放的音乐暂时暂停下，响一声通知，再播放？ 具体WWDC2016上说的锁屏页面的通知样式处理的api是在下面的部件增强章节中。</p>
+<h2 id="Integrating-with-the-Messages-App-与系统短信-app交互"><a href="#Integrating-with-the-Messages-App-与系统短信-app交互" class="headerlink" title="Integrating with the Messages App 与系统短信 app交互"></a>Integrating with the Messages App 与系统短信 app交互</h2><p>对消息额支持很大，可以模拟发消息收消息，发邮件等，提供了UI界面。 也提供了一些额外扩展的api，如表情包区域。WWDC2016上说的各种消息内的新操作在头文件中都能找到Api。</p>
+<p>此功能的头文件入口在#import <messages messages.h=""></messages></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-61722c20f74fbe68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="717809-20160620165536303-1502683347.png"></p>
+<p>1.MSMessagesAppViewController.h</p>
+<p>这个类应该就是苹果自己的消息界面，你可以继承他写你自己自定义的界面。 属性有：activeConversation 指的是当前的会话对象，是上面“2”这个类型，具体详细可以看下面的第“2”点、还有个是presentationStyle（外观样式，枚举类型，紧缩？扩张？）。 接下来就是方法了：requestPresentationStyle（请求消息过渡到指定的样式），dismiss消除方法。 然后就是一波生命周期方法了，每一类都有will和did，会话信息将要（已经）活跃时，将要（已经）解除活跃，将要（已经）选择信息，将要（已经）收到信息，将要（已经）开始发送，将要（已经）取消发送，将要（已经）开始过渡。</p>
+<p>2.MSConversation.h</p>
+<p>属性有localParticipantIdentifier（当前会话参与者生成的标识，他说只有删了App才会变 姑且理解成id是不会变的），remoteParticipantIdentifiers（远端的标识符数组），selectedMessage（选中的信息），以及4个对象方法 插入一条信息，插入一个标签，插入一段文本，插入一个附件。 这四个方法都有成功的回调。</p>
+<p>3.MSSession.h</p>
+<p>这个类里面是空的，解释说是用session来处理消息序列间的关系。可能就是占个位，以后估计会添加东西。 这个MSSession是后面很多参数的类型，应该就是区分消息类似于标识符的作用。 </p>
+<p>4.MSMessage.h</p>
+<p>初始化方法是initWithSession ，没错就是上面那个MSSession。 除了初始化方法剩下的就全是属性了：session，senderParticipantIdentifier（发送者的标识符），layout布局这个是“5”这个类型，URL，shouldExpire（选yes会自动消失，用户手动选择为这条消息续命），accessibilityLabel（残疾人模式支持），error。</p>
+<p>5.MSMessageLayout.h</p>
+<p>这个是抽象类，里面是空的，就是个布局文件，继承自NSObject。</p>
+<p>6.MSMessageTemplateLayout.h</p>
+<p>继承上面那个类，看名字是模板布局后面应该会用的挺多的，里面的属性有，标题，子标题，尾部标题，尾部子标题，图片，多媒体URL，图片标题，图片子标题。 </p>
+<p>7.MSSticker.h</p>
+<p>应该是消息上的表情包。 里面就有两个属性imageFileURL ，localizedDescription 图片和局部描述。然后是带上这两个属性的初始化方法 initWithContentsOfFileURL: localizedDescription: 。</p>
+<p>8.MSStickerView.h</p>
+<p>这个类就是一个view，里面包着一个sticker，也就是包裹着上面那个装饰品的view。 提供了带上sticker的初始化方法，一个常规属性animationDuration，和三个方法startAnimating，stopAnimating，isAnimating。</p>
+<p>9.MSStickerBrowserViewDataSource.h</p>
+<p>细思极恐，这个类不就是wwdc2016上说的那个可以在消息下面添加自定义表情的地方么。 符合datasource的风格，里面就两个方法，numberOfStickersInStickerBrowserView: （返回一个总数），stickerBrowserView：stickerAtIndex：（返回这个索引下的内容）。</p>
+<p>10.MSStickerBrowserView.h</p>
+<p>上面那个是datasource，那这个就是用了上面数据源的view呗。 除了初始化方法，有两个属性 stickerSize（枚举，小，中，大），dataSource（就是上面的“9”），还有个人reloadData方法。</p>
+<p>11.MSStickerBrowserViewController.h</p>
+<p>上面是个view， 这个就是承载上面那个view的viewcontroller。肯定得有这个属性stickerBrowserView 和初始化方法。</p>
+<p>这个message模块还有UI相关的api   #import <messageui messageui.h=""></messageui></p>
+<p>就是两个VC ,MFMailComposeViewController,MFMessageComposeViewController。 这两个都是继承自UINavigationController.   觉得这两个就是发邮件的编辑页面，和发消息的编辑页面。  发邮件的页面里有 canSendMail （Bool方法），set主题，set发件人，set收件人，set内容，set附件。 然后有一个代理，和代理方法，猜也能猜到 就是成功失败回调。mailComposeController:didFinishWithResult: error:  。 那另一个消息和这差不多了就不说了。</p>
+<h2 id="Speech-Recognition-语音识别转文字"><a href="#Speech-Recognition-语音识别转文字" class="headerlink" title="Speech Recognition 语音识别转文字"></a>Speech Recognition 语音识别转文字</h2><p>这个类里面的Api和方法调用都非常清晰，感觉使用起来会非常方便。真的为科大讯飞捏把汗了，科大讯飞的app（录音宝）我看过，都还没有说一段语音能直接转文字的功能，他们是直接把声音文件上传，然后24小时候再发给你转换后的结果…而且一上来就要收费。苹果的这个功能已经做到了系统原生支持，真的厉害。</p>
+<p>此功能的头文件入口在#import <speech speech.h=""></speech></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-ce6606e8d2a0daaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="717809-20160619182921085-1315021923.png"></p>
+<p> 1.SFSpeechRecognitionResult.h</p>
+<p>这个类里有三个属性：bestTranscription 就是最优的转化结果咯，是上面的“7”这个类型的。然后再看下这个SFTranscription.h ，果然不出所料 有两个属性 一个是字符串类型formattedString 一个是数组类型的segments ，恩 前者就是转化后的字符串，后者是分割后的一个个小结果集合。 然后这个分割的一个个小结果呢又是上面“6”这个类型。那再看一下“6” 里面的属性就是 substring， 时间戳，duration，准确性，备选答案数组，这些很清晰的东西了。</p>
+<p>2.SFSpeechRecognitionRequest.h</p>
+<p>这个类里东西有点多，属性taskHint，是上面“4”这个类型，点开一看就是一个枚举，用来区分你这个语音识别的请求是哪一类的 查找？确认？听写？无法识别？。 接下来是两个BOOL类型的，shouldReportPartialResults（是否语音局部的一块一块也要处理？默认选false就是一句话全说完了再上传吧），detectMultipleUtterances（假如你说了10秒钟，只有后5秒匹配到了结果，那你前面删了还是保留？默认不删），然后是分析到的关键字数组，和标识符什么的。 然后这个request有两个子类，一个是从本地URL读取 一个声音文件去识别， 一个是默认做法用话筒和AVFoundation库接收到声音去识别，然后有几个拼接声音的API。</p>
+<p>3.SFSpeechRecognitionTask.h</p>
+<p>从名字就能看出来这是语音识别最重要的一个类了，里面的属性有：state这是一个枚举，说明当前状态是进行中？已完成？被取消？等等。 接下来是三个常见的 isFinishing ，isCancelled ，error 。 接下来是 isPowerAvailable （是否开启说话声音大小的监测？），peakPower（最大声音），averagePower（平均声音）。 属性就这些了，接下来就是一个协议和一波代理方法：刚刚识别出话语调用，猜测话语时调用，话说完了调用，取消时调用，等等等，你能想到的回调方法苹果应该都有的。</p>
+<p>4.上面第2条里面说过了</p>
+<p>5.SFSpeechRecognizer.h</p>
+<p>和系统的那些相机权限，通讯录权限有点像， 就是现在的状态是什么？同意？拒绝？还是未选择过？ 然后提供了方法让用户去选择。 然后有些属性：NSSet类型的supportedLocales（支持地区方言的集合），</p>
+<p>available是否可用，locale当前地区 ，defaultTaskHint默认类别，request（就是上面说的请求），队列，代理。 然后有个协议和代理方法：发现用户给与的权限发生改变时调用。</p>
+<p>6和7. 上面第1条里说过了 </p>
+<h2 id="Wide-Color-宽域颜色"><a href="#Wide-Color-宽域颜色" class="headerlink" title="Wide Color 宽域颜色"></a>Wide Color 宽域颜色</h2><p>文档的原话说：大多数的 core字打头的图形框架 还有AVFoundation 都大大提高了对扩展像素和宽色域色彩空间的支持。通过图形堆栈扩展这种方式比以往支持广色域的显示设备更加容易。现在对UIKit扩展可以在sRGB的色彩空间下工作，性能更好，也可以在更广泛的色域来搭配sRGB颜色。 然后说了几个场景说建议你用sRGB吧，比如依赖于UIkit的clamp component values的应用程序，或是使用较低级别api执行自己图像处理的 都建议用sRGB吧。</p>
+<p>然后看了下UIColor类里 到底什么是sRGB？ 发现多了两个iOS10新增的api。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">UIColor</span> *)colorWithDisplayP3Red:(<span class="built_in">CGFloat</span>)displayP3Red green:(<span class="built_in">CGFloat</span>)green blue:(<span class="built_in">CGFloat</span>)blue alpha:(<span class="built_in">CGFloat</span>)alpha <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);  </div><div class="line"> </div><div class="line">- (<span class="built_in">UIColor</span> *)initWithDisplayP3Red:(<span class="built_in">CGFloat</span>)displayP3Red green:(<span class="built_in">CGFloat</span>)green blue:(<span class="built_in">CGFloat</span>)blue alpha:(<span class="built_in">CGFloat</span>)alpha <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);</div></pre></td></tr></table></figure>
+<p> 细节都是一样的就是一个类方法一个实例方法， 我理解下，就是说建议你们以前改用colorwithRGB的地方 现在都换成这个方法叭。可能大多数公司都抽成了 RGB(a,g,b,a)这种宏吧，那就在宏定义那改一下就好了。</p>
+<h2 id="Adapting-to-the-True-Tone-Display-真彩色显示"><a href="#Adapting-to-the-True-Tone-Display-真彩色显示" class="headerlink" title="Adapting to the True Tone Display 真彩色显示"></a>Adapting to the True Tone Display 真彩色显示</h2><p>真彩色的显示会根据光感应器来进行自动的调节来达到特定环境下的显示与性能平衡效果。 如果需要这个功能的话需要再info.plist里配置</p>
+<p>UIWhitePointAdaptivityStyle</p>
+<p>共有五种选择：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1.UIWhitePointAdaptivityStyleStandard 标准</div><div class="line"></div><div class="line">2.UIWhitePointAdaptivityStyleReading 阅读</div><div class="line"></div><div class="line">3.UIWhitePointAdaptivityStylePhoto 图片</div><div class="line"></div><div class="line">4.UIWhitePointAdaptivityStyleVideo 视频</div><div class="line"></div><div class="line">5.UIWhitePointAdaptivityStyleGame 游戏</div></pre></td></tr></table></figure>
+<p>然后他说的很清楚，如果你是图片处理类的app，那就直接配stylePhoto吧，如果你是阅读类的那就直接配styleReading吧。 这五个形式的显示效果从上往下递减，我理解是说在阅读时给你最好的效果，但如果在游戏时也给那么好的效果会影响性能，就给你一个相对次一点的显示效果让性能更流畅。</p>
+<h2 id="App-Search-Enhancements-应用搜索增强"><a href="#App-Search-Enhancements-应用搜索增强" class="headerlink" title="App Search Enhancements 应用搜索增强"></a>App Search Enhancements 应用搜索增强</h2><p>iOS10的搜索功能做了一定增强：应用程序内搜索，搜索传递，考虑私人差异，结果可视化。 使用CSSearchQuery类，调用Core Spotlight的api，可以让你不必自己维护自己的搜索索引，关于对搜索关键字的处理，还有考虑到不同类别差异导致搜索结果的排序都是苹果帮你处理。</p>
+<p>并且搜索结果可以继续往下传递，假设你用Core Spotlight搜索火车站，提示的是地图类app搜索火车站的结果，你点进去后，这个地图类app会接收到“火车站”这个字段在应用内也完成搜索。支持此功能也是需要配置plist文件:key-value  CoreSpotlightContinuation-YES，然后设置CSQueryContinuationActionType（#import<corespotlight cssearchableitem.h="">）。最后传递的搜索字符串用continueUserActivity：restorationHandler：方法接收。</corespotlight></p>
+<p>然后现在看一下#import <corespotlight cssearchquery.h="">头文件里面的结构。</corespotlight></p>
+<p>看上去这个CSSearchQuery像是一个查询语句操作，有创建，查询成功和错误等。初始化方法是initWithQueryString: attributes:。 有isCanceled属性 和 cancel 和 start方法。 还有foundItemCount属性，看上去是能够得到搜索的结果个数。protectionClasses(数组)，看上去像是隐私相关受保护的文件。 还有两个block，一个是搜索结束后回调，参数是NSError；一个是查询到结果时回调，参数是items数组。这个items数组都是CSSearchableItem类型，这里面有个attributeSet属性，里面可以传入以下类型</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-34f70f5eea73cfae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="717809-20160626110525547-1800081610.png"></p>
+<h2 id="Widget-Enhancements-锁屏部件增强"><a href="#Widget-Enhancements-锁屏部件增强" class="headerlink" title="Widget Enhancements 锁屏部件增强"></a>Widget Enhancements 锁屏部件增强</h2><p>现在锁屏界面有了新的设计，建议我们废弃以前的notificationCenterVibrancyEffect 改用widgetPrimaryVibrancyEffect或者widgetSecondaryVibrancyEffect，并且窗口的小部件可以让你描述有多少东西可用，支持紧凑和扩展两种形态。</p>
+<p>这些新旧的Effect效果在这个类下，可能是之前锁屏玩不出什么花样所以大家没怎么关注这里。  </p>
+<p> #import <notificationcenter notificationcenter.h=""> 里面有三个头文件</notificationcenter></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1954780-113e65e7750da91b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="717809-20160621170857694-1224766609.png"></p>
+<p> 1.NCWidgetProviding.h</p>
+<p>先来两个方法 </p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (<span class="keyword">void</span>)widgetPerformUpdateWithCompletionHandler:(<span class="keyword">void</span> (^)(NCUpdateResult result))completionHandler;</div></pre></td></tr></table></figure>
+<p>这个方法如果实现了，系统将在适当的时候召唤部件更新形态，无论是在通知中心还是后台。 需要启用后台更新功能，部件会在异步工作主线程更新，调用参数块的工作完成后会得到相应的结果。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(<span class="built_in">CGSize</span>)maxSize;</div></pre></td></tr></table></figure>
+<p>这个方法应该是部件变化时调用，参数是最大有多大。</p>
+<p>这里声明了一个分类UIVibrancyEffect (NCWidgetAdditions)，里面就是本章节说的iOS10新增API</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">UIVibrancyEffect</span> *)widgetPrimaryVibrancyEffect <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);</div><div class="line"> </div><div class="line">+ (<span class="built_in">UIVibrancyEffect</span> *)widgetSecondaryVibrancyEffect <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);</div></pre></td></tr></table></figure>
+<p>这两个方法名字上是老大和老二，有什么区别？ 都是用在选择的文字或图形上，默认用上面，如果开启了further diminution（应该是类似于上面压缩模式）就用下面的。</p>
+<p>下面又声明了一个分类NSExtensionContext (NCWidgetAdditions)，里面也是iOS10的新增API</p>
+<p>里面有两个属性 widgetLargestAvailableDisplayMode ，widgetActiveDisplayMode 。 是两种显示模式是NCWidgetDisplayMode枚举类型，有紧缩和扩张两种。 ，估计假如是新闻通知一个是一般大小，一个是点开详情的大小。 然后就是一个方法widgetMaximumSizeForDisplayMode ，返回值是CGSize取到播放模式的最大尺寸。</p>
+<p>2.NCWidgetController.h</p>
+<p>里面除了个初始化方法，还有一个方法</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)setHasContent:(<span class="built_in">BOOL</span>)flag forWidgetWithBundleIdentifier:(<span class="built_in">NSString</span> *)bundleID;</div></pre></td></tr></table></figure>
+<p>第一个参数默认为yes，就是该展示时就展示，这个方法可以跨小组件间通讯，以及和providing app交互。</p>
+<p>3.NCWidgetTypes.h</p>
+<p>里面就一个枚举类型NCWidgetDisplayMode ，前面第1点说过了。</p>
+<h2 id="Security-and-Privacy-Enhancements-安全和保密性增强"><a href="#Security-and-Privacy-Enhancements-安全和保密性增强" class="headerlink" title="Security and Privacy Enhancements 安全和保密性增强"></a>Security and Privacy Enhancements 安全和保密性增强</h2><p>安全方面在iOS10中引入了更多修改和补充，具体有以下几点：</p>
+<p>1.在info.plist文件新增了一个key，NSAllowsArbitraryLoadsInWebContent，允许任意web页面加载，同时苹果会用ATS保护你的app。</p>
+<p>2.使用改进后的SecKey API 而不是过时的 CDSA API。</p>
+<p>3.安全传输API中不再支持SSLv3， 建议你们尽快停用SHA1和3DES加密算法。</p>
+<p>4.剪贴板的扩展，因为wwdc2016演示了可以跨设备复制粘贴啊，那肯定要做一些限制可见（#import <uikit uipasteboard.h="">）</uikit></p>
+<p>5.这点最重要的，建议尽快适配， 所有和用户权限相关的地方必须在info.plist里配置里面包括</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">NSBluetoothPeripheralUsageDescription</div><div class="line">NSCalendarsUsageDescription</div><div class="line">NSCameraUsageDescription</div><div class="line">NSContactsUsageDescription</div><div class="line">NSHealthShareUsageDescription</div><div class="line">NSHealthUpdateUsageDescription</div><div class="line">NSHomeKitUsageDescription</div><div class="line">NSLocationAlwaysUsageDescription</div><div class="line">NSLocationWhenInUseUsageDescription</div><div class="line">NSMicrophoneUsageDescription</div><div class="line">NSMotionUsageDescription</div><div class="line">NSPhotoLibraryUsageDescription</div><div class="line">NSRemindersUsageDescription</div><div class="line">NSSiriUsageDescription</div><div class="line">NSSpeechRecognitionUsageDescription</div><div class="line">NSVideoSubscriberAccountUsageDescription</div><div class="line">NSVoIPUsageDescription</div></pre></td></tr></table></figure>
+<p>虽然现在还没有iOS10系统的手机，但是我用模拟器试了下，亲测如果我想唤起通讯录但是没有配置NSContactsUsageDescription，刚启动时不会崩溃，但是在唤起操作发生时会直接崩溃。 在info.plist设置之后就可以正常使用了。</p>
+<p>本文转自<a href="http://www.cnblogs.com/dsxniubility/p/5596973.html" target="_blank" rel="external">井柏然微博</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[苹果Mac os系统u盘安装系统制作教程]]></title>
       <url>http://yoursite.com/blog/2016/08/15/MacOSCreat.html</url>
       <content type="html"><![CDATA[<h3 id="苹果系统Mac-OS-X安装U盘怎么制作-很多苹果的用户都不知道如何使用U盘装系统，而苹果Mac电脑通过U盘安装系统-前提的是需要先制作Mac启动U盘，许多果粉在删除或者需要重装苹果系统的时候，都不知道应该要如何使用U盘制作工具来安装苹果系统，本文主要为大家介绍苹果系统U盘制作教程。"><a href="#苹果系统Mac-OS-X安装U盘怎么制作-很多苹果的用户都不知道如何使用U盘装系统，而苹果Mac电脑通过U盘安装系统-前提的是需要先制作Mac启动U盘，许多果粉在删除或者需要重装苹果系统的时候，都不知道应该要如何使用U盘制作工具来安装苹果系统，本文主要为大家介绍苹果系统U盘制作教程。" class="headerlink" title="　　苹果系统Mac OS X安装U盘怎么制作?很多苹果的用户都不知道如何使用U盘装系统，而苹果Mac电脑通过U盘安装系统,前提的是需要先制作Mac启动U盘，许多果粉在删除或者需要重装苹果系统的时候，都不知道应该要如何使用U盘制作工具来安装苹果系统，本文主要为大家介绍苹果系统U盘制作教程。"></a>　　苹果系统Mac OS X安装U盘怎么制作?很多苹果的用户都不知道如何使用U盘装系统，而苹果Mac电脑通过U盘安装系统,前提的是需要先制作Mac启动U盘，许多果粉在删除或者需要重装苹果系统的时候，都不知道应该要如何使用U盘制作工具来安装苹果系统，本文主要为大家介绍苹果系统U盘制作教程。</h3><a id="more"></a>
@@ -248,139 +381,6 @@
 </blockquote>
 </li>
 </ul>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[ios10以及Xcode8的一些更新（转）]]></title>
-      <url>http://yoursite.com/blog/2015/09/10/ios10.html</url>
-      <content type="html"><![CDATA[<p>本文主要是一些对iOS新功能的探索，之前发现博客里关于iOS新功能的分析大多是过于概括，每个功能几句话，无法了解到具体的功能。所以本次的探索是基于Api层面，着重看一些具体用法所做的笔记，本来想分别画个类图来着，后来还是觉得太耗时而放弃。如果不想把苹果iOSSDK里的.h文件都摆出来详细读，那看这篇笔记应该是个不错的选择。</p>
-<p> 本文以文档的目录为基础，提到的功能模块有：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Proactive Suggestions</div><div class="line"></div><div class="line">Integrating with the Messages App</div><div class="line"></div><div class="line">User Notifications</div><div class="line"></div><div class="line">Speech Recognition</div><div class="line"></div><div class="line">Wide Color</div><div class="line"></div><div class="line">Adapting to the True Tone Display</div><div class="line"></div><div class="line">App Search Enhancements</div><div class="line"></div><div class="line">Widget Enhancements</div><div class="line"></div><div class="line">Security and Privacy Enhancements</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>还没有详细探索的模块是</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">SiriKit </div><div class="line"></div><div class="line">CallKit （工作职能和这里联系不多，还不care这里）</div><div class="line"></div><div class="line">Apple Pay Enhancements （工作职能和这里联系不多，还不care这里）</div></pre></td></tr></table></figure>
-<h2 id="SiriKit"><a href="#SiriKit" class="headerlink" title="SiriKit"></a>SiriKit</h2><p> SiriKit的功能非常强大，支持音频、视频、消息发送接收、搜索照片、预订行程、管理锻炼等等。在用到此服务时，siri会发送Intent对象，里面包括用户的请求和各种数据，可以对这个intent处理选择适当的响应。 这个功能主要是看这两个头文件（#import <intents intents.h="">、#import <intentsui intentsui.h="">）所涵盖到的类太多，前期先略过了，之后等iOS10可以推送更新了再做进一步调研。</intentsui></intents></p>
-<h2 id="Proactive-Suggestions-系统预先建议"><a href="#Proactive-Suggestions-系统预先建议" class="headerlink" title="Proactive Suggestions 系统预先建议"></a>Proactive Suggestions 系统预先建议</h2><h4 id="背景就是iOS9的时候系统给予的主动建议会通过：Spolight搜索，Safari搜索，Handoff，或者siri建议。-在iOS10之后新增了，键盘QuickType建议，地图，车载娱乐，应用切换，siri交互，锁屏播放。-比如你正在一个应用里看一个酒店，可以使用mapitem属性保存正在查看的这个酒店的位置，然后你切换旅行或地图App时这个位置可以自动提供使用。-如果你需要这样利用系统来共享一个位置，那你需要指定这个位置的经纬度，地名-电话等属性-来便于siri的直接调起。"><a href="#背景就是iOS9的时候系统给予的主动建议会通过：Spolight搜索，Safari搜索，Handoff，或者siri建议。-在iOS10之后新增了，键盘QuickType建议，地图，车载娱乐，应用切换，siri交互，锁屏播放。-比如你正在一个应用里看一个酒店，可以使用mapitem属性保存正在查看的这个酒店的位置，然后你切换旅行或地图App时这个位置可以自动提供使用。-如果你需要这样利用系统来共享一个位置，那你需要指定这个位置的经纬度，地名-电话等属性-来便于siri的直接调起。" class="headerlink" title="背景就是iOS9的时候系统给予的主动建议会通过：Spolight搜索，Safari搜索，Handoff，或者siri建议。 在iOS10之后新增了，键盘QuickType建议，地图，车载娱乐，应用切换，siri交互，锁屏播放。 比如你正在一个应用里看一个酒店，可以使用mapitem属性保存正在查看的这个酒店的位置，然后你切换旅行或地图App时这个位置可以自动提供使用。  如果你需要这样利用系统来共享一个位置，那你需要指定这个位置的经纬度，地名,电话等属性 来便于siri的直接调起。"></a>背景就是iOS9的时候系统给予的主动建议会通过：Spolight搜索，Safari搜索，Handoff，或者siri建议。 在iOS10之后新增了，键盘QuickType建议，地图，车载娱乐，应用切换，siri交互，锁屏播放。 比如你正在一个应用里看一个酒店，可以使用mapitem属性保存正在查看的这个酒店的位置，然后你切换旅行或地图App时这个位置可以自动提供使用。  如果你需要这样利用系统来共享一个位置，那你需要指定这个位置的经纬度，地名,电话等属性 来便于siri的直接调起。</h4><p> 文档中还列出了几种场景</p>
-<p> 1.在输入框（UITextFiled）输入时，可以指定一下这个输入框的类型，以便系统可以分析出用户的语义。 是电话类型就建议一些电话，是地址类型就建议一些地址。看下头文件（#import <uikit uitextinputtraits.h="">）可指定的类型 就是这个新增的textContentType字段，里面有很多种类型可选。</uikit></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeName                      NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeNamePrefix                NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeGivenName                 NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeMiddleName                NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeFamilyName                NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeNameSuffix                NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeNickname                  NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeJobTitle                  NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeOrganizationName          NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeLocation                  NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeFullStreetAddress         NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeStreetAddressLine1        NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeStreetAddressLine2        NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeAddressCity               NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeAddressState              NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeAddressCityAndState       NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeSublocality               NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeCountryName               NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypePostalCode                NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeTelephoneNumber           NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeEmailAddress              NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeURL                       NS_AVAILABLE_IOS(10_0);</div><div class="line">UIKIT_EXTERN NSString *const UITextContentTypeCreditCardNumber          NS_AVAILABLE_IOS(10_0);</div></pre></td></tr></table></figure>
-<p>2.如果是视频类App可以使用MPPlayableContentManager （#import <mediaplayer mpplayablecontentmanager.h="">）看了下，新增了一个属性nowPlayingIdentifiers，苹果的意思应该是只要你以前是用这个多媒体类播放音乐的我就可以让你在锁屏页面交互，需要配置在这个数组里。</mediaplayer></p>
-<p>3.如果是出行类app可以使用MKDirectionsRequest。 （#import <mapkit mkdirectionsrequest.h="">  ）这个类里几乎没有新增api，iOS10就新增了一个枚举，而且看上去就是个默认值。如果要使用此功能，需要配置在info.plist文件里 新增key - value ，MKDirectionsApplicationSupportedModes - MKDirectionsModeRideShare。</mapkit></p>
-<h2 id="User-Notifications-用户通知"><a href="#User-Notifications-用户通知" class="headerlink" title="User Notifications 用户通知"></a>User Notifications 用户通知</h2><p> 总体的意思就是支持了很多用户定义的通知，并且可以捕捉到各个通知状态的回调。以往通知的概念是：大家想接收的都提前做好准备，然后一下全量分发，没收到也不管了，也不关心发送者。现在用户通知做成了和网络请求有点像 一个先发request再得到response的流程，甚至封装了error，可以在各个状态的方法中做一些额外操作，并且也能取到一些字段，如发送者等。</p>
-<p>此功能的头文件入口在#import <usernotifications usernotifications.h=""><br><img src="http://upload-images.jianshu.io/upload_images/1954780-7a6c2ffa9bb15c8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="717809-20160620194852069-1522419410.png"></usernotifications></p>
-<p> 1.NSString+UserNotifications.h</p>
-<p>有一个方法 localizedUserNotificationStringForKey: arguments: （提供该通知被呈现时的本地化字符串），猜测下面的类有很多initWithIdentifier的，他们的indentifier就是这个。</p>
-<p>2.UNError.h</p>
-<p>有一个属性UNErrorDomain 和一个枚举 UNErrorCode，顾名思义。</p>
-<p>3.UNNotification.h</p>
-<p>里面有两个属性，date日期 和 request，这个request是上面“8”的类型UNNotificationRequest，点进去看了下比较清晰，有identifier标识，content内容，trigger触发条件， 和带上这三个东西的初始化方法。 其中内容 和 触发条件这两个属性，分别是上面“7” 和 “12”的类型，这个下面再谈。</p>
-<p>4.UNNotificationAction.h</p>
-<p>这个类突出的是一个通知的动作，有identifier，title，options（枚举，就是通知当前的权限，允许？拒绝？前台时允许？）属性。然后就是带上这三个东西的初始化方法。 然后比较费解的就是下面有一个子类UNTextInputNotificationAction ，这个子类有两个额外属性， 按钮title，和文本框placeholder， 为什么会是这两个属性？ 莫非是点击通知后下拉出的快速回复，有一个输入框和一个按钮。</p>
-<p>5.UNNotificationAttachment.h</p>
-<p>这个里面就是URL（资源url属性），type（附件类型）。 然后是带上这两个属性的初始化方法。 下面声明了几个字符串常量，暂时还不知道具体用在哪里，typeHint，hiddenKey，clippingRectKey，TimeKey。</p>
-<p>6.UNNotificationCategory.h</p>
-<p>有indentifier属性，actions（里面是数组），minimalActions（最重要的数组，就是只能给你两个位置显示你显示哪两个，这么个意思），intentIdentifiers属性（应该是和上面的动作数组关联的吧），options（权限相关，无？允许自定义关闭？允许车载系统交互？）。最后就是把这些都带上的init方法。  猜测这个类之所以取名叫category应该是，在某个地方展示通知的时候会把所有通知一一分类， 然后每个类别的通知可能最多只能让你展示几个，如果不做限制应该会展示全部通知，如果权限设置的是允许自定义关闭那可能就是支持类似一键清除的操作。</p>
-<p>7.UNNotificationContent.h</p>
-<p>消息的内容，一看就能知道应该是一个类似于Entity的东西，里面装有大量的属性：attachments（可选的附件集合），badge（小红点数量），body，categoryIndentifier，launchImageName（从消息里点开的应用程序应该能看到启动图对吧），subtitle，threadIdentifier（与request关联），title，userInfo，sound这个是“11”的类型，应该是同时来时的声音，点开“11”看一下 ，就俩方法，defaultSound，soundNamed: 自定义声音，都在~/Library/Sounds 目录下。 恩再回到刚才那个content类里面有个子类UNMutableNotificationContent，属性和父类相同，只不过是子类的属性都可以修改了，父类的那些属性都是readonly的。</p>
-<p>8.UNNotificationRequest.h 上面第3条说过了</p>
-<p>9.UNNotificationResponse.h </p>
-<p>有action，也有request，那也就有response，这里面有两个属性，notification，actionIdentifier  响应里就这俩破玩意。 然后有个子类UNTextInputNotificationResponse， 这里面就一个属性userText ，看命名很好猜，应该就是前面说的那个有输入框里输入的内容。</p>
-<p>10.UNNotificationSettings.h</p>
-<p>这个类里就是一些设置了，有一个枚举说的是有没有权限，一个枚举说的是不支持？禁用？启用？。 然后下面一大波属性，小红点设置，声音设置，弹窗设置等等 都是这个枚举类型， 最后还有个alertStyle属性（枚举，None？Banner？alert？）。</p>
-<p>11.sound前面第7条说过了</p>
-<p>12.UNNotificationTrigger.h</p>
-<p>有一个属性 repeats（是否重复发通知）。 下面有四个子类，push通知触发， 时间通知触发，日历通知触发，地区通知触发， 时间的有timeInterval属性， 日历的有dateComponents属性。 然后时间和日历的子类都有nextTriggerDate 方法。</p>
-<p>13.UNUserNotificationCenter.h</p>
-<p>这里面东西多到吐了，同学你记得NSNotificationCenter么？ 需要提一点的就是以前的通知中心有个方法[NSNotificationCenter defaultCenter]， 这里是[UNUserNotificationCenter currentNotificationCenter]， 提醒一下到时候别说敲不出来。 方法大多是一些remove，add，get等操作， 还有2个代理方法：通知将要发出去时调用，收到通知的response后调用。</p>
-<p>14.UNNotificationServiceExtension.h</p>
-<p>里面有两个方法，收到通知的请求后调用， 系统将要销毁时调用。</p>
-<p>通知里面有UI相关的类 #import <usernotificationsui usernotificationsui.h=""></usernotificationsui></p>
-<p>这个类里面就一个文件， 而且方法比较单一，就是收到通知调用，和收到通知的响应调用。 其他方法也就是mediaPlay 和 mediaPause 。和一些多媒体播放的按钮frame，color等， 这里面的作用难道仅仅就是通知来了后播放的音乐暂时暂停下，响一声通知，再播放？ 具体WWDC2016上说的锁屏页面的通知样式处理的api是在下面的部件增强章节中。</p>
-<h2 id="Integrating-with-the-Messages-App-与系统短信-app交互"><a href="#Integrating-with-the-Messages-App-与系统短信-app交互" class="headerlink" title="Integrating with the Messages App 与系统短信 app交互"></a>Integrating with the Messages App 与系统短信 app交互</h2><p>对消息额支持很大，可以模拟发消息收消息，发邮件等，提供了UI界面。 也提供了一些额外扩展的api，如表情包区域。WWDC2016上说的各种消息内的新操作在头文件中都能找到Api。</p>
-<p>此功能的头文件入口在#import <messages messages.h=""></messages></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-61722c20f74fbe68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="717809-20160620165536303-1502683347.png"></p>
-<p>1.MSMessagesAppViewController.h</p>
-<p>这个类应该就是苹果自己的消息界面，你可以继承他写你自己自定义的界面。 属性有：activeConversation 指的是当前的会话对象，是上面“2”这个类型，具体详细可以看下面的第“2”点、还有个是presentationStyle（外观样式，枚举类型，紧缩？扩张？）。 接下来就是方法了：requestPresentationStyle（请求消息过渡到指定的样式），dismiss消除方法。 然后就是一波生命周期方法了，每一类都有will和did，会话信息将要（已经）活跃时，将要（已经）解除活跃，将要（已经）选择信息，将要（已经）收到信息，将要（已经）开始发送，将要（已经）取消发送，将要（已经）开始过渡。</p>
-<p>2.MSConversation.h</p>
-<p>属性有localParticipantIdentifier（当前会话参与者生成的标识，他说只有删了App才会变 姑且理解成id是不会变的），remoteParticipantIdentifiers（远端的标识符数组），selectedMessage（选中的信息），以及4个对象方法 插入一条信息，插入一个标签，插入一段文本，插入一个附件。 这四个方法都有成功的回调。</p>
-<p>3.MSSession.h</p>
-<p>这个类里面是空的，解释说是用session来处理消息序列间的关系。可能就是占个位，以后估计会添加东西。 这个MSSession是后面很多参数的类型，应该就是区分消息类似于标识符的作用。 </p>
-<p>4.MSMessage.h</p>
-<p>初始化方法是initWithSession ，没错就是上面那个MSSession。 除了初始化方法剩下的就全是属性了：session，senderParticipantIdentifier（发送者的标识符），layout布局这个是“5”这个类型，URL，shouldExpire（选yes会自动消失，用户手动选择为这条消息续命），accessibilityLabel（残疾人模式支持），error。</p>
-<p>5.MSMessageLayout.h</p>
-<p>这个是抽象类，里面是空的，就是个布局文件，继承自NSObject。</p>
-<p>6.MSMessageTemplateLayout.h</p>
-<p>继承上面那个类，看名字是模板布局后面应该会用的挺多的，里面的属性有，标题，子标题，尾部标题，尾部子标题，图片，多媒体URL，图片标题，图片子标题。 </p>
-<p>7.MSSticker.h</p>
-<p>应该是消息上的表情包。 里面就有两个属性imageFileURL ，localizedDescription 图片和局部描述。然后是带上这两个属性的初始化方法 initWithContentsOfFileURL: localizedDescription: 。</p>
-<p>8.MSStickerView.h</p>
-<p>这个类就是一个view，里面包着一个sticker，也就是包裹着上面那个装饰品的view。 提供了带上sticker的初始化方法，一个常规属性animationDuration，和三个方法startAnimating，stopAnimating，isAnimating。</p>
-<p>9.MSStickerBrowserViewDataSource.h</p>
-<p>细思极恐，这个类不就是wwdc2016上说的那个可以在消息下面添加自定义表情的地方么。 符合datasource的风格，里面就两个方法，numberOfStickersInStickerBrowserView: （返回一个总数），stickerBrowserView：stickerAtIndex：（返回这个索引下的内容）。</p>
-<p>10.MSStickerBrowserView.h</p>
-<p>上面那个是datasource，那这个就是用了上面数据源的view呗。 除了初始化方法，有两个属性 stickerSize（枚举，小，中，大），dataSource（就是上面的“9”），还有个人reloadData方法。</p>
-<p>11.MSStickerBrowserViewController.h</p>
-<p>上面是个view， 这个就是承载上面那个view的viewcontroller。肯定得有这个属性stickerBrowserView 和初始化方法。</p>
-<p>这个message模块还有UI相关的api   #import <messageui messageui.h=""></messageui></p>
-<p>就是两个VC ,MFMailComposeViewController,MFMessageComposeViewController。 这两个都是继承自UINavigationController.   觉得这两个就是发邮件的编辑页面，和发消息的编辑页面。  发邮件的页面里有 canSendMail （Bool方法），set主题，set发件人，set收件人，set内容，set附件。 然后有一个代理，和代理方法，猜也能猜到 就是成功失败回调。mailComposeController:didFinishWithResult: error:  。 那另一个消息和这差不多了就不说了。</p>
-<h2 id="Speech-Recognition-语音识别转文字"><a href="#Speech-Recognition-语音识别转文字" class="headerlink" title="Speech Recognition 语音识别转文字"></a>Speech Recognition 语音识别转文字</h2><p>这个类里面的Api和方法调用都非常清晰，感觉使用起来会非常方便。真的为科大讯飞捏把汗了，科大讯飞的app（录音宝）我看过，都还没有说一段语音能直接转文字的功能，他们是直接把声音文件上传，然后24小时候再发给你转换后的结果…而且一上来就要收费。苹果的这个功能已经做到了系统原生支持，真的厉害。</p>
-<p>此功能的头文件入口在#import <speech speech.h=""></speech></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-ce6606e8d2a0daaf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="717809-20160619182921085-1315021923.png"></p>
-<p> 1.SFSpeechRecognitionResult.h</p>
-<p>这个类里有三个属性：bestTranscription 就是最优的转化结果咯，是上面的“7”这个类型的。然后再看下这个SFTranscription.h ，果然不出所料 有两个属性 一个是字符串类型formattedString 一个是数组类型的segments ，恩 前者就是转化后的字符串，后者是分割后的一个个小结果集合。 然后这个分割的一个个小结果呢又是上面“6”这个类型。那再看一下“6” 里面的属性就是 substring， 时间戳，duration，准确性，备选答案数组，这些很清晰的东西了。</p>
-<p>2.SFSpeechRecognitionRequest.h</p>
-<p>这个类里东西有点多，属性taskHint，是上面“4”这个类型，点开一看就是一个枚举，用来区分你这个语音识别的请求是哪一类的 查找？确认？听写？无法识别？。 接下来是两个BOOL类型的，shouldReportPartialResults（是否语音局部的一块一块也要处理？默认选false就是一句话全说完了再上传吧），detectMultipleUtterances（假如你说了10秒钟，只有后5秒匹配到了结果，那你前面删了还是保留？默认不删），然后是分析到的关键字数组，和标识符什么的。 然后这个request有两个子类，一个是从本地URL读取 一个声音文件去识别， 一个是默认做法用话筒和AVFoundation库接收到声音去识别，然后有几个拼接声音的API。</p>
-<p>3.SFSpeechRecognitionTask.h</p>
-<p>从名字就能看出来这是语音识别最重要的一个类了，里面的属性有：state这是一个枚举，说明当前状态是进行中？已完成？被取消？等等。 接下来是三个常见的 isFinishing ，isCancelled ，error 。 接下来是 isPowerAvailable （是否开启说话声音大小的监测？），peakPower（最大声音），averagePower（平均声音）。 属性就这些了，接下来就是一个协议和一波代理方法：刚刚识别出话语调用，猜测话语时调用，话说完了调用，取消时调用，等等等，你能想到的回调方法苹果应该都有的。</p>
-<p>4.上面第2条里面说过了</p>
-<p>5.SFSpeechRecognizer.h</p>
-<p>和系统的那些相机权限，通讯录权限有点像， 就是现在的状态是什么？同意？拒绝？还是未选择过？ 然后提供了方法让用户去选择。 然后有些属性：NSSet类型的supportedLocales（支持地区方言的集合），</p>
-<p>available是否可用，locale当前地区 ，defaultTaskHint默认类别，request（就是上面说的请求），队列，代理。 然后有个协议和代理方法：发现用户给与的权限发生改变时调用。</p>
-<p>6和7. 上面第1条里说过了 </p>
-<h2 id="Wide-Color-宽域颜色"><a href="#Wide-Color-宽域颜色" class="headerlink" title="Wide Color 宽域颜色"></a>Wide Color 宽域颜色</h2><p>文档的原话说：大多数的 core字打头的图形框架 还有AVFoundation 都大大提高了对扩展像素和宽色域色彩空间的支持。通过图形堆栈扩展这种方式比以往支持广色域的显示设备更加容易。现在对UIKit扩展可以在sRGB的色彩空间下工作，性能更好，也可以在更广泛的色域来搭配sRGB颜色。 然后说了几个场景说建议你用sRGB吧，比如依赖于UIkit的clamp component values的应用程序，或是使用较低级别api执行自己图像处理的 都建议用sRGB吧。</p>
-<p>然后看了下UIColor类里 到底什么是sRGB？ 发现多了两个iOS10新增的api。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">UIColor</span> *)colorWithDisplayP3Red:(<span class="built_in">CGFloat</span>)displayP3Red green:(<span class="built_in">CGFloat</span>)green blue:(<span class="built_in">CGFloat</span>)blue alpha:(<span class="built_in">CGFloat</span>)alpha <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);  </div><div class="line"> </div><div class="line">- (<span class="built_in">UIColor</span> *)initWithDisplayP3Red:(<span class="built_in">CGFloat</span>)displayP3Red green:(<span class="built_in">CGFloat</span>)green blue:(<span class="built_in">CGFloat</span>)blue alpha:(<span class="built_in">CGFloat</span>)alpha <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);</div></pre></td></tr></table></figure>
-<p> 细节都是一样的就是一个类方法一个实例方法， 我理解下，就是说建议你们以前改用colorwithRGB的地方 现在都换成这个方法叭。可能大多数公司都抽成了 RGB(a,g,b,a)这种宏吧，那就在宏定义那改一下就好了。</p>
-<h2 id="Adapting-to-the-True-Tone-Display-真彩色显示"><a href="#Adapting-to-the-True-Tone-Display-真彩色显示" class="headerlink" title="Adapting to the True Tone Display 真彩色显示"></a>Adapting to the True Tone Display 真彩色显示</h2><p>真彩色的显示会根据光感应器来进行自动的调节来达到特定环境下的显示与性能平衡效果。 如果需要这个功能的话需要再info.plist里配置</p>
-<p>UIWhitePointAdaptivityStyle</p>
-<p>共有五种选择：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1.UIWhitePointAdaptivityStyleStandard 标准</div><div class="line"></div><div class="line">2.UIWhitePointAdaptivityStyleReading 阅读</div><div class="line"></div><div class="line">3.UIWhitePointAdaptivityStylePhoto 图片</div><div class="line"></div><div class="line">4.UIWhitePointAdaptivityStyleVideo 视频</div><div class="line"></div><div class="line">5.UIWhitePointAdaptivityStyleGame 游戏</div></pre></td></tr></table></figure>
-<p>然后他说的很清楚，如果你是图片处理类的app，那就直接配stylePhoto吧，如果你是阅读类的那就直接配styleReading吧。 这五个形式的显示效果从上往下递减，我理解是说在阅读时给你最好的效果，但如果在游戏时也给那么好的效果会影响性能，就给你一个相对次一点的显示效果让性能更流畅。</p>
-<h2 id="App-Search-Enhancements-应用搜索增强"><a href="#App-Search-Enhancements-应用搜索增强" class="headerlink" title="App Search Enhancements 应用搜索增强"></a>App Search Enhancements 应用搜索增强</h2><p>iOS10的搜索功能做了一定增强：应用程序内搜索，搜索传递，考虑私人差异，结果可视化。 使用CSSearchQuery类，调用Core Spotlight的api，可以让你不必自己维护自己的搜索索引，关于对搜索关键字的处理，还有考虑到不同类别差异导致搜索结果的排序都是苹果帮你处理。</p>
-<p>并且搜索结果可以继续往下传递，假设你用Core Spotlight搜索火车站，提示的是地图类app搜索火车站的结果，你点进去后，这个地图类app会接收到“火车站”这个字段在应用内也完成搜索。支持此功能也是需要配置plist文件:key-value  CoreSpotlightContinuation-YES，然后设置CSQueryContinuationActionType（#import<corespotlight cssearchableitem.h="">）。最后传递的搜索字符串用continueUserActivity：restorationHandler：方法接收。</corespotlight></p>
-<p>然后现在看一下#import <corespotlight cssearchquery.h="">头文件里面的结构。</corespotlight></p>
-<p>看上去这个CSSearchQuery像是一个查询语句操作，有创建，查询成功和错误等。初始化方法是initWithQueryString: attributes:。 有isCanceled属性 和 cancel 和 start方法。 还有foundItemCount属性，看上去是能够得到搜索的结果个数。protectionClasses(数组)，看上去像是隐私相关受保护的文件。 还有两个block，一个是搜索结束后回调，参数是NSError；一个是查询到结果时回调，参数是items数组。这个items数组都是CSSearchableItem类型，这里面有个attributeSet属性，里面可以传入以下类型</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-34f70f5eea73cfae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="717809-20160626110525547-1800081610.png"></p>
-<h2 id="Widget-Enhancements-锁屏部件增强"><a href="#Widget-Enhancements-锁屏部件增强" class="headerlink" title="Widget Enhancements 锁屏部件增强"></a>Widget Enhancements 锁屏部件增强</h2><p>现在锁屏界面有了新的设计，建议我们废弃以前的notificationCenterVibrancyEffect 改用widgetPrimaryVibrancyEffect或者widgetSecondaryVibrancyEffect，并且窗口的小部件可以让你描述有多少东西可用，支持紧凑和扩展两种形态。</p>
-<p>这些新旧的Effect效果在这个类下，可能是之前锁屏玩不出什么花样所以大家没怎么关注这里。  </p>
-<p> #import <notificationcenter notificationcenter.h=""> 里面有三个头文件</notificationcenter></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1954780-113e65e7750da91b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="717809-20160621170857694-1224766609.png"></p>
-<p> 1.NCWidgetProviding.h</p>
-<p>先来两个方法 </p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (<span class="keyword">void</span>)widgetPerformUpdateWithCompletionHandler:(<span class="keyword">void</span> (^)(NCUpdateResult result))completionHandler;</div></pre></td></tr></table></figure>
-<p>这个方法如果实现了，系统将在适当的时候召唤部件更新形态，无论是在通知中心还是后台。 需要启用后台更新功能，部件会在异步工作主线程更新，调用参数块的工作完成后会得到相应的结果。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(<span class="built_in">CGSize</span>)maxSize;</div></pre></td></tr></table></figure>
-<p>这个方法应该是部件变化时调用，参数是最大有多大。</p>
-<p>这里声明了一个分类UIVibrancyEffect (NCWidgetAdditions)，里面就是本章节说的iOS10新增API</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">UIVibrancyEffect</span> *)widgetPrimaryVibrancyEffect <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);</div><div class="line"> </div><div class="line">+ (<span class="built_in">UIVibrancyEffect</span> *)widgetSecondaryVibrancyEffect <span class="built_in">NS_AVAILABLE_IOS</span>(<span class="number">10</span>_0);</div></pre></td></tr></table></figure>
-<p>这两个方法名字上是老大和老二，有什么区别？ 都是用在选择的文字或图形上，默认用上面，如果开启了further diminution（应该是类似于上面压缩模式）就用下面的。</p>
-<p>下面又声明了一个分类NSExtensionContext (NCWidgetAdditions)，里面也是iOS10的新增API</p>
-<p>里面有两个属性 widgetLargestAvailableDisplayMode ，widgetActiveDisplayMode 。 是两种显示模式是NCWidgetDisplayMode枚举类型，有紧缩和扩张两种。 ，估计假如是新闻通知一个是一般大小，一个是点开详情的大小。 然后就是一个方法widgetMaximumSizeForDisplayMode ，返回值是CGSize取到播放模式的最大尺寸。</p>
-<p>2.NCWidgetController.h</p>
-<p>里面除了个初始化方法，还有一个方法</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)setHasContent:(<span class="built_in">BOOL</span>)flag forWidgetWithBundleIdentifier:(<span class="built_in">NSString</span> *)bundleID;</div></pre></td></tr></table></figure>
-<p>第一个参数默认为yes，就是该展示时就展示，这个方法可以跨小组件间通讯，以及和providing app交互。</p>
-<p>3.NCWidgetTypes.h</p>
-<p>里面就一个枚举类型NCWidgetDisplayMode ，前面第1点说过了。</p>
-<h2 id="Security-and-Privacy-Enhancements-安全和保密性增强"><a href="#Security-and-Privacy-Enhancements-安全和保密性增强" class="headerlink" title="Security and Privacy Enhancements 安全和保密性增强"></a>Security and Privacy Enhancements 安全和保密性增强</h2><p>安全方面在iOS10中引入了更多修改和补充，具体有以下几点：</p>
-<p>1.在info.plist文件新增了一个key，NSAllowsArbitraryLoadsInWebContent，允许任意web页面加载，同时苹果会用ATS保护你的app。</p>
-<p>2.使用改进后的SecKey API 而不是过时的 CDSA API。</p>
-<p>3.安全传输API中不再支持SSLv3， 建议你们尽快停用SHA1和3DES加密算法。</p>
-<p>4.剪贴板的扩展，因为wwdc2016演示了可以跨设备复制粘贴啊，那肯定要做一些限制可见（#import <uikit uipasteboard.h="">）</uikit></p>
-<p>5.这点最重要的，建议尽快适配， 所有和用户权限相关的地方必须在info.plist里配置里面包括</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">NSBluetoothPeripheralUsageDescription</div><div class="line">NSCalendarsUsageDescription</div><div class="line">NSCameraUsageDescription</div><div class="line">NSContactsUsageDescription</div><div class="line">NSHealthShareUsageDescription</div><div class="line">NSHealthUpdateUsageDescription</div><div class="line">NSHomeKitUsageDescription</div><div class="line">NSLocationAlwaysUsageDescription</div><div class="line">NSLocationWhenInUseUsageDescription</div><div class="line">NSMicrophoneUsageDescription</div><div class="line">NSMotionUsageDescription</div><div class="line">NSPhotoLibraryUsageDescription</div><div class="line">NSRemindersUsageDescription</div><div class="line">NSSiriUsageDescription</div><div class="line">NSSpeechRecognitionUsageDescription</div><div class="line">NSVideoSubscriberAccountUsageDescription</div><div class="line">NSVoIPUsageDescription</div></pre></td></tr></table></figure>
-<p>虽然现在还没有iOS10系统的手机，但是我用模拟器试了下，亲测如果我想唤起通讯录但是没有配置NSContactsUsageDescription，刚启动时不会崩溃，但是在唤起操作发生时会直接崩溃。 在info.plist设置之后就可以正常使用了。</p>
-<p>本文转自<a href="http://www.cnblogs.com/dsxniubility/p/5596973.html" target="_blank" rel="external">井柏然微博</a></p>
 ]]></content>
     </entry>
     
